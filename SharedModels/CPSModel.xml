@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CPSModel.xsd">
+  <Identity>
+    <Caller>
+      <CallerType>0</CallerType>
+      <ThirdPartyID>ThirdPartyID</ThirdPartyID>
+      <Password>Password</Password>
+      <CheckSum>CheckSum</CheckSum>
+      <ResultURL>ResultURL</ResultURL>
+    </Caller>
+    <Initiator>
+      <IdentifierType>1</IdentifierType>
+      <Identifier>Identifier</Identifier>
+      <SecurityCredential>SecurityCredential</SecurityCredential>
+    </Initiator>
+    <PrimaryParty>
+      <IdentifierType>1</IdentifierType>
+      <Identifier>Identifier</Identifier>
+    </PrimaryParty>
+    <ReceiverParty>
+      <IdentifierType>1</IdentifierType>
+      <Identifier>Identifier</Identifier>
+    </ReceiverParty>
+    <AccessDevice>AccessDevice</AccessDevice>
+  </Identity>
+  <Transaction>
+    <CommandID>CommandID</CommandID>
+    <OriginatorConversationID>OriginatorConversationID</OriginatorConversationID>
+    <ConversationID>ConversationID</ConversationID>
+    <Remark>Remark</Remark>
+    <Parameters>
+      <Parameter>
+        <Key>Key</Key>
+        <Value>Value</Value>
+      </Parameter>
+    </Parameters>
+    <ReferenceData>
+      <ReferenceItem>
+        <Key>Key</Key>
+        <Value>Value</Value>
+      </ReferenceItem>
+    </ReferenceData>
+    <Timestamp>Timestamp</Timestamp>
+  </Transaction>
+  <KeyOwner>0</KeyOwner>
+</Request>

@@ -1,0 +1,65 @@
+CREATE COMPUTE MODULE CPSMockRequestR5Flow_ResponseCompute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE inCCSID INT InputProperties.CodedCharSetId;                     
+		DECLARE inEncoding INT InputProperties.Encoding;
+		--DECLARE inMsg CHARACTER InputRoot.XMLNSC.ns:Request;
+		DECLARE correlId CHARACTER cast(getJavaMillis() as CHARACTER);
+		Set Environment.correlId =correlId;
+		
+		--CREATE LASTCHILD OF Environment DOMAIN('XMLNSC') PARSE(inMsg,inEncoding,inCCSID);
+		CREATE FIRSTCHILD OF Environment DOMAIN 'XMLNSC' TYPE XMLNSC.Folder NAME 'InMsg';
+SET Environment.InMsg = InputRoot.XMLNSC;
+		DECLARE OriginatorConversationID CHARACTER COALESCE(InputRoot.XMLNSC.ns:Request.ns31:Header.ns31:OriginatorConversationID,'');
+		DECLARE ConversationID CHARACTER COALESCE(InputRoot.XMLNSC.ns:Request.ns31:Header.ns31:ConversationID,'');
+		DECLARE CommandId CHARACTER COALESCE(InputRoot.XMLNSC.ns:Request.ns31:Header.ns31:CommandID,'');
+		DECLARE Timestampval CHARACTER COALESCE(InputRoot.XMLNSC.ns:Request.ns31:Header.ns31:Timestamp,'');
+		Set Environment.ResultURL = COALESCE(InputRoot.XMLNSC.ns:Request.ns31:Header.ns31:Caller.ns31:ResultURL,'');
+		DECLARE inMsglog CHARACTER COALESCE(CAST(ASBITSTREAM(InputRoot.XMLNSC CCSID 1208) as char CCSID 1208),'');
+		Call LOGINFO(correlId||'|Request Received:'||CommandId||'|'||inMsglog,'CPSMockServiceR5');
+		
+		SET Environment.CommandID = CommandId;
+		SET Environment.ConversationID = ConversationID;
+		SET Environment.OriginatorConversationID = OriginatorConversationID;
+		SET Environment.Timestampval = Timestampval;
+		
+		--Response
+		DECLARE Response CHARACTER '';
+		set OutputRoot.XMLNSC.ns:Response.ns61:Header.ns61:Version='1.0';		
+		Set OutputRoot.XMLNSC.ns:Response.ns61:Header.ns61:OriginatorConversationID=OriginatorConversationID;
+		Set OutputRoot.XMLNSC.ns:Response.ns61:Header.ns61:ConversationID=ConversationID;
+		Set OutputRoot.XMLNSC.ns:Response.ns61:Body.ns61:ResponseCode='0';
+		Set OutputRoot.XMLNSC.ns:Response.ns61:Body.ns61:ResponseDesc='The service request is processed successfully.';
+		Set OutputRoot.XMLNSC.ns:Response.ns61:Body.ns61:ServiceStatus='0';
+		
+		
+		DECLARE outMsglog CHARACTER COALESCE(CAST(ASBITSTREAM(OutputRoot.XMLNSC CCSID 1208) as char CCSID 1208),'');
+		Call LOGINFO(correlId||'|Response Sent:'||CommandId||'|'||outMsglog,'CPSMockServiceR5');
+		
+		DECLARE envMsglog CHARACTER COALESCE(CAST(ASBITSTREAM(Environment.InMsg CCSID 1208) as char CCSID 1208),'');
+		Call LOGINFO(correlId||'|Environment:'||CommandId||'|'||envMsglog,'CPSMockServiceR5');
+		
+
+		Call LOGINFO(correlId||'|Environment value:'||CommandId||'| '||Environment.CommandID || '| TimeStamp: ' || Timestampval,'CPSMockServiceR5');
+		
+		--Set Response = COALESCE(CAST(ASBITSTREAM(OutputRoot.XMLNSC CCSID 1208) as char CCSID 1208),'');
+		--Set OutputRoot.XMLNSC = null;
+		
+		--Set OutputRoot.XMLNSC.ns:Response. .ns:ResponseMsg = Response;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

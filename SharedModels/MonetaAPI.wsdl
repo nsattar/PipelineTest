@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://RPS.TransactionAPI/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://RPS.TransactionAPI/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="TransactionAPI_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="TransactionAPISoap12" originalBindingStyle="document"/>
+        <binding hasEncoding="false" imported="true" name="TransactionAPISoap" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://RPS.TransactionAPI/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="TransactionAPI_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="ProcessTransactionSoapIn">
+    <wsdl:part element="tns:ProcessTransaction" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessTransactionSoapOut">
+    <wsdl:part element="tns:ProcessTransactionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ExpressTransactionSoapIn">
+    <wsdl:part element="tns:ExpressTransaction" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ExpressTransactionSoapOut">
+    <wsdl:part element="tns:ExpressTransactionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="StatusInquirySoapIn">
+    <wsdl:part element="tns:StatusInquiry" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="StatusInquirySoapOut">
+    <wsdl:part element="tns:StatusInquiryResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ListBanksSoapIn">
+    <wsdl:part element="tns:ListBanks" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ListBanksSoapOut">
+    <wsdl:part element="tns:ListBanksResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="FetchAccountTitleSoapIn">
+    <wsdl:part element="tns:FetchAccountTitle" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="FetchAccountTitleSoapOut">
+    <wsdl:part element="tns:FetchAccountTitleResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ImportTransactionSoapIn">
+    <wsdl:part element="tns:ImportTransaction" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="ImportTransactionSoapOut">
+    <wsdl:part element="tns:ImportTransactionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="BalanceInquirySoapIn">
+    <wsdl:part element="tns:BalanceInquiry" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="BalanceInquirySoapOut">
+    <wsdl:part element="tns:BalanceInquiryResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="TransactionAPISoap">
+    <wsdl:operation name="ProcessTransaction">
+      <wsdl:input message="tns:ProcessTransactionSoapIn"/>
+      <wsdl:output message="tns:ProcessTransactionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExpressTransaction">
+      <wsdl:input message="tns:ExpressTransactionSoapIn"/>
+      <wsdl:output message="tns:ExpressTransactionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="StatusInquiry">
+      <wsdl:input message="tns:StatusInquirySoapIn"/>
+      <wsdl:output message="tns:StatusInquirySoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListBanks">
+      <wsdl:input message="tns:ListBanksSoapIn"/>
+      <wsdl:output message="tns:ListBanksSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FetchAccountTitle">
+      <wsdl:input message="tns:FetchAccountTitleSoapIn"/>
+      <wsdl:output message="tns:FetchAccountTitleSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTransaction">
+      <wsdl:input message="tns:ImportTransactionSoapIn"/>
+      <wsdl:output message="tns:ImportTransactionSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="BalanceInquiry">
+      <wsdl:input message="tns:BalanceInquirySoapIn"/>
+      <wsdl:output message="tns:BalanceInquirySoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TransactionAPISoap" type="tns:TransactionAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcessTransaction">
+      <soap:operation soapAction="http://RPS.TransactionAPI/ProcessTransaction" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExpressTransaction">
+      <soap:operation soapAction="http://RPS.TransactionAPI/ExpressTransaction" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatusInquiry">
+      <soap:operation soapAction="http://RPS.TransactionAPI/StatusInquiry" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListBanks">
+      <soap:operation soapAction="http://RPS.TransactionAPI/ListBanks" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchAccountTitle">
+      <soap:operation soapAction="http://RPS.TransactionAPI/FetchAccountTitle" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTransaction">
+      <soap:operation soapAction="http://RPS.TransactionAPI/ImportTransaction" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BalanceInquiry">
+      <soap:operation soapAction="http://RPS.TransactionAPI/BalanceInquiry" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TransactionAPISoap12" type="tns:TransactionAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcessTransaction">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/ProcessTransaction" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExpressTransaction">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/ExpressTransaction" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatusInquiry">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/StatusInquiry" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListBanks">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/ListBanks" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchAccountTitle">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/FetchAccountTitle" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTransaction">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/ImportTransaction" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BalanceInquiry">
+      <soap12:operation soapAction="http://RPS.TransactionAPI/BalanceInquiry" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TransactionAPI">
+    <wsdl:port binding="tns:TransactionAPISoap" name="TransactionAPISoap">
+      <soap:address location="http://10.28.128.200/API/TransactionAPI.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:TransactionAPISoap12" name="TransactionAPISoap12">
+      <soap12:address location="http://10.28.128.200/API/TransactionAPI.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

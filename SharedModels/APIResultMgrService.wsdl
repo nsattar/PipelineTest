@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://cps.huawei.com/cpsinterface/api_resultmgr" xmlns:common="http://cps.huawei.com/cpsinterface/common" xmlns:res="http://cps.huawei.com/cpsinterface/result" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cps.huawei.com/cpsinterface/api_resultmgr" xmlns:wsa="http://www.w3.org/2005/08/addressing/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="APIResultMgrService_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="APIResultMgrBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://cps.huawei.com/cpsinterface/api_resultmgr" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<import namespace="http://cps.huawei.com/cpsinterface/result" schemaLocation="CPSInterface_API_Result.xsd"/>
+<xsd:include schemaLocation="APIResultMgrService_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="ResponseMessage">
+    <wsdl:part element="tns:Response" name="ResponseMsg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ResultMessage">
+    <wsdl:part element="tns:Result" name="ResultMsg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="APIResultMgrPortType">
+    <wsdl:operation name="APIResult">
+      <wsdl:input message="tns:ResultMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:ResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="APIResultMgrBinding" type="tns:APIResultMgrPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="APIResult">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="APIResultMgrService">
+    <wsdl:port binding="tns:APIResultMgrBinding" name="APIResultMgrServicePort">
+      <soap:address location="http://127.0.0.1:8082/payment/services/APIResultMgrService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

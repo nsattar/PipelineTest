@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost:60032/service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://localhost:60032/service" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true"/>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost:60032/service/Imports">
+      <xsd:import namespace="http://soap.api.novatti.com/types" schemaLocation="xsd_xsd0.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AgentWalletTransfer">
+    <wsdl:part element="q1:SoapAgentWalletTransferRequest" name="SoapAgentWalletTransferRequest" xmlns:q1="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentWalletTransferResponse">
+    <wsdl:part element="q2:SoapAgentWalletTransferResponse" name="SoapAgentWalletTransferResponse" xmlns:q2="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentProducts">
+    <wsdl:part element="q3:SoapAgentProductsRequest" name="SoapAgentProductsRequest" xmlns:q3="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentProductsResponse">
+    <wsdl:part element="q4:SoapAgentProductsResponse" name="SoapAgentProductsResponse" xmlns:q4="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentDocuments">
+    <wsdl:part element="q5:SoapDocumentsInfoRequest" name="SoapDocumentsInfoRequest" xmlns:q5="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentDocumentsResponse">
+    <wsdl:part element="q6:SoapDocumentsInfoResponse" name="SoapDocumentsInfoResponse" xmlns:q6="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetBulletins">
+    <wsdl:part element="q7:SoapBulletinInfoRequest" name="SoapBulletinInfoRequest" xmlns:q7="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetBulletinsResponse">
+    <wsdl:part element="q8:SoapBulletinInfoResponse" name="SoapBulletinInfoResponse" xmlns:q8="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentInfo">
+    <wsdl:part element="q9:SoapAgentInfoRequest" name="SoapAgentInfoRequest" xmlns:q9="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentInfoResponse">
+    <wsdl:part element="q10:SoapAgentInfoResponse" name="SoapAgentInfoResponse" xmlns:q10="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentTemplates">
+    <wsdl:part element="q11:SoapAgentTemplateRequest" name="SoapAgentTemplateRequest" xmlns:q11="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentTemplatesResponse">
+    <wsdl:part element="q12:SoapAgentTemplateResponse" name="SoapAgentTemplateResponse" xmlns:q12="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentProfile">
+    <wsdl:part element="q13:SoapAgentProfileRequest" name="SoapAgentProfileRequest" xmlns:q13="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentProfileResponse">
+    <wsdl:part element="q14:SoapAgentProfileResponse" name="SoapAgentProfileResponse" xmlns:q14="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentAddresses">
+    <wsdl:part element="q15:SoapAgentAddressesRequest" name="SoapAgentAddressesRequest" xmlns:q15="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentAddressesResponse">
+    <wsdl:part element="q16:SoapAgentAddressesResponse" name="SoapAgentAddressesResponse" xmlns:q16="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentChangeAuthkey">
+    <wsdl:part element="q17:SoapAgentChangeAuthkeyRequest" name="SoapAgentChangeAuthkeyRequest" xmlns:q17="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentChangeAuthkeyResponse">
+    <wsdl:part element="q18:SoapAgentChangeAuthkeyResponse" name="SoapAgentChangeAuthkeyResponse" xmlns:q18="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentUpdate">
+    <wsdl:part element="q19:SoapAgentUpdateRequest" name="SoapAgentUpdateRequest" xmlns:q19="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentUpdateResponse">
+    <wsdl:part element="q20:SoapAgentUpdateResponse" name="SoapAgentUpdateResponse" xmlns:q20="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentLogin">
+    <wsdl:part element="q21:SoapAgentLoginRequest" name="SoapAgentLoginRequest" xmlns:q21="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentLoginResponse">
+    <wsdl:part element="q22:SoapAgentLoginResponse" name="SoapAgentLoginResponse" xmlns:q22="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentStructure">
+    <wsdl:part element="q23:SoapAgentStructureRequest" name="SoapAgentStructureRequest" xmlns:q23="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentStructureResponse">
+    <wsdl:part element="q24:SoapAgentStructureResponse" name="SoapAgentStructureResponse" xmlns:q24="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetSystemStatus">
+    <wsdl:part element="q25:SoapSystemStatusRequest" name="SoapSystemStatusRequest" xmlns:q25="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetSystemStatusResponse">
+    <wsdl:part element="q26:SoapSystemStatusResponse" name="SoapSystemStatusResponse" xmlns:q26="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentChangePassword">
+    <wsdl:part element="q27:SoapAgentChangePasswordRequest" name="SoapAgentChangePasswordRequest" xmlns:q27="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentChangePasswordResponse">
+    <wsdl:part element="q28:SoapAgentChangePasswordResponse" name="SoapAgentChangePasswordResponse" xmlns:q28="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="SessionValidate">
+    <wsdl:part element="q29:SoapSessionValidateRequest" name="SoapSessionValidateRequest" xmlns:q29="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="SessionValidateResponse">
+    <wsdl:part element="q30:SoapSessionValidateResponse" name="SoapSessionValidateResponse" xmlns:q30="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentSearch">
+    <wsdl:part element="q31:SoapAgentSearchRequest" name="SoapAgentSearchRequest" xmlns:q31="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentSearchResponse">
+    <wsdl:part element="q32:SoapAgentSearchResponse" name="SoapAgentSearchResponse" xmlns:q32="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentSettlements">
+    <wsdl:part element="q33:SoapAgentSettlementRequest" name="SoapAgentSettlementRequest" xmlns:q33="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgentSettlementsResponse">
+    <wsdl:part element="q34:SoapAgentSettlementResponse" name="SoapAgentSettlementResponse" xmlns:q34="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentCreate">
+    <wsdl:part element="q35:SoapAgentCreateRequest" name="SoapAgentCreateRequest" xmlns:q35="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="AgentCreateResponse">
+    <wsdl:part element="q36:SoapAgentCreateResponse" name="SoapAgentCreateResponse" xmlns:q36="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:portType name="IAgentService">
+    <wsdl:operation name="AgentWalletTransfer">
+      <wsdl:input message="tns:AgentWalletTransfer" name="AgentWalletTransfer" wsaw:Action="http://localhost:60032/service/IAgentService/AgentWalletTransfer"/>
+      <wsdl:output message="tns:AgentWalletTransferResponse" name="AgentWalletTransferResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentWalletTransferResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentProducts">
+      <wsdl:input message="tns:GetAgentProducts" name="GetAgentProducts" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentProducts"/>
+      <wsdl:output message="tns:GetAgentProductsResponse" name="GetAgentProductsResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentProductsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDocuments">
+      <wsdl:input message="tns:GetAgentDocuments" name="GetAgentDocuments" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentDocuments"/>
+      <wsdl:output message="tns:GetAgentDocumentsResponse" name="GetAgentDocumentsResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentDocumentsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBulletins">
+      <wsdl:input message="tns:GetBulletins" name="GetBulletins" wsaw:Action="http://localhost:60032/service/IAgentService/GetBulletins"/>
+      <wsdl:output message="tns:GetBulletinsResponse" name="GetBulletinsResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetBulletinsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentInfo">
+      <wsdl:input message="tns:GetAgentInfo" name="GetAgentInfo" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentInfo"/>
+      <wsdl:output message="tns:GetAgentInfoResponse" name="GetAgentInfoResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentTemplates">
+      <wsdl:input message="tns:GetAgentTemplates" name="GetAgentTemplates" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentTemplates"/>
+      <wsdl:output message="tns:GetAgentTemplatesResponse" name="GetAgentTemplatesResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentTemplatesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentProfile">
+      <wsdl:input message="tns:GetAgentProfile" name="GetAgentProfile" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentProfile"/>
+      <wsdl:output message="tns:GetAgentProfileResponse" name="GetAgentProfileResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentProfileResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentAddresses">
+      <wsdl:input message="tns:GetAgentAddresses" name="GetAgentAddresses" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentAddresses"/>
+      <wsdl:output message="tns:GetAgentAddressesResponse" name="GetAgentAddressesResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentAddressesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AgentChangeAuthkey">
+      <wsdl:input message="tns:AgentChangeAuthkey" name="AgentChangeAuthkey" wsaw:Action="http://localhost:60032/service/IAgentService/AgentChangeAuthkey"/>
+      <wsdl:output message="tns:AgentChangeAuthkeyResponse" name="AgentChangeAuthkeyResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentChangeAuthkeyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUpdate">
+      <wsdl:input message="tns:AgentUpdate" name="AgentUpdate" wsaw:Action="http://localhost:60032/service/IAgentService/AgentUpdate"/>
+      <wsdl:output message="tns:AgentUpdateResponse" name="AgentUpdateResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentUpdateResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AgentLogin">
+      <wsdl:input message="tns:AgentLogin" name="AgentLogin" wsaw:Action="http://localhost:60032/service/IAgentService/AgentLogin"/>
+      <wsdl:output message="tns:AgentLoginResponse" name="AgentLoginResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentLoginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentStructure">
+      <wsdl:input message="tns:GetAgentStructure" name="GetAgentStructure" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentStructure"/>
+      <wsdl:output message="tns:GetAgentStructureResponse" name="GetAgentStructureResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentStructureResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemStatus">
+      <wsdl:input message="tns:GetSystemStatus" name="GetSystemStatus" wsaw:Action="http://localhost:60032/service/IAgentService/GetSystemStatus"/>
+      <wsdl:output message="tns:GetSystemStatusResponse" name="GetSystemStatusResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetSystemStatusResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AgentChangePassword">
+      <wsdl:input message="tns:AgentChangePassword" name="AgentChangePassword" wsaw:Action="http://localhost:60032/service/IAgentService/AgentChangePassword"/>
+      <wsdl:output message="tns:AgentChangePasswordResponse" name="AgentChangePasswordResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentChangePasswordResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SessionValidate">
+      <wsdl:input message="tns:SessionValidate" name="SessionValidate" wsaw:Action="http://localhost:60032/service/IAgentService/SessionValidate"/>
+      <wsdl:output message="tns:SessionValidateResponse" name="SessionValidateResponse" wsaw:Action="http://localhost:60032/service/IAgentService/SessionValidateResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AgentSearch">
+      <wsdl:input message="tns:AgentSearch" name="AgentSearch" wsaw:Action="http://localhost:60032/service/IAgentService/AgentSearch"/>
+      <wsdl:output message="tns:AgentSearchResponse" name="AgentSearchResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentSearchResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentSettlements">
+      <wsdl:input message="tns:GetAgentSettlements" name="GetAgentSettlements" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentSettlements"/>
+      <wsdl:output message="tns:GetAgentSettlementsResponse" name="GetAgentSettlementsResponse" wsaw:Action="http://localhost:60032/service/IAgentService/GetAgentSettlementsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AgentCreate">
+      <wsdl:input message="tns:AgentCreate" name="AgentCreate" wsaw:Action="http://localhost:60032/service/IAgentService/AgentCreate"/>
+      <wsdl:output message="tns:AgentCreateResponse" name="AgentCreateResponse" wsaw:Action="http://localhost:60032/service/IAgentService/AgentCreateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

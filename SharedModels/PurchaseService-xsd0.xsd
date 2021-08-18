@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://soap.api.novatti.com/types" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://soap.api.novatti.com/types">
+  <xsd:import namespace="http://soap.api.novatti.com/service" schemaLocation="PurchaseService-xsd1.xsd"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPurchaseReprintRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transReference" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="SoapRequestBaseWithSession-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase-Purchase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeaderWithSession-Purchase"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map-Purchase"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dataHash" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SoapRequestBase-Purchase"/>
+  <xsd:complexType name="SoapRequestBaseNoSession-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase-Purchase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeader-Purchase"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map-Purchase"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeader-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:Authentication-Purchase"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentVersion" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTerminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTimeStamp" type="xsd:dateTime"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="channel" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Authentication-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="userName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="password" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pin" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authKey" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="iccid" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Map-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="q1:abstractMap-Purchase" xmlns:q1="http://soap.api.novatti.com/service">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:MapItem-Purchase"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MapItem-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapRequestBaseWithSessionAndPassword-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase-Purchase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeaderWithSessionAndPassword-Purchase"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map-Purchase"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dataHash" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeaderWithSessionAndPassword-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:AuthenticationWithSessionAndPassword-Purchase"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentVersion" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTerminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTimeStamp" type="xsd:dateTime"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="channel" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AuthenticationWithSessionAndPassword-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sessionToken" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="userName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="password" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapRequestBaseNoAuth-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase-Purchase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeaderNoAuth-Purchase"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeaderNoAuth-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:AuthenticationWithSession-Purchase"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AuthenticationWithSession-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sessionToken" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeaderWithSession-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:AuthenticationWithSession-Purchase"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentVersion" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTerminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTimeStamp" type="xsd:dateTime"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="channel" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapProductRedeemRequest-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="vouchers" type="tns:ArrayOfVoucherKey-Purchase"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfVoucherKey-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="voucher" nillable="true" type="tns:VoucherKey-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VoucherKey-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pin" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="serialNo" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPurchaseReprintResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="products" type="tns:ArrayOfArrayOfMapItem"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reprintCount" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="SoapResponseBase-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:ResponseHeader-Purchase"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map-Purchase"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="validationInfo" type="tns:ArrayOfValidationGroup-Purchase"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dataHash" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="notifyMessage" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseHeader-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultDescription" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfValidationGroup-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="group" nillable="true" type="tns:ValidationGroup-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValidationGroup-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="name" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="info" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="violations" type="tns:ArrayOfString-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfString-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="violation" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapProductRedeemResponse-Purchase">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapResponseBase-Purchase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="vouchers" type="tns:ArrayOfVoucherRedemptionDetail-Purchase"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wallets" type="tns:ArrayOfWallet-Purchase"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfVoucherRedemptionDetail-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="voucher" nillable="true" type="tns:VoucherRedemptionDetail-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VoucherRedemptionDetail-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pin" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="serialNo" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productSubTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="faceValue" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reference" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timestamp" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfWallet-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="wallet" nillable="true" type="tns:Wallet-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Wallet-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="type" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="balance" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfArrayOfMapItem">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="product" nillable="true" type="tns:ArrayOfMapItem"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfMapItem">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="detail" nillable="true" type="tns:MapItem-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapMakeProductRedeemRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapProductRedeemRequest-Purchase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapMakeProductRedeemResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapProductRedeemResponse-Purchase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPinBatchReceiveRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="orderRef" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPinBatchReceiveResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="orderRef" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="quantity" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="vouchers" type="tns:ArrayOfArrayOfMapItem1"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfArrayOfMapItem1">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="voucher" nillable="true" type="tns:ArrayOfMapItem"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPinBatchRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productEan" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="quantity" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="comments" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPinBatchResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="orderRef" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPurchaseRefundRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="originalTransactionId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="voucherSerial" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productEan" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reasonCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="comments" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="refundUserID" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPurchaseRefundResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wallets" type="tns:ArrayOfWallet-Purchase"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="refundTransactions" type="tns:ArrayOfTransaction-Purchase"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfTransaction-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="transaction" nillable="true" type="tns:Transaction-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Transaction-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reference" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="mnoReference" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productSubTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timestamp" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="systemTimestamp" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="topupValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="tax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="topupValueEstimated" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reason" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentTransactionId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentParentId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentMasterDistributorId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="user" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="voucherSerial" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="margin" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="marginTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminFee" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminFeeTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="processFee" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="processFeeTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminRebate" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminRebateTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="isReversed" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="isRefunded" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="openingWalletBalance" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="closingWalletBalance" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="linkedTransactions" type="tns:ArrayOfTransaction-Purchase"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="loyaltyId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transDatas" type="tns:ArrayOfTransData-Purchase"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="inResultCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="inResultDescription" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfTransData-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="transData" nillable="true" type="tns:TransData-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TransData-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPinBatchStatusRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="orderRef" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="batchRequestAgentTransId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPinBatchStatusResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="orderRef" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="orderStatus" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPurchaseReversalRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="originalTransactionId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="originalAgentTransactionId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="originalTransactionTimeStamp" type="xsd:dateTime"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="requestedQuantity" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reasonCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="comments" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapPurchaseReversalResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reversedCount" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wallets" type="tns:ArrayOfWallet-Purchase"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reversedTransactions" type="tns:ArrayOfTransaction-Purchase"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapValidateProductRedeemRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapProductRedeemRequest-Purchase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapValidateProductRedeemResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapProductRedeemResponse-Purchase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapProductPurchaseRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="email" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productEan" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:double"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="quantity" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="acceptPartial" type="xsd:boolean"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="comments" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapProductPurchaseResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase-Purchase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="products" type="tns:ArrayOfArrayOfMapItem"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="bulletins" type="tns:ArrayOfBulletin-Purchase"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wallets" type="tns:ArrayOfWallet-Purchase"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transactions" type="tns:ArrayOfTransaction-Purchase"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfBulletin-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="bulletin" nillable="true" type="tns:Bulletin-Purchase"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Bulletin-Purchase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="content" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

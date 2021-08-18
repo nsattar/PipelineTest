@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) --><!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) --><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://cps.huawei.com/cpsinterface/customizedrequest" xmlns:common="http://cps.huawei.com/cpsinterface/common" xmlns:custreq="http://cps.huawei.com/cpsinterface/customizedrequest">
+	<xs:import namespace="http://cps.huawei.com/cpsinterface/common" schemaLocation="CPSInterface_API_Common.xsd"/>
+	<xs:complexType name="CustomizedRequest">
+		<xs:choice>
+			<xs:element name="TestRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TestString">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="128"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="QueryIdentityInformationRequest" type="custreq:QueryIdentityInformationRequest"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="QueryIdentityInformationRequest">
+		<xs:annotation>
+			<xs:documentation>查询实体信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element minOccurs="0" name="MSISDN" type="common:MSISDNType">
+				<xs:annotation>
+					<xs:documentation>MSISDN of Customer or Organziation Operator</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="CNIC">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,1415 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "CustomerRegistration",
+    "version" : "1.0.0",
+    "description" : "CustomerRegistration"
+  },
+  "paths" : {
+    "/accountRegister" : {
+      "post" : {
+        "operationId" : "postAccountRegister",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/accountRegisterResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a accountRegister",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/accountRegisterRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/accountRegisterEn" : {
+      "post" : {
+        "operationId" : "postAccountRegisterEn",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/accountRegisterResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a accountRegisterEn",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/accountRegisterRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/cnicVerification" : {
+      "post" : {
+        "operationId" : "postCnicVerification",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/cnicVerificationResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a cnicVerification",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/cnicVerificationRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/cnicVerificationEn" : {
+      "post" : {
+        "operationId" : "postCnicVerificationEn",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/cnicVerificationEnResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a cnicVerificationEn",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/cnicVerificationRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/sendReceiveMoney" : {
+      "post" : {
+        "operationId" : "postSendReceiveMoney",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/sendMoneyResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a sendReceiveMoney",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/sendMoneyRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "query",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/customerregistration/v1",
+  "definitions" : {
+    "accountRegisterRequest" : {
+      "type" : "object",
+      "properties" : {
+        "applicationId" : {
+          "type" : "string"
+        },
+        "appUserName" : {
+          "type" : "string"
+        },
+        "appPassword" : {
+          "type" : "string"
+        },
+        "userName" : {
+          "type" : "string"
+        },
+        "customerMsisdn" : {
+          "type" : "string"
+        },
+        "customerCnic" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "imeiNo" : {
+          "type" : "string"
+        },
+        "cnicSessionId" : {
+          "type" : "string"
+        },
+        "base64FingerprintData" : {
+          "type" : "string"
+        },
+        "fingerprintIndex" : {
+          "type" : "string"
+        },
+        "fingerprintScore" : {
+          "type" : "string"
+        },
+        "fingerprintType" : {
+          "type" : "string"
+        },
+        "transactionId" : {
+          "type" : "string"
+        },
+        "appVersion" : {
+          "type" : "string"
+        },
+        "cellSiteId" : {
+          "type" : "string"
+        },
+        "lang" : {
+          "type" : "string"
+        },
+        "field1" : {
+          "type" : "string"
+        },
+        "field2" : {
+          "type" : "string"
+        },
+        "field3" : {
+          "type" : "string"
+        },
+        "field4" : {
+          "type" : "string"
+        },
+        "field5" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "applicationId", "appUserName", "appPassword", "customerMsisdn", "customerCnic", "location", "imeiNo", "base64FingerprintData", "fingerprintIndex", "fingerprintScore", "fingerprintType", "transactionId", "appVersion" ]
+    },
+    "accountRegisterResponse" : {
+      "type" : "object",
+      "properties" : {
+        "return" : {
+          "type" : "object",
+          "properties" : {
+            "ApiResponse" : {
+              "type" : "object",
+              "properties" : {
+                "status" : {
+                  "type" : "string"
+                },
+                "success" : {
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "type" : "string"
+                    },
+                    "result" : {
+                      "type" : "object",
+                      "properties" : {
+                        "createdDate" : {
+                          "type" : "string"
+                        },
+                        "updatedDate" : {
+                          "type" : "string"
+                        },
+                        "applicationId" : {
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "type" : "string"
+                        },
+                        "dateFormat" : {
+                          "type" : "string"
+                        },
+                        "id" : {
+                          "type" : "string"
+                        },
+                        "msisdn" : {
+                          "type" : "string"
+                        },
+                        "fingerprintType" : {
+                          "type" : "string"
+                        },
+                        "fingerprintScore" : {
+                          "type" : "string"
+                        },
+                        "cnicNo" : {
+                          "type" : "string"
+                        },
+                        "versionNo" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactionId" : {
+                          "type" : "string"
+                        },
+                        "sendTime" : {
+                          "type" : "string"
+                        },
+                        "responseTime" : {
+                          "type" : "string"
+                        },
+                        "responseStatus" : {
+                          "type" : "string"
+                        },
+                        "isSuccessful" : {
+                          "type" : "string"
+                        },
+                        "isCompleted" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactiontTypeId" : {
+                          "type" : "string"
+                        },
+                        "userMsisdn" : {
+                          "type" : "string"
+                        },
+                        "successMessage" : {
+                          "type" : "string"
+                        },
+                        "orderType" : {
+                          "type" : "string"
+                        },
+                        "deviceSerialNo" : {
+                          "type" : "string"
+                        },
+                        "responseCode" : {
+                          "type" : "string"
+                        },
+                        "fingerprintSize" : {
+                          "type" : "string"
+                        },
+                        "name" : {
+                          "type" : "string"
+                        },
+                        "currentAddress" : {
+                          "type" : "string"
+                        },
+                        "permanentAddress" : {
+                          "type" : "string"
+                        },
+                        "dateOfBirth" : {
+                          "type" : "string"
+                        },
+                        "dateOfExpiry" : {
+                          "type" : "string"
+                        },
+                        "gender" : {
+                          "type" : "string"
+                        },
+                        "motherName" : {
+                          "type" : "string"
+                        },
+                        "placeOfBirth" : {
+                          "type" : "string"
+                        },
+                        "nadraCommunicationActionId" : {
+                          "type" : "string"
+                        },
+                        "dataFlag" : {
+                          "type" : "string"
+                        },
+                        "sessionId" : {
+                          "type" : "string"
+                        },
+                        "stcTransactionId" : {
+                          "type" : "string"
+                        },
+                        "fingerprintRetryCount" : {
+                          "type" : "string"
+                        },
+                        "areaName" : {
+                          "type" : "string"
+                        },
+                        "birthPlace" : {
+                          "type" : "string"
+                        },
+                        "eHour" : {
+                          "type" : "string"
+                        },
+                        "callingSourceId" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "error" : {
+                  "$ref" : "#/definitions/responseError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cnicVerificationRequest" : {
+      "type" : "object",
+      "properties" : {
+        "applicationId" : {
+          "type" : "string"
+        },
+        "appUserName" : {
+          "type" : "string"
+        },
+        "appPassword" : {
+          "type" : "string"
+        },
+        "userName" : {
+          "type" : "string"
+        },
+        "customerMsisdn" : {
+          "type" : "string"
+        },
+        "customerCnic" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "transactionId" : {
+          "type" : "string"
+        },
+        "appVersion" : {
+          "type" : "string"
+        },
+        "lang" : {
+          "type" : "string"
+        },
+        "field1" : {
+          "type" : "string"
+        },
+        "field2" : {
+          "type" : "string"
+        },
+        "field3" : {
+          "type" : "string"
+        },
+        "field4" : {
+          "type" : "string"
+        },
+        "field5" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "applicationId", "appUserName", "appPassword", "customerMsisdn", "customerCnic", "location", "transactionId", "appVersion", "field1" ]
+    },
+    "cnicVerificationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "return" : {
+          "type" : "object",
+          "properties" : {
+            "ApiResponse" : {
+              "type" : "object",
+              "properties" : {
+                "status" : {
+                  "type" : "string"
+                },
+                "success" : {
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "type" : "string"
+                    },
+                    "result" : {
+                      "type" : "object",
+                      "properties" : {
+                        "createdDate" : {
+                          "type" : "string"
+                        },
+                        "updatedDate" : {
+                          "type" : "string"
+                        },
+                        "applicationId" : {
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "type" : "string"
+                        },
+                        "dateFormat" : {
+                          "type" : "string"
+                        },
+                        "id" : {
+                          "type" : "string"
+                        },
+                        "msisdn" : {
+                          "type" : "string"
+                        },
+                        "cnicNo" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactionId" : {
+                          "type" : "string"
+                        },
+                        "sendTime" : {
+                          "type" : "string"
+                        },
+                        "responseTime" : {
+                          "type" : "string"
+                        },
+                        "responseStatus" : {
+                          "type" : "string"
+                        },
+                        "isSuccessful" : {
+                          "type" : "string"
+                        },
+                        "isCompleted" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactiontTypeId" : {
+                          "type" : "string"
+                        },
+                        "userMsisdn" : {
+                          "type" : "string"
+                        },
+                        "successMessage" : {
+                          "type" : "string"
+                        },
+                        "orderType" : {
+                          "type" : "string"
+                        },
+                        "responseCode" : {
+                          "type" : "string"
+                        },
+                        "name" : {
+                          "type" : "string"
+                        },
+                        "currentAddress" : {
+                          "type" : "string"
+                        },
+                        "permanentAddress" : {
+                          "type" : "string"
+                        },
+                        "dateOfBirth" : {
+                          "type" : "string"
+                        },
+                        "dateOfExpiry" : {
+                          "type" : "string"
+                        },
+                        "motherName" : {
+                          "type" : "string"
+                        },
+                        "placeOfBirth" : {
+                          "type" : "string"
+                        },
+                        "nadraCommunicationActionId" : {
+                          "type" : "string"
+                        },
+                        "dataFlag" : {
+                          "type" : "string"
+                        },
+                        "sessionId" : {
+                          "type" : "string"
+                        },
+                        "stcTransactionId" : {
+                          "type" : "string"
+                        },
+                        "areaName" : {
+                          "type" : "string"
+                        },
+                        "birthPlace" : {
+                          "type" : "string"
+                        },
+                        "eHour" : {
+                          "type" : "string"
+                        },
+                        "callingSourceId" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "error" : {
+                  "$ref" : "#/definitions/cnicVerificationResponseError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sendMoneyRequest" : {
+      "type" : "object",
+      "properties" : {
+        "applicationId" : {
+          "type" : "string"
+        },
+        "appUserName" : {
+          "type" : "string"
+        },
+        "appPassword" : {
+          "type" : "string"
+        },
+        "userName" : {
+          "type" : "string"
+        },
+        "receiverCnic" : {
+          "type" : "string"
+        },
+        "receiverMsisdn" : {
+          "type" : "string"
+        },
+        "receiverBankAccountNo" : {
+          "type" : "string"
+        },
+        "senderCnic" : {
+          "type" : "string"
+        },
+        "senderMsisdn" : {
+          "type" : "string"
+        },
+        "amount" : {
+          "type" : "string"
+        },
+        "transactionTypeId" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "imeiNo" : {
+          "type" : "string"
+        },
+        "cnicSessionId" : {
+          "type" : "string"
+        },
+        "base64FingerprintData" : {
+          "type" : "string"
+        },
+        "fingerprintIndex" : {
+          "type" : "string"
+        },
+        "fingerprintScore" : {
+          "type" : "string"
+        },
+        "fingerprintType" : {
+          "type" : "string"
+        },
+        "transactionId" : {
+          "type" : "string"
+        },
+        "appVersion" : {
+          "type" : "string"
+        },
+        "cellSiteId" : {
+          "type" : "string"
+        },
+        "lang" : {
+          "type" : "string"
+        },
+        "field1" : {
+          "type" : "string"
+        },
+        "field2" : {
+          "type" : "string"
+        },
+        "field3" : {
+          "type" : "string"
+        },
+        "field4" : {
+          "type" : "string"
+        },
+        "field5" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "applicationId", "appUserName", "appPassword", "receiverCnic", "receiverMsisdn", "senderCnic", "senderMsisdn", "amount", "transactionTypeId", "location", "imeiNo", "base64FingerprintData", "fingerprintIndex", "fingerprintScore", "fingerprintType", "transactionId", "appVersion" ]
+    },
+    "sendMoneyResponse" : {
+      "type" : "object",
+      "properties" : {
+        "return" : {
+          "type" : "object",
+          "properties" : {
+            "ApiResponse" : {
+              "type" : "object",
+              "properties" : {
+                "status" : {
+                  "type" : "string"
+                },
+                "success" : {
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "type" : "string"
+                    },
+                    "result" : {
+                      "type" : "object",
+                      "properties" : {
+                        "createdDate" : {
+                          "type" : "string"
+                        },
+                        "updatedDate" : {
+                          "type" : "string"
+                        },
+                        "applicationId" : {
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "type" : "string"
+                        },
+                        "dateFormat" : {
+                          "type" : "string"
+                        },
+                        "id" : {
+                          "type" : "string"
+                        },
+                        "msisdn" : {
+                          "type" : "string"
+                        },
+                        "fingerprintScore" : {
+                          "type" : "string"
+                        },
+                        "cnicNo" : {
+                          "type" : "string"
+                        },
+                        "versionNo" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactionId" : {
+                          "type" : "string"
+                        },
+                        "sendTime" : {
+                          "type" : "string"
+                        },
+                        "responseStatus" : {
+                          "type" : "string"
+                        },
+                        "isSuccessful" : {
+                          "type" : "string"
+                        },
+                        "isCompleted" : {
+                          "type" : "string"
+                        },
+                        "nadraFPList" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactiontTypeId" : {
+                          "type" : "string"
+                        },
+                        "userMsisdn" : {
+                          "type" : "string"
+                        },
+                        "successMessage" : {
+                          "type" : "string"
+                        },
+                        "orderType" : {
+                          "type" : "string"
+                        },
+                        "deviceSerialNo" : {
+                          "type" : "string"
+                        },
+                        "responseCode" : {
+                          "type" : "string"
+                        },
+                        "fingerprintSize" : {
+                          "type" : "string"
+                        },
+                        "name" : {
+                          "type" : "string"
+                        },
+                        "nameEn" : {
+                          "type" : "string"
+                        },
+                        "fatherSpouseName" : {
+                          "type" : "string"
+                        },
+                        "fatherSpouseNameEn" : {
+                          "type" : "string"
+                        },
+                        "currentAddress" : {
+                          "type" : "string"
+                        },
+                        "currentAddressEn" : {
+                          "type" : "string"
+                        },
+                        "permanentAddress" : {
+                          "type" : "string"
+                        },
+                        "nadraCommunicationActionId" : {
+                          "type" : "string"
+                        },
+                        "dataFlag" : {
+                          "type" : "string"
+                        },
+                        "sessionId" : {
+                          "type" : "string"
+                        },
+                        "fingerprintRetryCount" : {
+                          "type" : "string"
+                        },
+                        "areaName" : {
+                          "type" : "string"
+                        },
+                        "eHour" : {
+                          "type" : "string"
+                        },
+                        "callingSourceId" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "error" : {
+                  "$ref" : "#/definitions/responseError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cnicVerificationEnResponse" : {
+      "type" : "object",
+      "properties" : {
+        "return" : {
+          "type" : "object",
+          "properties" : {
+            "ApiResponse" : {
+              "type" : "object",
+              "properties" : {
+                "status" : {
+                  "type" : "string"
+                },
+                "success" : {
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "type" : "string"
+                    },
+                    "result" : {
+                      "type" : "object",
+                      "properties" : {
+                        "createdDate" : {
+                          "type" : "string"
+                        },
+                        "updatedDate" : {
+                          "type" : "string"
+                        },
+                        "applicationId" : {
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "type" : "string"
+                        },
+                        "dateFormat" : {
+                          "type" : "string"
+                        },
+                        "id" : {
+                          "type" : "string"
+                        },
+                        "msisdn" : {
+                          "type" : "string"
+                        },
+                        "cnicNo" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactionId" : {
+                          "type" : "string"
+                        },
+                        "sendTime" : {
+                          "type" : "string"
+                        },
+                        "responseTime" : {
+                          "type" : "string"
+                        },
+                        "responseStatus" : {
+                          "type" : "string"
+                        },
+                        "isSuccessful" : {
+                          "type" : "string"
+                        },
+                        "isCompleted" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactiontTypeId" : {
+                          "type" : "string"
+                        },
+                        "userMsisdn" : {
+                          "type" : "string"
+                        },
+                        "successMessage" : {
+                          "type" : "string"
+                        },
+                        "orderType" : {
+                          "type" : "string"
+                        },
+                        "responseCode" : {
+                          "type" : "string"
+                        },
+                        "name" : {
+                          "type" : "string"
+                        },
+                        "nameEn" : {
+                          "type" : "string"
+                        },
+                        "fatherSpouseNameEn" : {
+                          "type" : "string"
+                        },
+                        "currentAddress" : {
+                          "type" : "string"
+                        },
+                        "currentAddressEn" : {
+                          "type" : "string"
+                        },
+                        "permanentAddress" : {
+                          "type" : "string"
+                        },
+                        "dateOfBirth" : {
+                          "type" : "string"
+                        },
+                        "dateOfExpiry" : {
+                          "type" : "string"
+                        },
+                        "genderEn" : {
+                          "type" : "string"
+                        },
+                        "motherName" : {
+                          "type" : "string"
+                        },
+                        "motherNameEn" : {
+                          "type" : "string"
+                        },
+                        "placeOfBirth" : {
+                          "type" : "string"
+                        },
+                        "nadraCommunicationActionId" : {
+                          "type" : "string"
+                        },
+                        "dataFlag" : {
+                          "type" : "string"
+                        },
+                        "sessionId" : {
+                          "type" : "string"
+                        },
+                        "stcTransactionId" : {
+                          "type" : "string"
+                        },
+                        "areaName" : {
+                          "type" : "string"
+                        },
+                        "birthPlace" : {
+                          "type" : "string"
+                        },
+                        "eHour" : {
+                          "type" : "string"
+                        },
+                        "callingSourceId" : {
+                          "type" : "string"
+                        },
+                        "translationCommunicatorId" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "error" : {
+                  "$ref" : "#/definitions/cnicVerificationResponseError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cnicVerificationResponseError" : {
+      "type" : "object",
+      "properties" : {
+        "errorCode" : {
+          "type" : "string"
+        },
+        "errorDescriptions" : {
+          "type" : "object",
+          "properties" : {
+            "string" : {
+              "type" : "string"
+            }
+          }
+        },
+        "result" : {
+          "type" : "object",
+          "properties" : {
+            "createdDate" : {
+              "type" : "string"
+            },
+            "applicationId" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "dateFormat" : {
+              "type" : "string"
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "msisdn" : {
+              "type" : "string"
+            },
+            "cnicNo" : {
+              "type" : "string"
+            },
+            "nadraTransactionId" : {
+              "type" : "string"
+            },
+            "sendTime" : {
+              "type" : "string"
+            },
+            "responseTime" : {
+              "type" : "string"
+            },
+            "responseStatus" : {
+              "type" : "string"
+            },
+            "isSuccessful" : {
+              "type" : "string"
+            },
+            "isCompleted" : {
+              "type" : "string"
+            },
+            "nadraTransactiontTypeId" : {
+              "type" : "string"
+            },
+            "userMsisdn" : {
+              "type" : "string"
+            },
+            "orderType" : {
+              "type" : "string"
+            },
+            "responseCode" : {
+              "type" : "string"
+            },
+            "nadraCommunicationActionId" : {
+              "type" : "string"
+            },
+            "dataFlag" : {
+              "type" : "string"
+            },
+            "sessionId" : {
+              "type" : "string"
+            },
+            "stcTransactionId" : {
+              "type" : "string"
+            },
+            "areaName" : {
+              "type" : "string"
+            },
+            "eHour" : {
+              "type" : "string"
+            },
+            "callingSourceId" : {
+              "type" : "string"
+            },
+            "issueDate" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "accountRegisterEnResponse" : {
+      "type" : "object",
+      "properties" : {
+        "return" : {
+          "type" : "object",
+          "properties" : {
+            "ApiResponse" : {
+              "type" : "object",
+              "properties" : {
+                "status" : {
+                  "type" : "string"
+                },
+                "success" : {
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "type" : "string"
+                    },
+                    "result" : {
+                      "type" : "object",
+                      "properties" : {
+                        "createdDate" : {
+                          "type" : "string"
+                        },
+                        "updatedDate" : {
+                          "type" : "string"
+                        },
+                        "applicationId" : {
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "type" : "string"
+                        },
+                        "dateFormat" : {
+                          "type" : "string"
+                        },
+                        "id" : {
+                          "type" : "string"
+                        },
+                        "msisdn" : {
+                          "type" : "string"
+                        },
+                        "fingerprintType" : {
+                          "type" : "string"
+                        },
+                        "fingerprintScore" : {
+                          "type" : "string"
+                        },
+                        "cnicNo" : {
+                          "type" : "string"
+                        },
+                        "versionNo" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactionId" : {
+                          "type" : "string"
+                        },
+                        "sendTime" : {
+                          "type" : "string"
+                        },
+                        "responseTime" : {
+                          "type" : "string"
+                        },
+                        "responseStatus" : {
+                          "type" : "string"
+                        },
+                        "isSuccessful" : {
+                          "type" : "string"
+                        },
+                        "isCompleted" : {
+                          "type" : "string"
+                        },
+                        "nadraTransactiontTypeId" : {
+                          "type" : "string"
+                        },
+                        "userMsisdn" : {
+                          "type" : "string"
+                        },
+                        "successMessage" : {
+                          "type" : "string"
+                        },
+                        "orderType" : {
+                          "type" : "string"
+                        },
+                        "deviceSerialNo" : {
+                          "type" : "string"
+                        },
+                        "responseCode" : {
+                          "type" : "string"
+                        },
+                        "fingerprintSize" : {
+                          "type" : "string"
+                        },
+                        "name" : {
+                          "type" : "string"
+                        },
+                        "nameEn" : {
+                          "type" : "string"
+                        },
+                        "fatherSpouseNameEn" : {
+                          "type" : "string"
+                        },
+                        "currentAddress" : {
+                          "type" : "string"
+                        },
+                        "currentAddressEn" : {
+                          "type" : "string"
+                        },
+                        "permanentAddress" : {
+                          "type" : "string"
+                        },
+                        "dateOfBirth" : {
+                          "type" : "string"
+                        },
+                        "dateOfExpiry" : {
+                          "type" : "string"
+                        },
+                        "gender" : {
+                          "type" : "string"
+                        },
+                        "genderEn" : {
+                          "type" : "string"
+                        },
+                        "motherName" : {
+                          "type" : "string"
+                        },
+                        "motherNameEn" : {
+                          "type" : "string"
+                        },
+                        "placeOfBirth" : {
+                          "type" : "string"
+                        },
+                        "nadraCommunicationActionId" : {
+                          "type" : "string"
+                        },
+                        "dataFlag" : {
+                          "type" : "string"
+                        },
+                        "sessionId" : {
+                          "type" : "string"
+                        },
+                        "stcTransactionId" : {
+                          "type" : "string"
+                        },
+                        "fingerprintRetryCount" : {
+                          "type" : "string"
+                        },
+                        "areaName" : {
+                          "type" : "string"
+                        },
+                        "birthPlace" : {
+                          "type" : "string"
+                        },
+                        "eHour" : {
+                          "type" : "string"
+                        },
+                        "callingSourceId" : {
+                          "type" : "string"
+                        },
+                        "translationCommunicatorId" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "error" : {
+                  "$ref" : "#/definitions/responseError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responseError" : {
+      "type" : "object",
+      "properties" : {
+        "errorCode" : {
+          "type" : "string"
+        },
+        "errorDescriptions" : {
+          "type" : "object",
+          "properties" : {
+            "string" : {
+              "type" : "string"
+            }
+          }
+        },
+        "result" : {
+          "type" : "object",
+          "properties" : {
+            "createdDate" : {
+              "type" : "string"
+            },
+            "updatedDate" : {
+              "type" : "string"
+            },
+            "applicationId" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "dateFormat" : {
+              "type" : "string"
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "msisdn" : {
+              "type" : "string"
+            },
+            "fingerprintScore" : {
+              "type" : "string"
+            },
+            "cnicNo" : {
+              "type" : "string"
+            },
+            "versionNo" : {
+              "type" : "string"
+            },
+            "sendTime" : {
+              "type" : "string"
+            },
+            "responseTime" : {
+              "type" : "string"
+            },
+            "responseStatus" : {
+              "type" : "string"
+            },
+            "isSuccessful" : {
+              "type" : "string"
+            },
+            "isCompleted" : {
+              "type" : "string"
+            },
+            "nadraTransactiontTypeId" : {
+              "type" : "string"
+            },
+            "userMsisdn" : {
+              "type" : "string"
+            },
+            "orderType" : {
+              "type" : "string"
+            },
+            "deviceSerialNo" : {
+              "type" : "string"
+            },
+            "fingerprintSize" : {
+              "type" : "string"
+            },
+            "nadraCommunicationActionId" : {
+              "type" : "string"
+            },
+            "dataFlag" : {
+              "type" : "string"
+            },
+            "stcTransactionId" : {
+              "type" : "string"
+            },
+            "fingerprintRetryCount" : {
+              "type" : "string"
+            },
+            "areaName" : {
+              "type" : "string"
+            },
+            "eHour" : {
+              "type" : "string"
+            },
+            "callingSourceId" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "errorPayload" : {
+      "type" : "object",
+      "properties" : {
+        "ErrorMessage" : {
+          "type" : "string"
+        },
+        "SoapUrl" : {
+          "type" : "string"
+        },
+        "OriginalMessage" : {
+          "type" : "string"
+        },
+        "Exception" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

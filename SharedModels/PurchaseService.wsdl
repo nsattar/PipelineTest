@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="PurchaseService" targetNamespace="http://tempuri.org/" xmlns:i0="http://localhost:60032/service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="PurchaseServiceSoapBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsp:Policy wsu:Id="PurchaseServiceSoapBinding_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"/>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import location="PurchaseService-i.wsdl" namespace="http://localhost:60032/service"/>
+  <wsdl:types/>
+  <wsdl:binding name="PurchaseServiceSoapBinding" type="i0:IPurchaseService">
+    <wsp:PolicyReference URI="#PurchaseServiceSoapBinding_policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="MakePurchaseReprint">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/MakePurchaseReprint" style="document"/>
+      <wsdl:input name="MakePurchaseReprint">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MakePurchaseReprintResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeProductRedeem">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/MakeProductRedeem" style="document"/>
+      <wsdl:input name="MakeProductRedeem">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MakeProductRedeemResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceivePinBatch">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/ReceivePinBatch" style="document"/>
+      <wsdl:input name="ReceivePinBatch">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ReceivePinBatchResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPinBatch">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/RequestPinBatch" style="document"/>
+      <wsdl:input name="RequestPinBatch">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RequestPinBatchResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakePurchaseRefund">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/MakePurchaseRefund" style="document"/>
+      <wsdl:input name="MakePurchaseRefund">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MakePurchaseRefundResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPinBatchStatus">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/RequestPinBatchStatus" style="document"/>
+      <wsdl:input name="RequestPinBatchStatus">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RequestPinBatchStatusResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakePurchaseReversal">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/MakePurchaseReversal" style="document"/>
+      <wsdl:input name="MakePurchaseReversal">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MakePurchaseReversalResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateProductRedeem">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/ValidateProductRedeem" style="document"/>
+      <wsdl:input name="ValidateProductRedeem">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ValidateProductRedeemResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeProductPurchase">
+      <soap12:operation soapAction="http://localhost:60032/service/IPurchaseService/MakeProductPurchase" style="document"/>
+      <wsdl:input name="MakeProductPurchase">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MakeProductPurchaseResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PurchaseService">
+    <wsdl:port binding="tns:PurchaseServiceSoapBinding" name="PurchaseServiceSoapBinding">
+      <soap12:address location="https://testapi.thecardwalla.com/Services/PurchaseService.svc/PurchaseService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

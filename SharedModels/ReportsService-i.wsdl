@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost:60032/service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://localhost:60032/service" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true"/>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost:60032/service/Imports">
+      <xsd:import namespace="http://soap.api.novatti.com/types" schemaLocation="ReportsService-xsd0.xsd"/>
+      <xsd:import namespace="http://soap.api.novatti.com/service" schemaLocation="ReportsService-xsd1.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+   
+  <wsdl:message name="GetTransactionInfo">
+    <wsdl:part element="q1:SoapTransactionInfoRequest" name="SoapTransactionInfoRequest" xmlns:q1="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="GetTransactionInfoResponse">
+    <wsdl:part element="q2:SoapTransactionInfoResponse" name="SoapTransactionInfoResponse" xmlns:q2="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+   
+  <wsdl:portType name="IReportsService">
+    <wsdl:operation name="GetTransactionInfo">
+      <wsdl:input message="tns:GetTransactionInfo" name="GetTransactionInfo" wsaw:Action="http://localhost:60032/service/IReportsService/GetTransactionInfo"/>
+      <wsdl:output message="tns:GetTransactionInfoResponse" name="GetTransactionInfoResponse" wsaw:Action="http://localhost:60032/service/IReportsService/GetTransactionInfoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

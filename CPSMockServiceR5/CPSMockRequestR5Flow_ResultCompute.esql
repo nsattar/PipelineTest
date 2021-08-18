@@ -1,0 +1,107 @@
+DECLARE ns134 NAMESPACE 'http://cps.huawei.com/cpsinterface/result';
+DECLARE ns215 NAMESPACE 'http://cps.huawei.com/cpsinterface/customizedresult';
+DECLARE ns133 NAMESPACE 'http://cps.huawei.com/cpsinterface/api_resultmgr';
+
+
+CREATE COMPUTE MODULE CPSMockRequestR5Flow_ResultCompute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:ResultCode = '0';
+		Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:ResultType = '0';
+		Set OutputRoot.XMLNSC.ns133:Result.ns134:Header.ns134:OriginatorConversationID = Environment.OriginatorConversationID;
+		Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:ResultDesc = 'Process service request successfully.';
+		--transactionid in each resultSet OutputRoot.XMLNSC.ns133:R = Environment.Timestampval;
+		Set OutputRoot.XMLNSC.ns133:Result.ns134:Header.ns134:ConversationID = Environment.ConversationID;
+		
+		DECLARE commandId CHARACTER COALESCE(Environment.CommandID,'');
+		
+		if commandId = 'LinkCardAPIV2WithoutMPIN' then
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:TransactionResult.ns134:TransactionID = Environment.Timestampval;
+			
+			
+		elseif commandId = 'QueryCustomerInfo' then
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:BOCompletedTime = '20171213172906';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:CustomerType = 'Registered';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:IdentityStatus = '02';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:RegistrationDate = '20171213';						
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:RegisteredBy = '1';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:PrimaryMSISDN = '86812530901';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:LanguageCode = 'en';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:TrustLevel = '11';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:TrustLevelName = 'Registered Customer Trust Level 1';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:RuleProfileID = '1011';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:RuleProfileName = 'Cus Rule Profile_VDF_Demo';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:ChargeProfileID = '20001';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:ChargeProfileName = 'CustomerChargeProfile_VDF_Demo';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CustomerBasicData.ns134:LastActiveDateTime = '20171214151510';
+			
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:SegmentData.ns134:SegmentItem[1].ns134:SegmentType = '[CNS][CNS Initiator Flag]';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:SegmentData.ns134:SegmentItem[1].ns134:SegmentName = 'alert(segment1)';
+			
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CredentialData.ns134:CredentialItem[1].ns134:CredentialType = 'PIN';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CredentialData.ns134:CredentialItem[1].ns134:CredentialStatus = 'Pending Change';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:CredentialData.ns134:CredentialItem[1].ns134:ExpirationTime = '20180313235959';
+			
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:SIMDeviceData.ns134:SIMDeviceItem[1].ns134:MSISDN = '86812530901';
+			set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:QueryCustomerInfoResult.ns134:SIMDeviceData.ns134:SIMDeviceItem[1].ns134:DeviceStatus = 'Active';
+			
+			
+		elseif commandId = 'QueryIdentityInformation' then
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:BOCompletedTime = '20200729210011';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:CNICInBlackList = 'false';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IDNumber = '20100000000020002';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityOwnerName = 'Usama Ali';						
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:IdentityType = '5000';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:IdentityStatus = '3';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:MPINStatus = 'Normal';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:MSISDN = '928125390032';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:TrustLevel = '11';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:OrgShortCode = '10012';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:OperatorID = '1001220';
+			Set OutputRoot.XMLNSC.ns133:Result.ns134:Body.ns134:CustomizedResult.ns215:QueryIdentityInformationResult.ns215:IdentityData.ns215:IdentityItem[1].ns215:UserName = '1001220';
+			
+			
+			
+			
+		
+			
+		end if;
+		
+	/*	DECLARE i INTEGER 1;
+		for src as Environment.XMLNSC.Request.Transaction.Parameters.Parameter[] do
+			Set OutputRoot.XMLNSC.Result.ResultParameters[i].Key = Environment.XMLNSC.Request.Transaction.Parameters.Parameter[i].Key;
+			Set OutputRoot.XMLNSC.Result.ResultParameters[i].Value = Environment.XMLNSC.Request.Transaction.Parameters.Parameter[i].Value;
+		end for;*/
+		
+		DECLARE outMsglog CHARACTER COALESCE(CAST(ASBITSTREAM(OutputRoot.XMLNSC CCSID 1208) as char CCSID 1208),'');
+		Call LOGINFO(Environment.OriginatorConversationID||'|Result Sent:'||commandId||'|'||outMsglog,'CPSMockServiceR5');
+		
+		
+		------------------------------------------------------------start comment
+--		DECLARE ResultMsg CHARACTER COALESCE(CAST(ASBITSTREAM(OutputRoot.XMLNSC CCSID 1208) as char CCSID 1208),'');
+--		Set OutputRoot.XMLNSC = null;
+--		Set OutputRoot.XMLNSC.ns4:ResultMsg = ResultMsg;
+--		Set Environment.CurrTime = getJavaMillis();
+--		Call LOGINFO(Environment.correlId||'|Result Sent:'||ResultMsg,'CPSMockService');
+		------------------------------------------------------------end comment
+	--	if Environment.ResultURL <> null and Environment.ResultURL <> '' then
+		--	SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.WebServiceURL = Environment.ResultURL;
+		--else
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.WebServiceURL = getProperty('ResultService.URL');
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:common="http://cps.huawei.com/cpsinterface/common" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://cps.huawei.com/cpsinterface/common" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="IdentityType">
+		<xs:annotation>
+			<xs:documentation>Identity Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1000" id="Customer"/>
+			<xs:enumeration value="2000" id="SPOperator"/>
+			<xs:enumeration value="3000" id="OrganizationOperator"/>
+			<xs:enumeration value="5000" id="Organization"/>
+			<xs:enumeration value="6000" id="Till"/>
+			<xs:enumeration value="7000" id="Group"/>
+			<xs:enumeration value="8000" id="SP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentifierType">
+		<xs:annotation>
+			<xs:documentation>Identifier Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1" id="MSISDN"/>
+			<xs:enumeration value="2" id="TillNumber"/>
+			<xs:enumeration value="3" id="SPShortCode"/>
+			<xs:enumeration value="4" id="OrganizationShortCode"/>
+			<xs:enumeration value="5" id="IdentityID"/>
+			<xs:enumeration value="6" id="O2CLink"/>
+			<xs:enumeration value="9" id="SPOperatorCode"/>
+			<xs:enumeration value="10" id="POSNumber"/>
+			<xs:enumeration value="11" id="OrganizationOperatorUserName"/>
+			<xs:enumeration value="12" id="OrganizationOperatorCode"/>
+			<xs:enumeration value="13" id="VoucherCode"/>
+			<xs:enumeration value="14" id="SPOperatorUserName"/>
+			<xs:enumeration value="15" id="GroupCode"/>
+			<xs:enumeration value="16" id="CardTypeCardNumber"/>
+			<xs:enumeration value="17" id="TillMSISDN"/>
+			<xs:enumeration value="51" id="CNIC"/>
+			<xs:enumeration value="53" id="PayerReferenceNumber"/>
+			<xs:enumeration value="18" id="QRCode"/>
+			<xs:enumeration value="19" id="StaticQRCode"/>
+			<xs:enumeration value="20" id="ICCID"/>
+			<xs:enumeration value="61" id="CardTypeCardNumberEnum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentifierValue">
+		<xs:annotation>
+			<xs:documentation>Identifier</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IDType">
+		<xs:annotation>
+			<xs:documentation>定义ID的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="18"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrganizationNameType">
+		<xs:annotation>
+			<xs:documentation>定义OrganizatioName的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SecurityCredentialType">
+		<xs:annotation>
+			<xs:documentation>定义Identity的安全凭据的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2048"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ShortCodeType">
+		<xs:annotation>
+			<xs:documentation>定义组织short code的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="24"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GroupCodeType">
+		<xs:annotation>
+			<xs:documentation>定义群组的GroupCode的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="24"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UserNameType">
+		<xs:annotation>
+			<xs:documentation>定义操作员username的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MSISDNType">
+		<xs:annotation>
+			<xs:documentation>定义MSISDN的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TillNumberType">
+		<xs:annotation>
+			<xs:documentation>定义Till Number的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>定义日期数据类型，格式YYYYMMDD</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation>定义日期时间数据类型，格式YYYYMMDDhhmmss</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LanguageType">
+		<xs:annotation>
+			<xs:documentation>定义业务里使用的LanguageCode的数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ReceiptNumberType">
+		<xs:annotation>
+			<xs:documentation>定义交易ID数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="22"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PasswordType">
+		<xs:annotation>
+			<xs:documentation>定义Password数据类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ParameterType">
+		<xs:annotation>
+			<xs:documentation>通用参数定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Key">
+				<xs:annotation>
+					<xs:documentation>It indicates a parameter name.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Value">
+				<xs:annotation>
+					<xs:documentation>It indicates a parameter value.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KYCFieldType">
+		<xs:annotation>
+			<xs:documentation>KYC字段定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="KYCName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="KYCValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SimpleKYCDataType">
+		<xs:annotation>
+			<xs:documentation>单值KYC定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="KYCField" type="common:KYCFieldType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IDRecordType">
+		<xs:annotation>
+			<xs:documentation>Customer的证件类型定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IDTypeValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="IDNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="IDEffectiveDate" type="common:Date" minOccurs="0"/>
+			<xs:element name="IDExpiryDate" type="common:Date" minOccurs="0"/>
+			<xs:element name="DocumentReceived" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>it indicates whether copy of document is received:
+Y: document already received
+N: document not received</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Status" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="IssuedBy" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="IDLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The external file location for the ID document</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IDDetailsDataType">
+		<xs:annotation>
+			<xs:documentation>Customer的证件信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IDRecord" type="common:IDRecordType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactRecordType">
+		<xs:annotation>
+			<xs:documentation>Organization的联系方式定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ContactTypeValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactFirstName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactSecondName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactSurname" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactPhoneNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactIDTypeValue" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactIDNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactEmail" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Status" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactDetailsDataType">
+		<xs:annotation>
+			<xs:documentation>Organization的联系信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ContactRecord" type="common:ContactRecordType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateRecordType">
+		<xs:annotation>
+			<xs:documentation>Operator的证书类型定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CertificateTypeValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CertificateNumber">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CertificateEffectiveDate" type="common:Date" minOccurs="0"/>
+			<xs:element name="CertificateExpiryDate" type="common:Date" minOccurs="0"/>
+			<xs:element name="Status" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CertificateDetailsDataType">
+		<xs:annotation>
+			<xs:documentation>Operator的证书信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CertificateRecord" type="common:CertificateRecordType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankAccountRecordType">
+		<xs:annotation>
+			<xs:documentation>Organization的银行账户类型定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BankShortCode" type="common:ShortCodeType" minOccurs="0"/>
+			<xs:element name="BankAccountName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BankAccountNumber" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Currency">
+				<xs:annotation>
+					<xs:documentation>银行账户币种. 一个组织的多个银行账户不能币种相同</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankAccountDetailsDataType">
+		<xs:annotation>
+			<xs:documentation>Organization的银行账户信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AccountRecord" type="common:BankAccountRecordType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AuthenticationType">
+		<xs:annotation>
+			<xs:documentation>Operator的认证类型定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AuthenticationType">
+				<xs:annotation>
+					<xs:documentation>Web, Handset, API</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="UserName" type="common:IdentifierValue" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Present for Web and  API</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperatorID" type="common:IdentifierValue" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Present for Handset</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MSISDN" type="common:MSISDNType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>手机号码Identifier，只有Handset能使用</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AuthenticationDataType">
+		<xs:annotation>
+			<xs:documentation>Operator的认证信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AuthenticationItem" type="common:AuthenticationType" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoleType">
+		<xs:annotation>
+			<xs:documentation>Operator的Role定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RoleID" type="xs:string"/>
+			<xs:element name="RoleName" type="xs:string"/>
+			<xs:element name="EffectiveDate" type="common:Date"/>
+			<xs:element name="ExpiryDate" type="common:Date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoleDataType">
+		<xs:annotation>
+			<xs:documentation>Operator的Role信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RoleItem" type="common:RoleType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomerBeneficiary">
+		<xs:annotation>
+			<xs:documentation>Customer Beneficiary结构定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BeneficiaryIdentityName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BeneficiaryMSISDN" type="common:MSISDNType"/>
+			<xs:element name="BeneficiaryReference" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OrganisationBeneficiary">
+		<xs:annotation>
+			<xs:documentation>Organization Beneficiary结构定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OrganisationName" type="common:OrganizationNameType" minOccurs="0"/>
+			<xs:element name="BillPaymentOrganisationShortCode" type="common:ShortCodeType"/>
+			<xs:element name="BillReference" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BeneficiaryReference" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupBeneficiary">
+		<xs:annotation>
+			<xs:documentation>Group Beneficiary结构定义</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BeneficiaryIdentityName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BeneficiaryGroupCode" type="common:GroupCodeType"/>
+			<xs:element name="BeneficiaryReference" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupMemberRoleListType">
+		<xs:annotation>
+			<xs:documentation>GroupMemberRole列表信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RoleItem" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RoleID" type="common:IDType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DirectDebitMandateInfo">
+		<xs:annotation>
+			<xs:documentation>Direct Debit Mandate除Payer或Payee之外的基本信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PayerReferenceNumber">
+				<xs:annotation>
+					<xs:documentation>Payer Unique Reference Number</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AgreedTC">
+				<xs:annotation>
+					<xs:documentation>Agreed Terms and Conditions (1 - Yes, 0 - No)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PayeeAccountName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Payee Account Name</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PayerAccountName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Payer Account Name</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="FirstPaymentDate" type="common:Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>First Payment Date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Frequency" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Frequency</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StartRangeOfDays" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Start of Range of days</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndRangeOfDays" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>End of Range of days</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MandateID" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Mandate ID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ExpiryDate" type="common:Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Expiry Date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentifierDef">
+		<xs:sequence>
+			<xs:element name="IdentityType" type="common:IdentityType"/>
+			<xs:element name="IdentifierType" type="common:IdentifierType"/>
+			<xs:element name="IdentifierValue" type="common:IdentifierValue"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentifierTypeValue">
+		<xs:sequence>
+			<xs:element name="IdentifierType" type="common:IdentifierType"/>
+			<xs:element name="IdentifierValue" type="common:IdentifierValue"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PrimaryParty">
+		<xs:annotation>
+			<xs:documentation>If business operation/action, this element is not present; if transaction, this can be either the debit party or the credit party according to the transaction type.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IdentifierType" type="common:IdentifierType">
+				<xs:annotation>
+					<xs:documentation>It indicates the identifier type of the primary party. The value of this parameter must be a valid identifier type supported by CPS and must match the inputted value of the parameter IdentityType.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Identifier" type="common:IdentifierValue">
+				<xs:annotation>
+					<xs:documentation>It indicates the identifier of the primary party. Its value must match the inputted value of the parameter IdentifierType.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ShortCode" type="common:ShortCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>It is reservedd</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReceiverParty">
+		<xs:annotation>
+			<xs:documentation>If business operation/action, this is the affected party; if transaction, it is the opposite party to the PrimaryParty</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IdentifierType" type="common:IdentifierType">
+				<xs:annotation>
+					<xs:documentation>It indicates the identifier type of the recipient party. The value of this parameter must be a valid identifier type supported by CPS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Identifier" type="common:IdentifierValue">
+				<xs:annotation>
+					<xs:documentation>It indicates the identifier of the recipient party. Its value must match the inputted value of the parameter IdentifierType.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ShortCode" type="common:ShortCodeType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>When the receiver party is an organization operator or a Till, this parameter must be present in the request to indicate which organization the receiver party belongs to.
+If the receiver party is not an organization operator or a Till, this parameter should not be present.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SimpleProperty">
+		<xs:sequence>
+			<xs:element name="key" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReminderScheduleInfo">
+		<xs:annotation>
+			<xs:documentation>Reminder Schedule的信息</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ServiceForInitiateTransaction" type="xs:string"/>
+			<xs:element name="Currency" type="xs:string"/>
+			<xs:element name="Amount" type="xs:string"/>
+			<xs:element name="PrimaryParty" type="common:PrimaryParty" minOccurs="0"/>
+			<xs:element name="ReceiverParty" type="common:ReceiverParty" minOccurs="0"/>
+			<xs:element name="ReminderScheduleName" type="xs:string"/>
+			<xs:element name="FirstPaymentReminderDate" type="xs:string"/>
+			<xs:element name="IssuePaymentReminderUntil" type="xs:string"/>
+			<xs:element name="Frequency" type="xs:string"/>
+			<xs:element name="FreeText" type="xs:string" minOccurs="0"/>
+			<xs:element name="ExtraParameter" type="common:SimpleProperty" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NeedConfirmation" type="xs:string" minOccurs="0"/>
+			<xs:element name="SendPreWarning" type="xs:string" minOccurs="0"/>
+			<xs:element name="PreWarningPeriod" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReminderScheduleID" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LimitRemainingType">
+		<xs:sequence>
+			<xs:element name="RuleId">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RuleName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ThresholdType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ThresholdTypeName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="128"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Pattern">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RoleType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="64"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ThresholdValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Currency" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CurrentValue" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

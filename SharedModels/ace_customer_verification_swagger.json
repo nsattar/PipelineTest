@@ -1,0 +1,139 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "CustomerVerificationService",
+    "version" : "1.0.0",
+    "description" : "CustomerVerificationService"
+  },
+  "paths" : {
+    "/customerVerification" : {
+      "post" : {
+        "operationId" : "postCustomerVerification",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/customerVerificationResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a customerVerification",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/customerVerificationRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/customerverificationservice/v1",
+  "definitions" : {
+    "customerVerificationRequest" : {
+      "type" : "object",
+      "properties" : {
+        "Username" : {
+          "type" : "string"
+        },
+        "Password" : {
+          "type" : "string"
+        },
+        "MSISDN" : {
+          "type" : "string"
+        },
+        "ListOfParameters" : {
+          "type" : "object",
+          "properties" : {
+            "Parameter" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "Name" : {
+                    "type" : "string"
+                  },
+                  "Value" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required" : [ "Username", "Password", "MSISDN" ]
+    },
+    "customerVerificationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "Response" : {
+          "type" : "object",
+          "properties" : {
+            "Status" : {
+              "type" : "string",
+              "enum" : [ "OK", "KO" ]
+            },
+            "CustomerInfo" : {
+              "type" : "object",
+              "properties" : {
+                "CustomerIdentity" : {
+                  "type" : "string"
+                },
+                "MSISDNStatus" : {
+                  "type" : "string"
+                },
+                "BVStatus" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "CustomerIdentity", "MSISDNStatus", "BVStatus" ]
+            },
+            "ErrorMessage" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "Status" ]
+        }
+      }
+    },
+    "errorPayload" : {
+      "type" : "object",
+      "properties" : {
+        "ErrorMessage" : {
+          "type" : "string"
+        },
+        "SoapUrl" : {
+          "type" : "string"
+        },
+        "OriginalMessage" : {
+          "type" : "object"
+        },
+        "Exception" : {
+          "type" : "object"
+        }
+      }
+    }
+  }
+}

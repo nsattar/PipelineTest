@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://RPS.TransactionAPI/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://RPS.TransactionAPI/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:element ibmSchExtn:docRoot="true" name="ProcessTransaction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="BatchId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnType" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordUniqueId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnRecord" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordChecksum" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ProcessTransactionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="ProcessTransactionResult" type="xsd:boolean"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="FailureReason" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ExpressTransaction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="BatchId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnType" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordUniqueId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnRecord" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordChecksum" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="TxnMode" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ExpressTransactionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="ExpressTransactionResult" type="xsd:boolean"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="FailureReason" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="StatusInquiry">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordUniqueId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnType" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="AgentID" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="StatusInquiryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="StatusInquiryResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ListBanks">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Mode" type="xsd:int"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="AgentID" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ListBanksResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ListBanksResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FetchAccountTitle">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="AccountNumber" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="BankCode" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="AgentID" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Amount" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FetchAccountTitleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="FetchAccountTitleResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ImportTransaction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="BatchId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnType" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordUniqueId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TxnRecord" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RecordChecksum" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="FailureReason" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="ImportTransactionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="ImportTransactionResult" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="BalanceInquiry">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeCompanyId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PasswordHash" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="mode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="BalanceInquiryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="BalanceInquiryResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>

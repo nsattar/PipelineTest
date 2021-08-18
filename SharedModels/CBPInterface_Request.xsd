@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://cps.huawei.com/cpsinterface/request" xmlns:req="http://cps.huawei.com/cpsinterface/request" xmlns:wsa="http://www.w3.org/2005/08/addressing/">
+  <xsd:include schemaLocation="CBPInterface_Request_InlineSchema1.xsd"/>
+
+<!-- BEGIN Global group petaining to all wsdl:message definitions -->
+<!-- END Global group -->
+
+
+<!-- BEGIN Message Definitions for the wsdl:operations  -->
+<!-- END Message Definitions -->
+
+
+</xsd:schema>

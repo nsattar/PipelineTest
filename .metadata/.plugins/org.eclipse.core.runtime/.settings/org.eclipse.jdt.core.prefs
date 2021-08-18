@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.COMMON_CLASSES_HOME=C\:/Program Files/IBM/ACE/11.0.0.8/common/classes
+org.eclipse.jdt.core.classpathVariable.JCN_HOME=C\:/Program Files/IBM/ACE/11.0.0.8/tools/plugins/com.ibm.etools.mft.jcn_11.0.0.8/
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
+org.eclipse.jdt.core.compiler.compliance=1.8
+org.eclipse.jdt.core.compiler.source=1.8

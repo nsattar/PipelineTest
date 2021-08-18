@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://soap.api.novatti.com/types" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://soap.api.novatti.com/types">
+  <xsd:import namespace="http://soap.api.novatti.com/service" schemaLocation="xsd_xsd1.xsd"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentWalletTransferRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="walletTypeId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="destinationAgentId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="destinationTerminalId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="destinationAgentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="user" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="password" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reasonId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="comments" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sourceMsisdn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="destinationMsisdn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:double"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="SoapRequestBaseWithSession">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeaderWithSession"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dataHash" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SoapRequestBase"/>
+  <xsd:complexType name="SoapRequestBaseNoSession">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeader"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeader">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:Authentication"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentVersion" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTerminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTimeStamp" type="xsd:dateTime"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="channel" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Authentication">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="userName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="password" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pin" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authKey" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="iccid" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Map">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="q1:abstractMap" xmlns:q1="http://soap.api.novatti.com/service">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:MapItem"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MapItem">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapRequestBaseWithSessionAndPassword">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeaderWithSessionAndPassword"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dataHash" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeaderWithSessionAndPassword">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:AuthenticationWithSessionAndPassword"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentVersion" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTerminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTimeStamp" type="xsd:dateTime"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="channel" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AuthenticationWithSessionAndPassword">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sessionToken" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="userName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="password" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapRequestBaseNoAuth">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:RequestHeaderNoAuth"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeaderNoAuth">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:AuthenticationWithSession"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AuthenticationWithSession">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sessionToken" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RequestHeaderWithSession">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="authentication" type="tns:AuthenticationWithSession"/>
+      <xsd:element default="1.0" form="unqualified" maxOccurs="1" minOccurs="0" name="version" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentVersion" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTerminalId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTimeStamp" type="xsd:dateTime"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="channel" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapProductRedeemRequest">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapRequestBaseWithSession">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="vouchers" type="tns:ArrayOfVoucherKey"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfVoucherKey">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="voucher" nillable="true" type="tns:VoucherKey"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VoucherKey">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pin" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="serialNo" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentWalletTransferResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transactions" type="tns:ArrayOfTransaction"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:double"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agent" type="tns:Agent"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="destinationAgent" type="tns:Agent"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="destinationWalletBalance" type="xsd:double"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="SoapResponseBase">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="header" type="tns:ResponseHeader"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="keyValues" type="tns:Map"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="validationInfo" type="tns:ArrayOfValidationGroup"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dataHash" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="notifyMessage" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseHeader">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultDescription" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfValidationGroup">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="group" nillable="true" type="tns:ValidationGroup"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ValidationGroup">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="name" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="info" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="violations" type="tns:ArrayOfString"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfString">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="violation" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SoapProductRedeemResponse">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="tns:SoapResponseBase">
+        <xsd:sequence>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="vouchers" type="tns:ArrayOfVoucherRedemptionDetail"/>
+          <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wallets" type="tns:ArrayOfWallet"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfVoucherRedemptionDetail">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="voucher" nillable="true" type="tns:VoucherRedemptionDetail"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VoucherRedemptionDetail">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pin" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="serialNo" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productSubTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="faceValue" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reference" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timestamp" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfWallet">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="wallet" nillable="true" type="tns:Wallet"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Wallet">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="type" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="balance" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfTransaction">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="transaction" nillable="true" type="tns:Transaction"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Transaction">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reference" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="mnoReference" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="msisdn" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productSubTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timestamp" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="systemTimestamp" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="topupValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="tax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTransactionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="topupValueEstimated" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="reason" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentTransactionId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentParentId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentMasterDistributorId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="user" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="voucherSerial" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="margin" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="marginTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminFee" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminFeeTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="processFee" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="processFeeTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminRebate" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminRebateTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="isReversed" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="isRefunded" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="openingWalletBalance" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="closingWalletBalance" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="linkedTransactions" type="tns:ArrayOfTransaction"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="loyaltyId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transDatas" type="tns:ArrayOfTransData"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="inResultCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="inResultDescription" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfTransData">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="transData" nillable="true" type="tns:TransData"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TransData">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="key" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Agent">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="agentId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="masterDistributorId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="masterDistributorCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="prepaid" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wallets" type="tns:ArrayOfWallet"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="bulletins" type="tns:ArrayOfBulletin"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentType" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentType" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="status" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="creationDate" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="updatedDate" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="state" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timezone" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="tax" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billingInvoiceEmail" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="businessNumber" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="companyNumber" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCategoryId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentComments" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfBulletin">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="bulletin" nillable="true" type="tns:Bulletin"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Bulletin">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="content" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentProductsRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentProductsResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="products" type="tns:ArrayOfProduct"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfProduct">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="product" nillable="true" type="tns:Product"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Product">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="code" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="ean" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="subTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="currencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="denominations" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="minValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="maxValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="increment" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellMode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="commisionId" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyMinValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyMaxValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyIncrement" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyDenominations" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="buyCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellMinValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellMaxValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellIncrement" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellDenominations" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sellCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="serviceCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="serviceName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="documents" type="tns:ArrayOfDocument"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="extraProperties" type="tns:Map"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="margins" type="tns:ArrayOfMargin"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wholesaleBuyMinValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wholesaleBuyMaxValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wholesaleBuyIncrement" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wholesaleBuyDenominations" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wholesaleBuyCurrencyCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="transTypeDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="extensions" type="tns:ArrayOfExtension"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productEan" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfDocument">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="document" nillable="true" type="tns:Document"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Document">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="docId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="docCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="docDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="docContent" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfMargin">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="margin" nillable="true" type="tns:Margin"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Margin">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="marginValue1" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="marginType1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="marginValue2" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="marginType2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="valueStart" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="valueEnd" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminFee" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="adminFeeType" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="processFee" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="processFeeType" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="rebate" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="rebateType" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfExtension">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="extension" nillable="true" type="tns:Extension"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Extension">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="tag" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="label" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapDocumentsInfoRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapDocumentsInfoResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="documents" type="tns:ArrayOfDocument"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapBulletinInfoRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseNoAuth">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="interfaceTypeCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="operatorCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="productEan" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapBulletinInfoResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="bulletins" type="tns:ArrayOfBulletin"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentInfoRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentInfoResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agent" type="tns:Agent"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="user" type="tns:User"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="User">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="userId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="userName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="languageCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="acls" type="tns:ArrayOfAcl"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfAcl">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="acl" nillable="true" type="tns:Acl"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Acl">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="identity" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="active" type="xsd:boolean"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="permissions" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentTemplateRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="templateCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentTemplateResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentTemplates" type="tns:ArrayOfAgentTemplate"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfAgentTemplate">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="agentTemplate" nillable="true" type="tns:AgentTemplate"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AgentTemplate">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="code" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="products" type="tns:ArrayOfProduct"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentProfileRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentProfileResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentProfiles" type="tns:ArrayOfAgentProfile"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfAgentProfile">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="agentProfile" nillable="true" type="tns:AgentProfile"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AgentProfile">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="options" type="tns:ArrayOfOption"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfOption">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="option" nillable="true" type="tns:Option"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Option">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="code" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="description" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="typeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="self" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentAddressesRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentAddressesResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addresses" type="tns:ArrayOfAddress"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfAddress">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="address" nillable="true" type="tns:Address"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Address">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressTypeName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressStatus" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="contactName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressLine1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressLine2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="city" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="postCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="fax1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="fax2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="phone1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="phone2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="mobile1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="mobile2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="email" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="url" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="gps" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentChangeAuthkeyRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="oldAuthkey" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="newAuthkey" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="confirmAuthkey" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentChangeAuthkeyResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentUpdateRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentDescription" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentType" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timezone" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billingInvoiceEmail" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billAcn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billAbn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="categoryId" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentComments" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addresses" type="tns:ArrayOfAddressUpdate"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="profileOptions" type="tns:ArrayOfOption"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfAddressUpdate">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="address" nillable="true" type="tns:AddressUpdate"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AddressUpdate">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressTypeCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="contactName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressLine1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addressLine2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="city" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="postCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="fax1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="fax2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="phone1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="phone2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="mobile1" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="mobile2" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="email" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="url" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="gps" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentUpdateResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agent" type="tns:AgentNode"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="AgentNode">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="agentId" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentDescription" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="agentStatus" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="gps" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="1" name="agentType" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentCode" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentType" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="hierarchyLevel" type="xsd:int"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="children" type="tns:ArrayOfAgentNode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ArrayOfAgentNode">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="agentNode" nillable="true" type="tns:AgentNode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentLoginRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseNoSession"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentLoginResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="sessionToken" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agent" type="tns:Agent"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="user" type="tns:User"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentStructureRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="depth" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentStructureResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentNodes" type="tns:ArrayOfAgentNode"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapSystemStatusRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapSystemStatusResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentChangePasswordRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSessionAndPassword">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="newPassword" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="confirmNewPassword" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentChangePasswordResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapSessionValidateRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession"/>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapSessionValidateResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="user" type="tns:User"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentSearchRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentDescription" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="wildcard" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultsPerPage" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pageNumber" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentSearchResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalTransCount" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pageCount" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pageTransId" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentNodes" type="tns:ArrayOfAgentNode"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentSettlementRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dateFrom" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="dateTo" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="resultsPerPage" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pageNumber" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentSettlementResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalTransCount" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pageCount" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="pageTransId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="settlements" type="tns:ArrayOfSettlement"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="ArrayOfSettlement">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="settlement" nillable="true" type="tns:Settlement"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Settlement">
+    <xsd:sequence>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="date" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="settledCount" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="supplierName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentName" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalValue" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalMargin" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="totalTax" type="xsd:double"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="settlementFile" type="xsd:string"/>
+      <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="settlementId" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentCreateRequest">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapRequestBaseWithSession">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentDescription" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="terminalId" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentType" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="parentCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="countryCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="stateCode" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="timezone" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billAcn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billAbn" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="categoryId" type="xsd:int"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agentComments" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="billingInvoiceEmail" type="xsd:string"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="addresses" type="tns:ArrayOfAddressUpdate"/>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="profileOptions" type="tns:ArrayOfOption"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="SoapAgentCreateResponse">
+    <xsd:complexType>
+      <xsd:complexContent mixed="false">
+        <xsd:extension base="tns:SoapResponseBase">
+          <xsd:sequence>
+            <xsd:element form="unqualified" maxOccurs="1" minOccurs="0" name="agent" type="tns:AgentNode"/>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  
+  
+  
+
+  
+</xsd:schema>

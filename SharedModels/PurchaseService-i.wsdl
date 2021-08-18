@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost:60032/service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://localhost:60032/service" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true"/>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost:60032/service/Imports">
+      <xsd:import namespace="http://soap.api.novatti.com/types" schemaLocation="PurchaseService-xsd0.xsd"/>
+      <xsd:import namespace="http://soap.api.novatti.com/service" schemaLocation="PurchaseService-xsd1.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MakePurchaseReprint">
+    <wsdl:part element="q1:SoapPurchaseReprintRequest" name="SoapPurchaseReprintRequest" xmlns:q1="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakePurchaseReprintResponse">
+    <wsdl:part element="q2:SoapPurchaseReprintResponse" name="SoapPurchaseReprintResponse" xmlns:q2="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakeProductRedeem">
+    <wsdl:part element="q3:SoapMakeProductRedeemRequest" name="SoapMakeProductRedeemRequest" xmlns:q3="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakeProductRedeemResponse">
+    <wsdl:part element="q4:SoapMakeProductRedeemResponse" name="SoapMakeProductRedeemResponse" xmlns:q4="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="ReceivePinBatch">
+    <wsdl:part element="q5:SoapPinBatchReceiveRequest" name="SoapPinBatchReceiveRequest" xmlns:q5="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="ReceivePinBatchResponse">
+    <wsdl:part element="q6:SoapPinBatchReceiveResponse" name="SoapPinBatchReceiveResponse" xmlns:q6="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPinBatch">
+    <wsdl:part element="q7:SoapPinBatchRequest" name="SoapPinBatchRequest" xmlns:q7="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPinBatchResponse">
+    <wsdl:part element="q8:SoapPinBatchResponse" name="SoapPinBatchResponse" xmlns:q8="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakePurchaseRefund">
+    <wsdl:part element="q9:SoapPurchaseRefundRequest" name="SoapPurchaseRefundRequest" xmlns:q9="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakePurchaseRefundResponse">
+    <wsdl:part element="q10:SoapPurchaseRefundResponse" name="SoapPurchaseRefundResponse" xmlns:q10="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPinBatchStatus">
+    <wsdl:part element="q11:SoapPinBatchStatusRequest" name="SoapPinBatchStatusRequest" xmlns:q11="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPinBatchStatusResponse">
+    <wsdl:part element="q12:SoapPinBatchStatusResponse" name="SoapPinBatchStatusResponse" xmlns:q12="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakePurchaseReversal">
+    <wsdl:part element="q13:SoapPurchaseReversalRequest" name="SoapPurchaseReversalRequest" xmlns:q13="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakePurchaseReversalResponse">
+    <wsdl:part element="q14:SoapPurchaseReversalResponse" name="SoapPurchaseReversalResponse" xmlns:q14="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateProductRedeem">
+    <wsdl:part element="q15:SoapValidateProductRedeemRequest" name="SoapValidateProductRedeemRequest" xmlns:q15="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="ValidateProductRedeemResponse">
+    <wsdl:part element="q16:SoapValidateProductRedeemResponse" name="SoapValidateProductRedeemResponse" xmlns:q16="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakeProductPurchase">
+    <wsdl:part element="q17:SoapProductPurchaseRequest" name="SoapProductPurchaseRequest" xmlns:q17="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:message name="MakeProductPurchaseResponse">
+    <wsdl:part element="q18:SoapProductPurchaseResponse" name="SoapProductPurchaseResponse" xmlns:q18="http://soap.api.novatti.com/types"/>
+  </wsdl:message>
+  <wsdl:portType name="IPurchaseService">
+    <wsdl:operation name="MakePurchaseReprint">
+      <wsdl:input message="tns:MakePurchaseReprint" name="MakePurchaseReprint" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakePurchaseReprint"/>
+      <wsdl:output message="tns:MakePurchaseReprintResponse" name="MakePurchaseReprintResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakePurchaseReprintResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakeProductRedeem">
+      <wsdl:input message="tns:MakeProductRedeem" name="MakeProductRedeem" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakeProductRedeem"/>
+      <wsdl:output message="tns:MakeProductRedeemResponse" name="MakeProductRedeemResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakeProductRedeemResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReceivePinBatch">
+      <wsdl:input message="tns:ReceivePinBatch" name="ReceivePinBatch" wsaw:Action="http://localhost:60032/service/IPurchaseService/ReceivePinBatch"/>
+      <wsdl:output message="tns:ReceivePinBatchResponse" name="ReceivePinBatchResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/ReceivePinBatchResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPinBatch">
+      <wsdl:input message="tns:RequestPinBatch" name="RequestPinBatch" wsaw:Action="http://localhost:60032/service/IPurchaseService/RequestPinBatch"/>
+      <wsdl:output message="tns:RequestPinBatchResponse" name="RequestPinBatchResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/RequestPinBatchResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakePurchaseRefund">
+      <wsdl:input message="tns:MakePurchaseRefund" name="MakePurchaseRefund" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakePurchaseRefund"/>
+      <wsdl:output message="tns:MakePurchaseRefundResponse" name="MakePurchaseRefundResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakePurchaseRefundResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPinBatchStatus">
+      <wsdl:input message="tns:RequestPinBatchStatus" name="RequestPinBatchStatus" wsaw:Action="http://localhost:60032/service/IPurchaseService/RequestPinBatchStatus"/>
+      <wsdl:output message="tns:RequestPinBatchStatusResponse" name="RequestPinBatchStatusResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/RequestPinBatchStatusResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakePurchaseReversal">
+      <wsdl:input message="tns:MakePurchaseReversal" name="MakePurchaseReversal" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakePurchaseReversal"/>
+      <wsdl:output message="tns:MakePurchaseReversalResponse" name="MakePurchaseReversalResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakePurchaseReversalResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateProductRedeem">
+      <wsdl:input message="tns:ValidateProductRedeem" name="ValidateProductRedeem" wsaw:Action="http://localhost:60032/service/IPurchaseService/ValidateProductRedeem"/>
+      <wsdl:output message="tns:ValidateProductRedeemResponse" name="ValidateProductRedeemResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/ValidateProductRedeemResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="MakeProductPurchase">
+      <wsdl:input message="tns:MakeProductPurchase" name="MakeProductPurchase" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakeProductPurchase"/>
+      <wsdl:output message="tns:MakeProductPurchaseResponse" name="MakeProductPurchaseResponse" wsaw:Action="http://localhost:60032/service/IPurchaseService/MakeProductPurchaseResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

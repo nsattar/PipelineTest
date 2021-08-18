@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://cps.huawei.com/cpsinterface/result" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:res="http://cps.huawei.com/cpsinterface/result" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cps.huawei.com/cpsinterface/result" xmlns:wsa="http://www.w3.org/2005/08/addressing/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:element ibmSchExtn:docRoot="true" name="ResultMsg">
+    <xsd:complexType>
+      <xsd:simpleContent>
+        <xsd:extension base="xsd:string"/>
+      </xsd:simpleContent>
+    </xsd:complexType>
+  </xsd:element>
+      <xsd:element name="ResponseMsg" type="xsd:string"/>
+    </xsd:schema>

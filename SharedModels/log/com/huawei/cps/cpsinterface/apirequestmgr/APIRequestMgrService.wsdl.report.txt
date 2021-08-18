@@ -1,0 +1,26 @@
+
+
+Importing file: C:\Users\Haris Tanwir\Desktop\APIRequestMgrService.wsdl
+
+The WSDL import will proceed with bindings APIRequestMgrBinding.
+Creating wsdl schema document for file:///C:/Users/Haris Tanwir/Desktop/APIRequestMgrService.wsdl.
+Parsing wsdl binding {http://cps.huawei.com/cpsinterface/api_requestmgr}APIRequestMgrBinding.
+Parsing wsdl binding input APIRequest.
+Parsing wsdl binding output APIRequest.
+Processing doc style for operation APIRequest.
+Populating WSDL schema APIRequestMgrService.xsd.
+Creating file APIRequestMgrService.xsd in the workspace.
+Creating file APIRequestMgrService_InlineSchema1.xsd in the workspace.
+Creating file /SharedModels/CPSInterface_API_Request.xsd in the workspace.
+Creating file /SharedModels/CPSInterface_API_Common.xsd in the workspace.
+Creating file /SharedModels/CPSInterface_API_CustomizedRequest.xsd in the workspace.
+Creating file /SharedModels/CPSInterface_API_Response.xsd in the workspace.
+Copying source WSDL APIRequestMgrService.wsdl to APIRequestMgrService.wsdl.
+
+Elapsed time processing this message definition file: 1.147 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

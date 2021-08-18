@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://cps.huawei.com/cpsinterface/api_requestmgr" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:common="http://cps.huawei.com/cpsinterface/common" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:req="http://cps.huawei.com/cpsinterface/request" xmlns:response="http://cps.huawei.com/cpsinterface/response" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cps.huawei.com/cpsinterface/api_requestmgr" xmlns:wsa="http://www.w3.org/2005/08/addressing/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <import namespace="http://cps.huawei.com/cpsinterface/request" schemaLocation="CPSInterface_API_Request.xsd"/>
+      <import namespace="http://cps.huawei.com/cpsinterface/response" schemaLocation="CPSInterface_API_Response.xsd"/>
+    <xsd:element ibmSchExtn:docRoot="true" name="Request" type="req:Request"/>
+      <xsd:element ibmSchExtn:docRoot="true" name="Response" type="response:Response"/>
+    </xsd:schema>

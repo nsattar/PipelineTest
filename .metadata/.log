@@ -1,0 +1,40 @@
+!SESSION 2021-08-18 21:52:03.151 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.fullversion=8.0.6.5 - pwa6480sr6fp5-20200111_02(SR6 FP5)
+JRE 1.8.0 Windows 10 amd64-64-Bit Compressed References 20200108_436782 (JIT enabled, AOT enabled)
+OpenJ9   - 7d1059c
+OMR      - d059105
+IBM      - c8aee39
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_PK
+Framework arguments:  -showlocation -product com.ibm.etools.msgbroker.tooling.ide tools_auto -showlocation -product com.ibm.etools.msgbroker.tooling.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -showlocation -product com.ibm.etools.msgbroker.tooling.ide tools_auto -showlocation -product com.ibm.etools.msgbroker.tooling.ide
+
+!ENTRY org.eclipse.emf.ecore 2 0 2021-08-18 21:52:33.972
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.ui 2 2 2021-08-18 21:52:47.154
+!MESSAGE Invalid preference category path: com.ibm.importer.preferences (bundle: com.ibm.adapter.c, page: com.ibm.adapter.c.ui.preferencepage.CPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2021-08-18 21:52:47.159
+!MESSAGE Invalid preference category path: com.ibm.debug.breakpoints.common.pref.tracepoint (bundle: com.ibm.debug.wsa, page: com.ibm.debug.wsa.WSATracepointPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2021-08-18 21:52:47.160
+!MESSAGE Invalid preference category path: com.ibm.importer.preferences (bundle: com.ibm.etools.cobol.preference.ui, page: com.ibm.etools.cobol.preference.ui.preferencepage.CobolPreferencePage)
+
+!ENTRY com.ibm.mq.runtime 1 0 2021-08-18 21:52:53.991
+!MESSAGE 
+
+!ENTRY com.ibm.mq.runtime 1 0 2021-08-18 21:52:53.992
+!MESSAGE C:\Program Files\IBM\ACE\11.0.0.8\tools>mqsifindmqpath
+
+!ENTRY com.ibm.mq.runtime 1 0 2021-08-18 21:52:54.808
+!MESSAGE BIP8071I: Successful command completion. C:\Program Files (x86)\IBM\WebSphere MQ
+
+!ENTRY com.ibm.mq.runtime 1 0 2021-08-18 21:52:54.809
+!MESSAGE MQ Install location found:C:/Program Files (x86)/IBM/WebSphere MQ
+
+!ENTRY com.ibm.mq.runtime 1 0 2021-08-18 21:52:54.810
+!MESSAGE 
+
+!ENTRY com.ibm.etools.mft.uri 0 0 2021-08-18 21:54:36.436
+!MESSAGE 

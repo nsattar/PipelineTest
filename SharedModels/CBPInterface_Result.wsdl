@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://cps.huawei.com/cpsinterface/result" xmlns:res="http://cps.huawei.com/cpsinterface/result" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cps.huawei.com/cpsinterface/result" xmlns:wsa="http://www.w3.org/2005/08/addressing/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="CBPInterface_Result_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="ResultBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://cps.huawei.com/cpsinterface/result" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="CBPInterface_Result_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="ResultMessage">
+    <wsdl:part element="res:ResultMsg" name="ResultMsg">
+    </wsdl:part>
+  </wsdl:message>
+    <!--
+    <wsdl:message name="ResponseMessage">
+        <wsdl:part name="ResponseMsg" element="tns:ResponseMsg">
+        </wsdl:part>
+    </wsdl:message>
+    -->
+  <wsdl:portType name="ResultMgrPortType">
+    <wsdl:operation name="GenericAPIResult">
+      <wsdl:input message="res:ResultMessage"/>
+            <!--
+            <wsdl:output message="tns:ResponseMessage" />
+            -->
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResultBinding" type="res:ResultMgrPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GenericAPIResult">
+      <soap:operation soapAction="GenericAPIResult" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+            <!--
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            -->
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResultMgrService">
+    <wsdl:port binding="res:ResultBinding" name="ResultMgrServicePort">
+      <soap:address location="http://cps.huawei.com/cpsinterface/result"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

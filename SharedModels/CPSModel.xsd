@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="IdentityType">
+    	<xsd:sequence>
+    		<xsd:element name="Caller" type="CallerType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Initiator" type="InitiatorType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="PrimaryParty" type="IndentifierType" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ReceiverParty" type="IndentifierType" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="AccessDevice" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TransactionType">
+    	<xsd:sequence>
+    		<xsd:element name="CommandID" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="OriginatorConversationID"
+    			type="xsd:string" minOccurs="1" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="ConversationID" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Remark" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Parameters" type="Parameter" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ReferenceData" type="ReferenceItem" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Timestamp" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="CallerType">
+    	<xsd:sequence>
+    		<xsd:element name="CallerType" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ThirdPartyID" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Password" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="CheckSum" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ResultURL" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="InitiatorType">
+    	<xsd:sequence>
+    		<xsd:element name="IdentifierType" minOccurs="1" maxOccurs="1" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element name="Identifier" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="SecurityCredential" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="IndentifierType">
+    	<xsd:sequence>
+    		<xsd:element name="IdentifierType" minOccurs="1"
+    			maxOccurs="1" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element name="Identifier" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+
+
+    <xsd:element name="Request" type="RequestType"></xsd:element>
+
+    <xsd:complexType name="ParameterType">
+    	<xsd:sequence>
+    		<xsd:element name="Key" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Value" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Parameter">
+    	<xsd:sequence>
+    		<xsd:element name="Parameter" type="ParameterType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReferenceItem">
+    	<xsd:sequence>
+    		<xsd:element name="ReferenceItem" type="ParameterType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="RequestType">
+    	<xsd:sequence>
+    		<xsd:element name="Identity" type="IdentityType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="Transaction" type="TransactionType" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="KeyOwner" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="Response" type="ResponseType"></xsd:element>
+
+    <xsd:complexType name="ResponseType">
+    	<xsd:sequence>
+    		<xsd:element name="ResponseCode" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ResponseDesc" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ConversationID" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="OriginatorConversationID"
+    			type="xsd:string" minOccurs="0" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="ServiceStatus" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="Result" type="ResultType"></xsd:element>
+
+    <xsd:complexType name="ResultType">
+    	<xsd:sequence>
+    		<xsd:element name="ResultType" type="xsd:integer" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ResultCode" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ResultDesc" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="OriginatorConversationID"
+    			type="xsd:string" minOccurs="0" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="ConversationID" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="TransactionID" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ResultParameters" type="ResultParameter" minOccurs="0" maxOccurs="1"></xsd:element>
+    		<xsd:element name="ReferenceData" type="ReferenceItem" minOccurs="0" maxOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ResultParameter">
+    	<xsd:sequence>
+    		<xsd:element name="ResultParameter" type="ParameterType" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

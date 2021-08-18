@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AgentService" targetNamespace="http://tempuri.org/" xmlns:i0="http://localhost:60032/service" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="AgentServiceSoapBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsp:Policy wsu:Id="AgentServiceSoapBinding_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"/>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import location="AgentService_i.wsdl" namespace="http://localhost:60032/service"/>
+  <wsdl:types/>
+  <wsdl:binding name="AgentServiceSoapBinding" type="i0:IAgentService">
+    <wsp:PolicyReference URI="#AgentServiceSoapBinding_policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AgentWalletTransfer">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentWalletTransfer" style="document"/>
+      <wsdl:input name="AgentWalletTransfer">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentWalletTransferResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentProducts">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentProducts" style="document"/>
+      <wsdl:input name="GetAgentProducts">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentProductsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDocuments">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentDocuments" style="document"/>
+      <wsdl:input name="GetAgentDocuments">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentDocumentsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBulletins">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetBulletins" style="document"/>
+      <wsdl:input name="GetBulletins">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetBulletinsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentInfo">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentInfo" style="document"/>
+      <wsdl:input name="GetAgentInfo">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentInfoResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentTemplates">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentTemplates" style="document"/>
+      <wsdl:input name="GetAgentTemplates">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentTemplatesResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentProfile">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentProfile" style="document"/>
+      <wsdl:input name="GetAgentProfile">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentProfileResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentAddresses">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentAddresses" style="document"/>
+      <wsdl:input name="GetAgentAddresses">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentAddressesResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentChangeAuthkey">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentChangeAuthkey" style="document"/>
+      <wsdl:input name="AgentChangeAuthkey">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentChangeAuthkeyResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentUpdate">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentUpdate" style="document"/>
+      <wsdl:input name="AgentUpdate">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentUpdateResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentLogin">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentLogin" style="document"/>
+      <wsdl:input name="AgentLogin">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentLoginResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentStructure">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentStructure" style="document"/>
+      <wsdl:input name="GetAgentStructure">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentStructureResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemStatus">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetSystemStatus" style="document"/>
+      <wsdl:input name="GetSystemStatus">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetSystemStatusResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentChangePassword">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentChangePassword" style="document"/>
+      <wsdl:input name="AgentChangePassword">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentChangePasswordResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionValidate">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/SessionValidate" style="document"/>
+      <wsdl:input name="SessionValidate">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SessionValidateResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentSearch">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentSearch" style="document"/>
+      <wsdl:input name="AgentSearch">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentSearchResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentSettlements">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/GetAgentSettlements" style="document"/>
+      <wsdl:input name="GetAgentSettlements">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAgentSettlementsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgentCreate">
+      <soap12:operation soapAction="http://localhost:60032/service/IAgentService/AgentCreate" style="document"/>
+      <wsdl:input name="AgentCreate">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AgentCreateResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgentService">
+    <wsdl:port binding="tns:AgentServiceSoapBinding" name="AgentServiceSoapBinding">
+      <soap12:address location="https://testapi.thecardwalla.com/Services/AgentService.svc/AgentService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

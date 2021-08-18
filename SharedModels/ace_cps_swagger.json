@@ -1,0 +1,315 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "RequestMgrService",
+    "version" : "1.0.0",
+    "description" : "RequestMgrService"
+  },
+  "paths" : {
+    "/sync" : {
+      "post" : {
+        "operationId" : "postSync",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/SyncResult"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a sync",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    },
+    "/async" : {
+      "post" : {
+        "operationId" : "postAsync",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/Response"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a async",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/rest/requestmgrservice/v1",
+  "definitions" : {
+    "Request" : {
+      "type" : "object",
+      "properties" : {
+        "Identity" : {
+          "type" : "object",
+          "properties" : {
+            "Caller" : {
+              "type" : "object",
+              "properties" : {
+                "CallerType" : {
+                  "type" : "integer"
+                },
+                "ThirdPartyID" : {
+                  "type" : "string"
+                },
+                "Password" : {
+                  "type" : "string"
+                },
+                "CheckSum" : {
+                  "type" : "string"
+                },
+                "ResultURL" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "CallerType", "ThirdPartyID", "Password" ]
+            },
+            "Initiator" : {
+              "type" : "object",
+              "properties" : {
+                "IdentifierType" : {
+                  "type" : "integer"
+                },
+                "Identifier" : {
+                  "type" : "string"
+                },
+                "SecurityCredential" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "IdentifierType", "Identifier" ]
+            },
+            "PrimaryParty" : {
+              "type" : "object",
+              "properties" : {
+                "IdentifierType" : {
+                  "type" : "integer"
+                },
+                "Identifier" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "IdentifierType", "Identifier" ]
+            },
+            "ReceiverParty" : {
+              "type" : "object",
+              "properties" : {
+                "IdentifierType" : {
+                  "type" : "integer"
+                },
+                "Identifier" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "IdentifierType", "Identifier" ]
+            },
+            "AccessDevice" : {
+              "type" : "string"
+            },
+            "UseCase" : {
+              "type" : "string"
+            },
+            "Channel" : {
+              "type" : "string"
+            },
+            "ThirdPartyType" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "Caller", "Initiator", "UseCase", "Channel", "ThirdPartyType" ]
+        },
+        "Transaction" : {
+          "type" : "object",
+          "properties" : {
+            "CommandID" : {
+              "type" : "string"
+            },
+            "OriginatorConversationID" : {
+              "type" : "string"
+            },
+            "ConversationID" : {
+              "type" : "string"
+            },
+            "Remark" : {
+              "type" : "string"
+            },
+            "Parameters" : {
+              "type" : "object",
+              "properties" : {
+                "Parameter" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "Key", "Value" ]
+                  }
+                }
+              },
+              "required" : [ "Parameter" ]
+            },
+            "ReferenceData" : {
+              "type" : "object",
+              "properties" : {
+                "ReferenceItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "Value", "Key" ]
+                  }
+                }
+              },
+              "required" : [ "ReferenceItem" ]
+            },
+            "Timestamp" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "Timestamp", "CommandID", "OriginatorConversationID", "Parameters" ]
+        },
+        "KeyOwner" : {
+          "type" : "integer"
+        },
+        "CustomObject" : {
+          "type" : "object"
+        }
+      },
+      "required" : [ "Identity", "Transaction", "KeyOwner" ]
+    },
+    "Response" : {
+      "type" : "object",
+      "properties" : {
+        "ResponseCode" : {
+          "type" : "string"
+        },
+        "ResponseDesc" : {
+          "type" : "string"
+        },
+        "ConversationID" : {
+          "type" : "string"
+        },
+        "OriginatorConversationID" : {
+          "type" : "string"
+        },
+        "ServiceStatus" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "ResponseCode", "ConversationID", "ServiceStatus" ]
+    },
+    "Result" : {
+      "type" : "object",
+      "properties" : {
+        "ResultType" : {
+          "type" : "integer"
+        },
+        "ResultCode" : {
+          "type" : "string"
+        },
+        "ResultDesc" : {
+          "type" : "string"
+        },
+        "OriginatorConversationID" : {
+          "type" : "string"
+        },
+        "ConversationID" : {
+          "type" : "string"
+        },
+        "TransactionID" : {
+          "type" : "string"
+        },
+        "ResultParameters" : {
+          "type" : "object",
+          "properties" : {
+            "ResultParameter" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "Key" : {
+                    "type" : "string"
+                  },
+                  "Value" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "Value", "Key" ]
+              }
+            }
+          },
+          "required" : [ "ResultParameter" ]
+        },
+        "ReferenceData" : {
+          "type" : "object",
+          "properties" : {
+            "ReferenceItem" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "Key" : {
+                    "type" : "string"
+                  },
+                  "Value" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "Key", "Value" ]
+              }
+            }
+          },
+          "required" : [ "ReferenceItem" ]
+        }
+      },
+      "required" : [ "ResultCode", "ResultType", "ConversationID" ]
+    },
+    "SyncResult" : {
+      "type" : "object",
+      "properties" : {
+        "Response" : {
+          "$ref" : "#/definitions/Response"
+        },
+        "Result" : {
+          "$ref" : "#/definitions/Result"
+        }
+      },
+      "required" : [ "Response" ]
+    }
+  }
+}

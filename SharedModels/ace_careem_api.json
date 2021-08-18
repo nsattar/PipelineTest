@@ -1,0 +1,359 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "CareemCashVoucherAPI",
+    "version" : "1.0.0",
+    "description" : "CareemCashVoucherAPI"
+  },
+  "paths" : {
+    "/billInquiry" : {
+      "post" : {
+        "operationId" : "postBillInquiry",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/billInquiryResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a billInquiry",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/billInquiryRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/billPayment" : {
+      "post" : {
+        "operationId" : "postBillPayment",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/billPaymentResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a billPayment",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/billPaymentRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/generateConsumerNumber" : {
+      "post" : {
+        "operationId" : "postGenerateConsumerNumber",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/generateConsumerNumberResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a generateConsumerNumber",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/generateConsumerNumberRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/getOriginalVoucher" : {
+      "post" : {
+        "operationId" : "postGetOriginalVoucher",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/getOriginalVoucherResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a getOriginalVoucher",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/getOriginalVoucherRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/careemcashvoucherapi/v1",
+  "definitions" : {
+    "billInquiryRequest" : {
+      "type" : "object",
+      "properties" : {
+        "BillInquiry" : {
+          "type" : "object",
+          "properties" : {
+            "Username" : {
+              "type" : "string"
+            },
+            "Password" : {
+              "type" : "string"
+            },
+            "Consumer_Number" : {
+              "type" : "string"
+            },
+            "Bank_Mnemonic" : {
+              "type" : "string"
+            },
+            "Reserved" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "billInquiryResponse" : {
+      "type" : "object",
+      "properties" : {
+        "BillInquiryResponse" : {
+          "type" : "object",
+          "properties" : {
+            "BillInquiryResult" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "billPaymentRequest" : {
+      "type" : "object",
+      "properties" : {
+        "BillPayment" : {
+          "type" : "object",
+          "properties" : {
+            "Username" : {
+              "type" : "string"
+            },
+            "Password" : {
+              "type" : "string"
+            },
+            "Consumer_Number" : {
+              "type" : "string"
+            },
+            "Tran_Auth_Id" : {
+              "type" : "string"
+            },
+            "Transaction_Amount" : {
+              "type" : "string"
+            },
+            "Tran_Date" : {
+              "type" : "string"
+            },
+            "Tran_Time" : {
+              "type" : "string"
+            },
+            "Bank_Mnemonic" : {
+              "type" : "string"
+            },
+            "Reserved" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "billPaymentResponse" : {
+      "type" : "object",
+      "properties" : {
+        "BillPaymentResponse" : {
+          "type" : "object",
+          "properties" : {
+            "BillPaymentResult" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "generateConsumerNumberRequest" : {
+      "type" : "object",
+      "properties" : {
+        "GenerateConsumerNumber" : {
+          "type" : "object",
+          "properties" : {
+            "MSISDN" : {
+              "type" : "string"
+            },
+            "CNIC" : {
+              "type" : "string"
+            },
+            "AMOUNT" : {
+              "type" : "string"
+            },
+            "Username" : {
+              "type" : "string"
+            },
+            "Password" : {
+              "type" : "string"
+            },
+            "ChannelId" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "generateConsumerNumberResponse" : {
+      "type" : "object",
+      "properties" : {
+        "GenerateConsumerNumberResponse" : {
+          "type" : "object",
+          "properties" : {
+            "GenerateConsumerNumberResult" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "getOriginalVoucherRequest" : {
+      "type" : "object",
+      "properties" : {
+        "GetOriginalVoucher" : {
+          "type" : "object",
+          "properties" : {
+            "Username" : {
+              "type" : "string"
+            },
+            "Password" : {
+              "type" : "string"
+            },
+            "DummyVoucherCode" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "getOriginalVoucherResponse" : {
+      "type" : "object",
+      "properties" : {
+        "GetOriginalVoucherResponse" : {
+          "type" : "object",
+          "properties" : {
+            "GetOriginalVoucherResult" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "errorPayload" : {
+      "type" : "object",
+      "properties" : {
+        "ErrorMessage" : {
+          "type" : "string"
+        },
+        "SoapUrl" : {
+          "type" : "string"
+        },
+        "OriginalMessage" : {
+          "type" : "object"
+        },
+        "Exception" : {
+          "type" : "object"
+        }
+      }
+    }
+  }
+}

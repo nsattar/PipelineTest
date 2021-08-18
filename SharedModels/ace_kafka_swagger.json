@@ -1,0 +1,260 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "KafkaProducerService",
+    "version" : "1.0.0",
+    "description" : "KafkaProducerService"
+  },
+  "paths" : {
+    "/publishTransaction" : {
+      "post" : {
+        "operationId" : "postPublishTransaction",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/KafkaResponse"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a publishTransaction",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/KafkaRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/rest/kafkaproducerservice/v1",
+  "definitions" : {
+    "KafkaPubMessage" : {
+      "type" : "object",
+      "properties" : {
+        "Header" : {
+          "type" : "object",
+          "properties" : {
+            "Channel" : {
+              "type" : "string"
+            },
+            "SubChannel" : {
+              "type" : "string"
+            },
+            "UseCase" : {
+              "type" : "string"
+            },
+            "AppConnectUUID" : {
+              "type" : "string"
+            },
+            "Identity" : {
+              "type" : "object",
+              "properties" : {
+                "Caller" : {
+                  "type" : "object",
+                  "properties" : {
+                    "ThirdPartyID" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "ThirdPartyID" ]
+                },
+                "Initiator" : {
+                  "type" : "object",
+                  "properties" : {
+                    "IdentifierType" : {
+                      "type" : "integer"
+                    },
+                    "Identifier" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "IdentifierType", "Identifier" ]
+                },
+                "PrimaryParty" : {
+                  "type" : "object",
+                  "properties" : {
+                    "IdentifierType" : {
+                      "type" : "integer"
+                    },
+                    "Identifier" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "IdentifierType", "Identifier" ]
+                },
+                "ReceiverParty" : {
+                  "type" : "object",
+                  "properties" : {
+                    "IdentifierType" : {
+                      "type" : "integer"
+                    },
+                    "Identifier" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "IdentifierType", "Identifier" ]
+                },
+                "AccessDevice" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "Caller", "Initiator" ]
+            },
+            "ThirdPartyType" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "Channel", "AppConnectUUID", "UseCase", "Identity", "SubChannel", "ThirdPartyType" ]
+        },
+        "Request" : {
+          "type" : "object",
+          "properties" : {
+            "Transaction" : {
+              "type" : "object",
+              "properties" : {
+                "CommandID" : {
+                  "type" : "string"
+                },
+                "OriginatorConversationID" : {
+                  "type" : "string"
+                },
+                "ConversationID" : {
+                  "type" : "string"
+                },
+                "Remark" : {
+                  "type" : "string"
+                },
+                "Parameters" : {
+                  "type" : "object",
+                  "properties" : {
+                    "Parameter" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "Key" : {
+                            "type" : "string"
+                          },
+                          "Value" : {
+                            "type" : "string"
+                          }
+                        },
+                        "required" : [ "Key", "Value" ]
+                      }
+                    }
+                  },
+                  "required" : [ "Parameter" ]
+                },
+                "ReferenceData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "ReferenceItem" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "Key" : {
+                            "type" : "string"
+                          },
+                          "Value" : {
+                            "type" : "string"
+                          }
+                        },
+                        "required" : [ "Value", "Key" ]
+                      }
+                    }
+                  },
+                  "required" : [ "ReferenceItem" ]
+                },
+                "Timestamp" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "Timestamp", "CommandID", "OriginatorConversationID", "Parameters" ]
+            },
+            "R5RequestBody" : {
+              "type" : "object"
+            }
+          },
+          "required" : [ "Transaction" ]
+        },
+        "Result" : {
+          "type" : "object",
+          "properties" : {
+            "ResultType" : {
+              "type" : "integer"
+            },
+            "ResultCode" : {
+              "type" : "string"
+            },
+            "ResultDesc" : {
+              "type" : "string"
+            },
+            "TransactionID" : {
+              "type" : "string"
+            },
+            "ResultParameters" : {
+              "type" : "object",
+              "properties" : {
+                "ResultParameter" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "Value", "Key" ]
+                  }
+                }
+              },
+              "required" : [ "ResultParameter" ]
+            },
+            "R5ResultBody" : {
+              "type" : "object"
+            }
+          },
+          "required" : [ "ResultCode", "ResultType", "TransactionID" ]
+        },
+        "CustomObject" : {
+          "type" : "object"
+        }
+      },
+      "required" : [ "Header", "Request", "Result" ]
+    },
+    "KafkaRequest" : {
+      "type" : "object"
+    },
+    "KafkaResponse" : {
+      "type" : "object",
+      "properties" : {
+        "ResponseCode" : {
+          "type" : "string"
+        },
+        "ResponseDesc" : {
+          "type" : "string"
+        },
+        "AppConnectUUID" : {
+          "type" : "string"
+        },
+        "ConversationID" : {
+          "type" : "string"
+        },
+        "KafkaPubMessage" : {
+          "$ref" : "#/definitions/KafkaPubMessage"
+        }
+      },
+      "required" : [ "ConversationID", "AppConnectUUID", "ResponseDesc", "ResponseCode", "KafkaPubMessage" ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+
+
+Importing file: C:\Users\Haris Tanwir\Desktop\APIResultMgrService.wsdl
+
+The WSDL import will proceed with bindings APIResultMgrBinding.
+Creating wsdl schema document for file:///C:/Users/Haris Tanwir/Desktop/APIResultMgrService.wsdl.
+Parsing wsdl binding {http://cps.huawei.com/cpsinterface/api_resultmgr}APIResultMgrBinding.
+Parsing wsdl binding input APIResult.
+Parsing wsdl binding output APIResult.
+Processing doc style for operation APIResult.
+Populating WSDL schema APIResultMgrService.xsd.
+Creating file APIResultMgrService.xsd in the workspace.
+Creating file APIResultMgrService_InlineSchema1.xsd in the workspace.
+Creating file /SharedModels/CPSInterface_API_Result.xsd in the workspace.
+Creating file /SharedModels/CPSInterface_API_Common.xsd in the workspace.
+Copying source WSDL APIResultMgrService.wsdl to APIResultMgrService.wsdl.
+
+Elapsed time processing this message definition file: 0.578 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

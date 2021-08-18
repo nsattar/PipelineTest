@@ -1,0 +1,1772 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "CardWalaAPI",
+    "version" : "1.0.0",
+    "description" : "CardWalaAPI"
+  },
+  "paths" : {
+    "/getAgentProducts" : {
+      "post" : {
+        "operationId" : "postGetAgentProducts",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/getAgentProductsResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a getAgentProducts",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/getAgentProductsRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/agentLogin" : {
+      "post" : {
+        "operationId" : "postAgentLogin",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/agentLoginResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a agentLogin",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/agentLoginRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "required" : false,
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/makeProductPurchase" : {
+      "post" : {
+        "operationId" : "postMakeProductPurchase",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/makeProductPurchaseResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a makeProductPurchase",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/makeProductPurchaseRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    },
+    "/getTransactionInfo" : {
+      "post" : {
+        "operationId" : "postGetTransactionInfo",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/transactionInfoResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a getTransactionInfo",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/transactionInfoRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/cardwalaapi/v1",
+  "definitions" : {
+    "agentLoginRequest" : {
+      "type" : "object",
+      "properties" : {
+        "SoapAgentLoginRequest" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "authentication" : {
+                  "type" : "object",
+                  "properties" : {
+                    "terminalId" : {
+                      "type" : "string"
+                    },
+                    "userName" : {
+                      "type" : "string"
+                    },
+                    "password" : {
+                      "type" : "string"
+                    },
+                    "pin" : {
+                      "type" : "string"
+                    },
+                    "authKey" : {
+                      "type" : "string"
+                    },
+                    "msisdn" : {
+                      "type" : "string"
+                    },
+                    "iccid" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "terminalId", "userName", "password" ]
+                },
+                "version" : {
+                  "type" : "string"
+                },
+                "agentVersion" : {
+                  "type" : "string"
+                },
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "agentTerminalId" : {
+                  "type" : "string"
+                },
+                "agentTimeStamp" : {
+                  "type" : "string"
+                },
+                "languageCode" : {
+                  "type" : "string"
+                },
+                "channel" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "agentTransactionId", "agentTimeStamp" ]
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "agentLoginResponse" : {
+      "type" : "object",
+      "properties" : {
+        "SoapAgentLoginResponse" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "transactionId" : {
+                  "type" : "string"
+                },
+                "resultCode" : {
+                  "type" : "string"
+                },
+                "resultDescription" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "validationInfo" : {
+              "type" : "object",
+              "properties" : {
+                "group" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string"
+                      },
+                      "info" : {
+                        "type" : "string"
+                      },
+                      "violations" : {
+                        "type" : "object",
+                        "properties" : {
+                          "violation" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "notifyMessage" : {
+              "type" : "string"
+            },
+            "sessionToken" : {
+              "type" : "string"
+            },
+            "agent" : {
+              "type" : "object",
+              "properties" : {
+                "agentId" : {
+                  "type" : "string"
+                },
+                "agentCode" : {
+                  "type" : "string"
+                },
+                "agentDescription" : {
+                  "type" : "string"
+                },
+                "countryCode" : {
+                  "type" : "string"
+                },
+                "countryName" : {
+                  "type" : "string"
+                },
+                "masterDistributorId" : {
+                  "type" : "string"
+                },
+                "masterDistributorCode" : {
+                  "type" : "string"
+                },
+                "prepaid" : {
+                  "type" : "string"
+                },
+                "wallets" : {
+                  "type" : "object",
+                  "properties" : {
+                    "wallet" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "id" : {
+                            "type" : "string"
+                          },
+                          "type" : {
+                            "type" : "string"
+                          },
+                          "typeId" : {
+                            "type" : "string"
+                          },
+                          "balance" : {
+                            "type" : "string"
+                          },
+                          "currencyCode" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "bulletins" : {
+                  "type" : "object",
+                  "properties" : {
+                    "bulletin" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "id" : {
+                            "type" : "string"
+                          },
+                          "content" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parentCode" : {
+                  "type" : "string"
+                },
+                "parentDescription" : {
+                  "type" : "string"
+                },
+                "parentType" : {
+                  "type" : "string"
+                },
+                "agentType" : {
+                  "type" : "string"
+                },
+                "status" : {
+                  "type" : "string"
+                },
+                "creationDate" : {
+                  "type" : "string"
+                },
+                "updatedDate" : {
+                  "type" : "string"
+                },
+                "state" : {
+                  "type" : "string"
+                },
+                "stateName" : {
+                  "type" : "string"
+                },
+                "stateCode" : {
+                  "type" : "string"
+                },
+                "timezone" : {
+                  "type" : "string"
+                },
+                "tax" : {
+                  "type" : "string"
+                },
+                "billingInvoiceEmail" : {
+                  "type" : "string"
+                },
+                "businessNumber" : {
+                  "type" : "string"
+                },
+                "companyNumber" : {
+                  "type" : "string"
+                },
+                "agentCategoryId" : {
+                  "type" : "string"
+                },
+                "agentComments" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "user" : {
+              "type" : "object",
+              "properties" : {
+                "userId" : {
+                  "type" : "string"
+                },
+                "userName" : {
+                  "type" : "string"
+                },
+                "languageId" : {
+                  "type" : "string"
+                },
+                "languageCode" : {
+                  "type" : "string"
+                },
+                "acls" : {
+                  "type" : "object",
+                  "properties" : {
+                    "acl" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "identity" : {
+                            "type" : "string"
+                          },
+                          "typeCode" : {
+                            "type" : "string"
+                          },
+                          "description" : {
+                            "type" : "string"
+                          },
+                          "active" : {
+                            "type" : "string"
+                          },
+                          "permissions" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "transactionInfoRequest" : {
+      "type" : "object",
+      "properties" : {
+        "SoapTransactionInfoRequest" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "authentication" : {
+                  "type" : "object",
+                  "properties" : {
+                    "sessionToken" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "sessionToken" ]
+                },
+                "version" : {
+                  "type" : "string"
+                },
+                "agentVersion" : {
+                  "type" : "string"
+                },
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "agentTerminalId" : {
+                  "type" : "string"
+                },
+                "agentTimeStamp" : {
+                  "type" : "string"
+                },
+                "languageCode" : {
+                  "type" : "string"
+                },
+                "channel" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "agentTransactionId", "agentTimeStamp" ]
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "msisdn" : {
+              "type" : "string"
+            },
+            "dateFrom" : {
+              "type" : "string"
+            },
+            "dateTo" : {
+              "type" : "string"
+            },
+            "maxRecords" : {
+              "type" : "integer"
+            },
+            "transReference" : {
+              "type" : "string"
+            },
+            "agentTransReference" : {
+              "type" : "string"
+            },
+            "transTypesFilter" : {
+              "type" : "string"
+            },
+            "pageLastTransId" : {
+              "type" : "string"
+            },
+            "includeSubAgents" : {
+              "type" : "string"
+            },
+            "agentCode" : {
+              "type" : "string"
+            },
+            "voucherSerial" : {
+              "type" : "string"
+            },
+            "isRefunded" : {
+              "type" : "boolean"
+            },
+            "isReversed" : {
+              "type" : "boolean"
+            },
+            "useSystemTime" : {
+              "type" : "boolean"
+            }
+          }
+        }
+      }
+    },
+    "transactionInfoResponse" : {
+      "type" : "object",
+      "properties" : {
+        "SoapTransactionInfoResponse" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "transactionId" : {
+                  "type" : "string"
+                },
+                "resultCode" : {
+                  "type" : "string"
+                },
+                "resultDescription" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "validationInfo" : {
+              "type" : "object",
+              "properties" : {
+                "group" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string"
+                      },
+                      "info" : {
+                        "type" : "string"
+                      },
+                      "violations" : {
+                        "type" : "object",
+                        "properties" : {
+                          "violation" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "notifyMessage" : {
+              "type" : "string"
+            },
+            "totalTransCount" : {
+              "type" : "string"
+            },
+            "pageCount" : {
+              "type" : "string"
+            },
+            "pageTransId" : {
+              "type" : "string"
+            },
+            "systemMaxTransCount" : {
+              "type" : "string"
+            },
+            "transactions" : {
+              "type" : "object",
+              "properties" : {
+                "transaction" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "reference" : {
+                        "type" : "string"
+                      },
+                      "mnoReference" : {
+                        "type" : "string"
+                      },
+                      "resultCode" : {
+                        "type" : "string"
+                      },
+                      "resultDescription" : {
+                        "type" : "string"
+                      },
+                      "msisdn" : {
+                        "type" : "string"
+                      },
+                      "transTypeId" : {
+                        "type" : "string"
+                      },
+                      "transTypeCode" : {
+                        "type" : "string"
+                      },
+                      "productCode" : {
+                        "type" : "string"
+                      },
+                      "productDescription" : {
+                        "type" : "string"
+                      },
+                      "productTypeCode" : {
+                        "type" : "string"
+                      },
+                      "productSubTypeCode" : {
+                        "type" : "string"
+                      },
+                      "timestamp" : {
+                        "type" : "string"
+                      },
+                      "systemTimestamp" : {
+                        "type" : "string"
+                      },
+                      "countryCode" : {
+                        "type" : "string"
+                      },
+                      "countryName" : {
+                        "type" : "string"
+                      },
+                      "supplierName" : {
+                        "type" : "string"
+                      },
+                      "supplierCode" : {
+                        "type" : "string"
+                      },
+                      "topupValue" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      },
+                      "currencyCode" : {
+                        "type" : "string"
+                      },
+                      "buyValue" : {
+                        "type" : "string"
+                      },
+                      "sellValue" : {
+                        "type" : "string"
+                      },
+                      "buyCurrencyCode" : {
+                        "type" : "string"
+                      },
+                      "tax" : {
+                        "type" : "string"
+                      },
+                      "agentTransactionId" : {
+                        "type" : "string"
+                      },
+                      "topupValueEstimated" : {
+                        "type" : "string"
+                      },
+                      "reason" : {
+                        "type" : "string"
+                      },
+                      "description" : {
+                        "type" : "string"
+                      },
+                      "parentTransactionId" : {
+                        "type" : "string"
+                      },
+                      "agentId" : {
+                        "type" : "string"
+                      },
+                      "agentParentId" : {
+                        "type" : "string"
+                      },
+                      "agentMasterDistributorId" : {
+                        "type" : "string"
+                      },
+                      "user" : {
+                        "type" : "string"
+                      },
+                      "voucherSerial" : {
+                        "type" : "string"
+                      },
+                      "terminalCode" : {
+                        "type" : "string"
+                      },
+                      "margin" : {
+                        "type" : "string"
+                      },
+                      "marginTax" : {
+                        "type" : "string"
+                      },
+                      "adminFee" : {
+                        "type" : "string"
+                      },
+                      "adminFeeTax" : {
+                        "type" : "string"
+                      },
+                      "processFee" : {
+                        "type" : "string"
+                      },
+                      "processFeeTax" : {
+                        "type" : "string"
+                      },
+                      "adminRebate" : {
+                        "type" : "string"
+                      },
+                      "adminRebateTax" : {
+                        "type" : "string"
+                      },
+                      "isReversed" : {
+                        "type" : "string"
+                      },
+                      "isRefunded" : {
+                        "type" : "string"
+                      },
+                      "openingWalletBalance" : {
+                        "type" : "string"
+                      },
+                      "closingWalletBalance" : {
+                        "type" : "string"
+                      },
+                      "linkedTransactions" : {
+                        "type" : "string"
+                      },
+                      "loyaltyId" : {
+                        "type" : "string"
+                      },
+                      "transDatas" : {
+                        "type" : "object",
+                        "properties" : {
+                          "transData" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "properties" : {
+                                "key" : {
+                                  "type" : "string"
+                                },
+                                "value" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "inResultCode" : {
+                        "type" : "string"
+                      },
+                      "inResultDescription" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "getAgentProductsRequest" : {
+      "type" : "object",
+      "properties" : {
+        "SoapAgentProductsRequest" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "authentication" : {
+                  "type" : "object",
+                  "properties" : {
+                    "sessionToken" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "sessionToken" ]
+                },
+                "version" : {
+                  "type" : "string"
+                },
+                "agentVersion" : {
+                  "type" : "string"
+                },
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "agentTerminalId" : {
+                  "type" : "string"
+                },
+                "agentTimeStamp" : {
+                  "type" : "string"
+                },
+                "languageCode" : {
+                  "type" : "string"
+                },
+                "channel" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "agentTransactionId", "agentTimeStamp" ]
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "agentCode" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "getAgentProductsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "SoapAgentProductsResponse" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "transactionId" : {
+                  "type" : "string"
+                },
+                "resultCode" : {
+                  "type" : "string"
+                },
+                "resultDescription" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "validationInfo" : {
+              "type" : "object",
+              "properties" : {
+                "group" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string"
+                      },
+                      "info" : {
+                        "type" : "string"
+                      },
+                      "violations" : {
+                        "type" : "object",
+                        "properties" : {
+                          "violation" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "notifyMessage" : {
+              "type" : "string"
+            },
+            "products" : {
+              "type" : "object",
+              "properties" : {
+                "product" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "code" : {
+                        "type" : "string"
+                      },
+                      "ean" : {
+                        "type" : "string"
+                      },
+                      "description" : {
+                        "type" : "string"
+                      },
+                      "typeCode" : {
+                        "type" : "string"
+                      },
+                      "subTypeCode" : {
+                        "type" : "string"
+                      },
+                      "supplierName" : {
+                        "type" : "string"
+                      },
+                      "supplierCode" : {
+                        "type" : "string"
+                      },
+                      "countryName" : {
+                        "type" : "string"
+                      },
+                      "countryCode" : {
+                        "type" : "string"
+                      },
+                      "currencyCode" : {
+                        "type" : "string"
+                      },
+                      "denominations" : {
+                        "type" : "string"
+                      },
+                      "minValue" : {
+                        "type" : "string"
+                      },
+                      "maxValue" : {
+                        "type" : "string"
+                      },
+                      "increment" : {
+                        "type" : "string"
+                      },
+                      "sellMode" : {
+                        "type" : "string"
+                      },
+                      "commisionId" : {
+                        "type" : "string"
+                      },
+                      "buyValue" : {
+                        "type" : "string"
+                      },
+                      "buyMinValue" : {
+                        "type" : "string"
+                      },
+                      "buyMaxValue" : {
+                        "type" : "string"
+                      },
+                      "buyIncrement" : {
+                        "type" : "string"
+                      },
+                      "buyDenominations" : {
+                        "type" : "string"
+                      },
+                      "buyCurrencyCode" : {
+                        "type" : "string"
+                      },
+                      "sellValue" : {
+                        "type" : "string"
+                      },
+                      "sellMinValue" : {
+                        "type" : "string"
+                      },
+                      "sellMaxValue" : {
+                        "type" : "string"
+                      },
+                      "sellIncrement" : {
+                        "type" : "string"
+                      },
+                      "sellDenominations" : {
+                        "type" : "string"
+                      },
+                      "sellCurrencyCode" : {
+                        "type" : "string"
+                      },
+                      "serviceCode" : {
+                        "type" : "string"
+                      },
+                      "serviceName" : {
+                        "type" : "string"
+                      },
+                      "totalTax" : {
+                        "type" : "string"
+                      },
+                      "documents" : {
+                        "type" : "object",
+                        "properties" : {
+                          "document" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "properties" : {
+                                "docId" : {
+                                  "type" : "string"
+                                },
+                                "docCode" : {
+                                  "type" : "string"
+                                },
+                                "docDescription" : {
+                                  "type" : "string"
+                                },
+                                "docContent" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "extraProperties" : {
+                        "type" : "object",
+                        "properties" : {
+                          "item" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "properties" : {
+                                "key" : {
+                                  "type" : "string"
+                                },
+                                "value" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "value" : {
+                        "type" : "string"
+                      },
+                      "margins" : {
+                        "type" : "object",
+                        "properties" : {
+                          "margin" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "properties" : {
+                                "marginValue1" : {
+                                  "type" : "string"
+                                },
+                                "marginType1" : {
+                                  "type" : "string"
+                                },
+                                "marginValue2" : {
+                                  "type" : "string"
+                                },
+                                "marginType2" : {
+                                  "type" : "string"
+                                },
+                                "valueStart" : {
+                                  "type" : "string"
+                                },
+                                "valueEnd" : {
+                                  "type" : "string"
+                                },
+                                "adminFee" : {
+                                  "type" : "string"
+                                },
+                                "adminFeeType" : {
+                                  "type" : "string"
+                                },
+                                "processFee" : {
+                                  "type" : "string"
+                                },
+                                "processFeeType" : {
+                                  "type" : "string"
+                                },
+                                "rebate" : {
+                                  "type" : "string"
+                                },
+                                "rebateType" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "wholesaleBuyMinValue" : {
+                        "type" : "number"
+                      },
+                      "wholesaleBuyMaxValue" : {
+                        "type" : "number"
+                      },
+                      "wholesaleBuyIncrement" : {
+                        "type" : "number"
+                      },
+                      "wholesaleBuyDenominations" : {
+                        "type" : "string"
+                      },
+                      "wholesaleBuyCurrencyCode" : {
+                        "type" : "string"
+                      },
+                      "transTypeId" : {
+                        "type" : "string"
+                      },
+                      "transTypeCode" : {
+                        "type" : "string"
+                      },
+                      "transTypeDescription" : {
+                        "type" : "string"
+                      },
+                      "extensions" : {
+                        "type" : "object",
+                        "properties" : {
+                          "extension" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "properties" : {
+                                "tag" : {
+                                  "type" : "string"
+                                },
+                                "label" : {
+                                  "type" : "string"
+                                },
+                                "value" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "productEan" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "makeProductPurchaseRequest" : {
+      "type" : "object",
+      "properties" : {
+        "SoapProductPurchaseRequest" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "authentication" : {
+                  "type" : "object",
+                  "properties" : {
+                    "sessionToken" : {
+                      "type" : "string"
+                    }
+                  },
+                  "required" : [ "sessionToken" ]
+                },
+                "version" : {
+                  "type" : "string"
+                },
+                "agentVersion" : {
+                  "type" : "string"
+                },
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "agentTerminalId" : {
+                  "type" : "string"
+                },
+                "agentTimeStamp" : {
+                  "type" : "string"
+                },
+                "languageCode" : {
+                  "type" : "string"
+                },
+                "channel" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "agentTransactionId", "agentTimeStamp" ]
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "email" : {
+              "type" : "string"
+            },
+            "msisdn" : {
+              "type" : "string"
+            },
+            "productCode" : {
+              "type" : "string"
+            },
+            "productEan" : {
+              "type" : "string"
+            },
+            "value" : {
+              "type" : "number"
+            },
+            "quantity" : {
+              "type" : "integer"
+            },
+            "acceptPartial" : {
+              "type" : "boolean"
+            },
+            "comments" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "productCode", "value" ]
+        }
+      }
+    },
+    "makeProductPurchaseResponse" : {
+      "type" : "object",
+      "properties" : {
+        "SoapProductPurchaseResponse" : {
+          "type" : "object",
+          "properties" : {
+            "header" : {
+              "type" : "object",
+              "properties" : {
+                "agentTransactionId" : {
+                  "type" : "string"
+                },
+                "transactionId" : {
+                  "type" : "string"
+                },
+                "resultCode" : {
+                  "type" : "string"
+                },
+                "resultDescription" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "keyValues" : {
+              "type" : "object",
+              "properties" : {
+                "item" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "key" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "validationInfo" : {
+              "type" : "object",
+              "properties" : {
+                "group" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "name" : {
+                        "type" : "string"
+                      },
+                      "info" : {
+                        "type" : "string"
+                      },
+                      "violations" : {
+                        "type" : "object",
+                        "properties" : {
+                          "violation" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataHash" : {
+              "type" : "string"
+            },
+            "notifyMessage" : {
+              "type" : "string"
+            },
+            "products" : {
+              "type" : "object",
+              "properties" : {
+                "product" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "detail" : {
+                        "type" : "array",
+                        "items" : {
+                          "type" : "object",
+                          "properties" : {
+                            "key" : {
+                              "type" : "string"
+                            },
+                            "value" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "bulletins" : {
+              "type" : "object",
+              "properties" : {
+                "bulletin" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "content" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "wallets" : {
+              "type" : "object",
+              "properties" : {
+                "wallet" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "type" : {
+                        "type" : "string"
+                      },
+                      "typeId" : {
+                        "type" : "string"
+                      },
+                      "balance" : {
+                        "type" : "string"
+                      },
+                      "currencyCode" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "transactions" : {
+              "type" : "object",
+              "properties" : {
+                "transaction" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "id" : {
+                        "type" : "string"
+                      },
+                      "reference" : {
+                        "type" : "string"
+                      },
+                      "mnoReference" : {
+                        "type" : "string"
+                      },
+                      "resultCode" : {
+                        "type" : "string"
+                      },
+                      "resultDescription" : {
+                        "type" : "string"
+                      },
+                      "msisdn" : {
+                        "type" : "string"
+                      },
+                      "transTypeId" : {
+                        "type" : "string"
+                      },
+                      "transTypeCode" : {
+                        "type" : "string"
+                      },
+                      "productCode" : {
+                        "type" : "string"
+                      },
+                      "productDescription" : {
+                        "type" : "string"
+                      },
+                      "productTypeCode" : {
+                        "type" : "string"
+                      },
+                      "productSubTypeCode" : {
+                        "type" : "string"
+                      },
+                      "timestamp" : {
+                        "type" : "string"
+                      },
+                      "systemTimestamp" : {
+                        "type" : "string"
+                      },
+                      "countryCode" : {
+                        "type" : "string"
+                      },
+                      "countryName" : {
+                        "type" : "string"
+                      },
+                      "supplierName" : {
+                        "type" : "string"
+                      },
+                      "supplierCode" : {
+                        "type" : "string"
+                      },
+                      "topupValue" : {
+                        "type" : "string"
+                      },
+                      "value" : {
+                        "type" : "string"
+                      },
+                      "currencyCode" : {
+                        "type" : "string"
+                      },
+                      "buyValue" : {
+                        "type" : "string"
+                      },
+                      "sellValue" : {
+                        "type" : "string"
+                      },
+                      "buyCurrencyCode" : {
+                        "type" : "string"
+                      },
+                      "tax" : {
+                        "type" : "string"
+                      },
+                      "agentTransactionId" : {
+                        "type" : "string"
+                      },
+                      "topupValueEstimated" : {
+                        "type" : "string"
+                      },
+                      "reason" : {
+                        "type" : "string"
+                      },
+                      "description" : {
+                        "type" : "string"
+                      },
+                      "parentTransactionId" : {
+                        "type" : "string"
+                      },
+                      "agentId" : {
+                        "type" : "string"
+                      },
+                      "agentParentId" : {
+                        "type" : "string"
+                      },
+                      "agentMasterDistributorId" : {
+                        "type" : "string"
+                      },
+                      "user" : {
+                        "type" : "string"
+                      },
+                      "voucherSerial" : {
+                        "type" : "string"
+                      },
+                      "terminalCode" : {
+                        "type" : "string"
+                      },
+                      "margin" : {
+                        "type" : "string"
+                      },
+                      "marginTax" : {
+                        "type" : "string"
+                      },
+                      "adminFee" : {
+                        "type" : "string"
+                      },
+                      "adminFeeTax" : {
+                        "type" : "string"
+                      },
+                      "processFee" : {
+                        "type" : "string"
+                      },
+                      "processFeeTax" : {
+                        "type" : "string"
+                      },
+                      "adminRebate" : {
+                        "type" : "string"
+                      },
+                      "adminRebateTax" : {
+                        "type" : "string"
+                      },
+                      "isReversed" : {
+                        "type" : "string"
+                      },
+                      "isRefunded" : {
+                        "type" : "string"
+                      },
+                      "openingWalletBalance" : {
+                        "type" : "string"
+                      },
+                      "closingWalletBalance" : {
+                        "type" : "string"
+                      },
+                      "linkedTransactions" : {
+                        "type" : "string"
+                      },
+                      "loyaltyId" : {
+                        "type" : "string"
+                      },
+                      "transDatas" : {
+                        "type" : "object",
+                        "properties" : {
+                          "transData" : {
+                            "type" : "array",
+                            "items" : {
+                              "type" : "object",
+                              "properties" : {
+                                "key" : {
+                                  "type" : "string"
+                                },
+                                "value" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "inResultCode" : {
+                        "type" : "string"
+                      },
+                      "inResultDescription" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "errorPayload" : {
+      "type" : "object",
+      "properties" : {
+        "ErrorMessage" : {
+          "type" : "string"
+        },
+        "SoapUrl" : {
+          "type" : "string"
+        },
+        "OriginalMessage" : {
+          "type" : "object"
+        },
+        "Exception" : {
+          "type" : "object"
+        }
+      }
+    }
+  }
+}

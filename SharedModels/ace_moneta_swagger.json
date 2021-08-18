@@ -1,0 +1,114 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "ExpressTransactionService",
+    "version" : "1.0.0",
+    "description" : "ExpressTransactionService"
+  },
+  "paths" : {
+    "/expressTransaction" : {
+      "post" : {
+        "operationId" : "postExpressTransaction",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/expressTransactionResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "$ref" : "#/definitions/errorPayload"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a expressTransaction",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/expressTransaction"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        }, {
+          "name" : "uuid",
+          "in" : "header",
+          "type" : "string",
+          "description" : "Unique Transaction ID"
+        } ]
+      }
+    }
+  },
+  "basePath" : "/monetaAPIIntegrationService/v1",
+  "definitions" : {
+    "expressTransaction" : {
+      "type" : "object",
+      "properties" : {
+        "exchangeCompanyId" : {
+          "type" : "string"
+        },
+        "passwordHash" : {
+          "type" : "string"
+        },
+        "batchId" : {
+          "type" : "string"
+        },
+        "txnType" : {
+          "type" : "string"
+        },
+        "recordUniqueId" : {
+          "type" : "string"
+        },
+        "txnRecord" : {
+          "type" : "string"
+        },
+        "recordChecksum" : {
+          "type" : "string"
+        },
+        "txnMode" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "exchangeCompanyId", "passwordHash", "txnType", "recordUniqueId", "txnRecord", "txnMode" ]
+    },
+    "expressTransactionResponse" : {
+      "type" : "object",
+      "properties" : {
+        "expressTransactionResult" : {
+          "type" : "boolean"
+        },
+        "failureReason" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "expressTransactionResult" ]
+    },
+    "errorPayload" : {
+      "type" : "object",
+      "properties" : {
+        "ErrorMessage" : {
+          "type" : "string"
+        },
+        "SoapUrl" : {
+          "type" : "string"
+        },
+        "OriginalMessage" : {
+          "type" : "object"
+        },
+        "Exception" : {
+          "type" : "object"
+        }
+      }
+    }
+  }
+}

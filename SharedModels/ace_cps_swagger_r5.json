@@ -1,0 +1,3036 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "RequestMgrR5Service",
+    "version" : "1.0.0",
+    "description" : "RequestMgrR5Service"
+  },
+  "paths" : {
+    "/sync" : {
+      "post" : {
+        "operationId" : "postSync",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/SyncResult"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a sync",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/rest/requestmgrr5service/v1",
+  "definitions" : {
+    "Request" : {
+      "type" : "object",
+      "properties" : {
+        "Identity" : {
+          "type" : "object",
+          "properties" : {
+            "Caller" : {
+              "type" : "object",
+              "properties" : {
+                "CallerType" : {
+                  "type" : "integer"
+                },
+                "ThirdPartyID" : {
+                  "type" : "string"
+                },
+                "Password" : {
+                  "type" : "string"
+                },
+                "CheckSum" : {
+                  "type" : "string"
+                },
+                "ResultURL" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "CallerType", "ThirdPartyID", "Password" ]
+            },
+            "Initiator" : {
+              "type" : "object",
+              "properties" : {
+                "IdentifierType" : {
+                  "type" : "integer"
+                },
+                "Identifier" : {
+                  "type" : "string"
+                },
+                "SecurityCredential" : {
+                  "type" : "string"
+                },
+                "ShortCode" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "IdentifierType", "Identifier" ]
+            },
+            "PrimaryParty" : {
+              "type" : "object",
+              "properties" : {
+                "IdentifierType" : {
+                  "type" : "integer"
+                },
+                "Identifier" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "IdentifierType", "Identifier" ]
+            },
+            "ReceiverParty" : {
+              "type" : "object",
+              "properties" : {
+                "IdentifierType" : {
+                  "type" : "integer"
+                },
+                "Identifier" : {
+                  "type" : "string"
+                },
+                "ShortCode" : {
+                  "type" : "string"
+                },
+                "TillNumber" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "IdentifierType", "Identifier" ]
+            },
+            "AccessDevice" : {
+              "type" : "string"
+            },
+            "UseCase" : {
+              "type" : "string"
+            },
+            "Channel" : {
+              "type" : "string"
+            },
+            "ThirdPartyType" : {
+              "type" : "string"
+            },
+            "ChannelCode" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "Caller", "Initiator", "UseCase", "Channel", "ThirdPartyType" ]
+        },
+        "Transaction" : {
+          "type" : "object",
+          "properties" : {
+            "CommandID" : {
+              "type" : "string"
+            },
+            "OriginatorConversationID" : {
+              "type" : "string"
+            },
+            "ConversationID" : {
+              "type" : "string"
+            },
+            "Remark" : {
+              "type" : "string"
+            },
+            "Parameters" : {
+              "type" : "object",
+              "properties" : {
+                "Parameter" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "Key", "Value" ]
+                  }
+                }
+              },
+              "required" : [ "Parameter" ]
+            },
+            "ReferenceData" : {
+              "type" : "object",
+              "properties" : {
+                "ReferenceItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "Value", "Key" ]
+                  }
+                }
+              },
+              "required" : [ "ReferenceItem" ]
+            },
+            "Timestamp" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "Timestamp", "CommandID", "OriginatorConversationID", "Parameters" ]
+        },
+        "KeyOwner" : {
+          "type" : "integer"
+        },
+        "QueryCustomerKYCRequest" : {
+          "type" : "string"
+        },
+        "QueryCustomerInfoRequest" : {
+          "type" : "string"
+        },
+        "QueryCustomerAccountStatementsRequest" : {
+          "type" : "object",
+          "properties" : {
+            "AccountType" : {
+              "type" : "string"
+            },
+            "StartDateTime" : {
+              "type" : "string"
+            },
+            "EndDateTime" : {
+              "type" : "string"
+            },
+            "Currency" : {
+              "type" : "string"
+            },
+            "StartNumber" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "EndDateTime", "StartDateTime", "AccountType" ]
+        },
+        "QueryCustomerTransactionsRequest" : {
+          "type" : "object",
+          "properties" : {
+            "AccountType" : {
+              "type" : "string"
+            },
+            "StartDateTime" : {
+              "type" : "string"
+            },
+            "EndDateTime" : {
+              "type" : "string"
+            },
+            "TransactionStatus" : {
+              "type" : "string"
+            },
+            "Currency" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "AccountType", "StartDateTime", "EndDateTime" ]
+        },
+        "QueryCustomerStatementRequest" : {
+          "type" : "object",
+          "properties" : {
+            "AccountType" : {
+              "type" : "string"
+            },
+            "AccountInstanceName" : {
+              "type" : "string"
+            },
+            "StartDateTime" : {
+              "type" : "string"
+            },
+            "EndDateTime" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "EndDateTime", "StartDateTime", "AccountInstanceName", "AccountType" ]
+        },
+        "QueryCustomerQuestionRequest" : {
+          "type" : "string"
+        },
+        "QueryCustomerBankCardListRequest" : {
+          "type" : "object",
+          "properties" : {
+            "BankShortCode" : {
+              "type" : "string"
+            }
+          }
+        },
+        "ResetOrgOperatorPINRequest" : {
+          "type" : "object",
+          "properties" : {
+            "FreePIN" : {
+              "type" : "string"
+            }
+          }
+        },
+        "CustomObject" : {
+          "type" : "object"
+        },
+        "QueryOrgOperatorKYCRequest" : {
+          "type" : "object"
+        },
+        "ExtendedRequest" : {
+          "type" : "object",
+          "properties" : {
+            "QueryIdentityInformationRequest" : {
+              "type" : "object",
+              "properties" : {
+                "MSISDN" : {
+                  "type" : "string"
+                },
+                "CNIC" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        },
+        "QueryOrganizationInfoRequest" : {
+          "type" : "object"
+        },
+        "QueryOrgOperatorInfoRequest" : {
+          "type" : "object"
+        },
+        "QueryIdentityLimitRemainingRequest" : {
+          "type" : "object",
+          "properties" : {
+            "QueryTime" : {
+              "type" : "string"
+            },
+            "RuleId" : {
+              "type" : "string"
+            },
+            "ThresholdType" : {
+              "type" : "string"
+            }
+          }
+        },
+        "QueryIdentityAccumulatorsRequest" : {
+          "type" : "object",
+          "properties" : {
+            "AccumulatorName" : {
+              "type" : "string"
+            },
+            "StartDate" : {
+              "type" : "string"
+            },
+            "EndDate" : {
+              "type" : "string"
+            }
+          }
+        },
+        "SearchTransactionRequest" : {
+          "type" : "object",
+          "properties" : {
+            "ReceiptNumber" : {
+              "type" : "string"
+            }
+          }
+        },
+        "TransactionRequest" : {
+          "type" : "object",
+          "properties" : {
+            "Parameters" : {
+              "type" : "object",
+              "properties" : {
+                "Parameter" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "Amount" : {
+                  "type" : "string"
+                },
+                "Currency" : {
+                  "type" : "string"
+                },
+                "ReasonType" : {
+                  "type" : "string"
+                },
+                "VoucherType" : {
+                  "type" : "string"
+                },
+                "LinkedAccountItem" : {
+                  "type" : "object",
+                  "properties" : {
+                    "Bankshortcode" : {
+                      "type" : "string"
+                    },
+                    "BankBranch" : {
+                      "type" : "string"
+                    },
+                    "BankAccount" : {
+                      "type" : "string"
+                    }
+                  }
+                },
+                "ThirdPointRedeemedBalance" : {
+                  "type" : "string"
+                },
+                "TransPointAmount" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        },
+        "QueryTransactionStatusRequest" : {
+          "type" : "object",
+          "properties" : {
+            "ReceiptNumber" : {
+              "type" : "string"
+            },
+            "OriginalConversationID" : {
+              "type" : "string"
+            },
+            "ConversationID" : {
+              "type" : "string"
+            }
+          }
+        },
+        "ReverseTransactionRequest" : {
+          "type" : "object",
+          "properties" : {
+            "OriginalReceiptNumber" : {
+              "type" : "string"
+            },
+            "Amount" : {
+              "type" : "string"
+            }
+          }
+        },
+        "GetLinkedCardsRequest" : {
+          "type" : "object",
+          "properties" : {
+            "CardNature" : {
+              "type" : "string"
+            },
+            "CardCategory" : {
+              "type" : "string"
+            },
+            "CardScheme" : {
+              "type" : "string"
+            }
+          }
+        },
+        "LinkCardAPIV2WithoutMPINRequest" : {
+          "type" : "object",
+          "properties" : {
+            "CardPackID" : {
+              "type" : "string"
+            },
+            "CardNature" : {
+              "type" : "string"
+            },
+            "CardCategory" : {
+              "type" : "string"
+            },
+            "CardScheme" : {
+              "type" : "string"
+            },
+            "CardNumber" : {
+              "type" : "string"
+            },
+            "Integration_Flag" : {
+              "type" : "string"
+            },
+            "NotificationMSISDN" : {
+              "type" : "string"
+            },
+            "ProgramID" : {
+              "type" : "string"
+            }
+          }
+        },
+        "CreateChildOrgRequest" : {
+          "type" : "object",
+          "properties" : {
+            "ShortCode" : {
+              "type" : [ "string", "null" ]
+            },
+            "ParentShortCode" : {
+              "type" : "string"
+            },
+            "OrganizationName" : {
+              "type" : [ "string", "null" ]
+            },
+            "ChargeProfileID" : {
+              "type" : "string"
+            },
+            "RuleProfileID" : {
+              "type" : "integer",
+              "format" : "string"
+            },
+            "ChargeDistributionModel" : {
+              "type" : "string"
+            },
+            "TrustLevel" : {
+              "type" : "integer",
+              "format" : "string"
+            },
+            "SimpleKYCUpdateData" : {
+              "type" : "object",
+              "properties" : {
+                "AddField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateProductsData" : {
+              "type" : "object",
+              "properties" : {
+                "AddProduct" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ProductID" : {
+                        "type" : "integer",
+                        "format" : "string"
+                      },
+                      "EffectiveDate" : {
+                        "type" : "integer",
+                        "format" : "string"
+                      },
+                      "ExpiryDate" : {
+                        "type" : "integer",
+                        "format" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateIDDetails" : {
+              "type" : "object",
+              "properties" : {
+                "AddIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IDTypeValue" : {
+                        "type" : "integer",
+                        "format" : "string"
+                      },
+                      "IDNumber" : {
+                        "type" : "integer",
+                        "format" : "int64"
+                      },
+                      "IDExpiryDate" : {
+                        "type" : "integer",
+                        "format" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateAccountRuleProfileData" : {
+              "type" : "object",
+              "properties" : {
+                "ModifyAccount" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "AccountNo" : {
+                        "type" : "string"
+                      },
+                      "AccountRuleProfileID" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CreateTopOrgRequest" : {
+          "type" : "object",
+          "properties" : {
+            "ShortCode" : {
+              "type" : [ "string", "null" ]
+            },
+            "OrganizationName" : {
+              "type" : [ "string", "null" ]
+            },
+            "ChargeProfileID" : {
+              "type" : "string"
+            },
+            "RuleProfileID" : {
+              "type" : "string"
+            },
+            "TrustLevel" : {
+              "type" : "string"
+            },
+            "SimpleKYCUpdateData" : {
+              "type" : "object",
+              "properties" : {
+                "AddField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string",
+                        "format" : ""
+                      }
+                    }
+                  }
+                },
+                "RemoveField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateProductsData" : {
+              "type" : "object",
+              "properties" : {
+                "AddProduct" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ProductID" : {
+                        "type" : "string"
+                      },
+                      "EffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "ExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "ChargeProfileID" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyProduct" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ProductID" : {
+                        "type" : "string"
+                      },
+                      "EffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "ExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "ChargeProfileID" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateIDDetails" : {
+              "type" : "object",
+              "properties" : {
+                "AddIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "IDNumber" : {
+                        "type" : "string"
+                      },
+                      "IDEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "IDExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "DocumentReceived" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      },
+                      "IssuedBy" : {
+                        "type" : "string"
+                      },
+                      "IDLocation" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Conditions" : {
+                        "type" : "object",
+                        "properties" : {
+                          "IDTypeValue" : {
+                            "type" : "string"
+                          },
+                          "IDNumber" : {
+                            "type" : "string"
+                          },
+                          "IDEffectiveDate" : {
+                            "type" : "string"
+                          },
+                          "IDExpiryDate" : {
+                            "type" : "string"
+                          },
+                          "DocumentReceived" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          },
+                          "IssuedBy" : {
+                            "type" : "string"
+                          },
+                          "IDLocation" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "Record" : {
+                        "type" : "object",
+                        "properties" : {
+                          "IDTypeValue" : {
+                            "type" : "string"
+                          },
+                          "IDNumber" : {
+                            "type" : "string"
+                          },
+                          "IDEffectiveDate" : {
+                            "type" : "string"
+                          },
+                          "IDExpiryDate" : {
+                            "type" : "string"
+                          },
+                          "DocumentReceived" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          },
+                          "IssuedBy" : {
+                            "type" : "string"
+                          },
+                          "IDLocation" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "RemoveIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "IDNumber" : {
+                        "type" : "string"
+                      },
+                      "IDEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "IDExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "DocumentReceived" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      },
+                      "IssuedBy" : {
+                        "type" : "string"
+                      },
+                      "IDLocation" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "RemoveIDRecord" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "IDTypeValue" : {
+                      "type" : "string"
+                    },
+                    "IDNumber" : {
+                      "type" : "string"
+                    },
+                    "IDEffectiveDate" : {
+                      "type" : "string"
+                    },
+                    "IDExpiryDate" : {
+                      "type" : "string"
+                    },
+                    "DocumentReceived" : {
+                      "type" : "string"
+                    },
+                    "Status" : {
+                      "type" : "string"
+                    },
+                    "IssuedBy" : {
+                      "type" : "string"
+                    },
+                    "IDLocation" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateAccountRuleProfileData" : {
+              "type" : "object",
+              "properties" : {
+                "ModifyAccount" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "AccountNo" : {
+                        "type" : "string"
+                      },
+                      "AccountRuleProfileID" : {
+                        "type" : "string"
+                      },
+                      "AccountType" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "CentralOwnedAcctModel" : {
+              "type" : "string"
+            },
+            "AggregatorAcctModel" : {
+              "type" : "string"
+            },
+            "UpdateOrganizationContactDetails" : {
+              "type" : "object",
+              "properties" : {
+                "AddContactRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ContactTypeValue" : {
+                        "type" : "string"
+                      },
+                      "ContactFirstName" : {
+                        "type" : "string"
+                      },
+                      "ContactSecondName" : {
+                        "type" : "string"
+                      },
+                      "ContactSurname" : {
+                        "type" : "string"
+                      },
+                      "ContactPhoneNumber" : {
+                        "type" : "string"
+                      },
+                      "ContactIDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "ContactIDNumber" : {
+                        "type" : "string"
+                      },
+                      "ContactEmail" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyContactRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Condition" : {
+                        "type" : "object",
+                        "properties" : {
+                          "ContactTypeValue" : {
+                            "type" : "string"
+                          },
+                          "ContactFirstName" : {
+                            "type" : "string"
+                          },
+                          "ContactSecondName" : {
+                            "type" : "string"
+                          },
+                          "ContactSurname" : {
+                            "type" : "string"
+                          },
+                          "ContactPhoneNumber" : {
+                            "type" : "string"
+                          },
+                          "ContactIDTypeValue" : {
+                            "type" : "string"
+                          },
+                          "ContactIDNumber" : {
+                            "type" : "string"
+                          },
+                          "ContactEmail" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "Record" : {
+                        "type" : "object",
+                        "properties" : {
+                          "ContactTypeValue" : {
+                            "type" : "string"
+                          },
+                          "ContactFirstName" : {
+                            "type" : "string"
+                          },
+                          "ContactSecondName" : {
+                            "type" : "string"
+                          },
+                          "ContactSurname" : {
+                            "type" : "string"
+                          },
+                          "ContactPhoneNumber" : {
+                            "type" : "string"
+                          },
+                          "ContactIDTypeValue" : {
+                            "type" : "string"
+                          },
+                          "ContactIDNumber" : {
+                            "type" : "string"
+                          },
+                          "ContactEmail" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "RemoveContactRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ContactTypeValue" : {
+                        "type" : "string"
+                      },
+                      "ContactFirstName" : {
+                        "type" : "string"
+                      },
+                      "ContactSecondName" : {
+                        "type" : "string"
+                      },
+                      "ContactSurname" : {
+                        "type" : "string"
+                      },
+                      "ContactPhoneNumber" : {
+                        "type" : "string"
+                      },
+                      "ContactIDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "ContactIDNumber" : {
+                        "type" : "string"
+                      },
+                      "ContactEmail" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "TaxExemptionData" : {
+              "type" : "object",
+              "properties" : {
+                "TaxCodeItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "TaxCode" : {
+                        "type" : "string"
+                      },
+                      "EffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "ExpirationDate" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "BankAccountDetailsUpdateData" : {
+              "type" : "object",
+              "properties" : {
+                "AddAccountRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "BankShortCode" : {
+                        "type" : "string"
+                      },
+                      "BankAccountName" : {
+                        "type" : "string"
+                      },
+                      "BankAccountNumber" : {
+                        "type" : "string"
+                      },
+                      "Currency" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyAccountRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Condition" : {
+                        "type" : "object",
+                        "properties" : {
+                          "BankShortCode" : {
+                            "type" : "string"
+                          },
+                          "BankAccountName" : {
+                            "type" : "string"
+                          },
+                          "BankAccountNumber" : {
+                            "type" : "string"
+                          },
+                          "Currency" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "Record" : {
+                        "type" : "object",
+                        "properties" : {
+                          "currency" : {
+                            "type" : "string"
+                          },
+                          "BankAccountNumber" : {
+                            "type" : "string"
+                          },
+                          "BankAccountName" : {
+                            "type" : "string"
+                          },
+                          "BankShortCode" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "RemoveAccountRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "BankShortCode" : {
+                        "type" : "string"
+                      },
+                      "BankAccountName" : {
+                        "type" : "string"
+                      },
+                      "BankAccountNumber" : {
+                        "type" : "string"
+                      },
+                      "Currency" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required" : [ ]
+        },
+        "CreateOrgOperatorRequest" : {
+          "type" : "object",
+          "properties" : {
+            "ShortCode" : {
+              "type" : "string"
+            },
+            "LanguageCode" : {
+              "type" : "string"
+            },
+            "RuleProfileID" : {
+              "type" : "string"
+            },
+            "RoleUpdateData" : {
+              "type" : "object",
+              "properties" : {
+                "RoleItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "RoleID" : {
+                        "type" : "string"
+                      },
+                      "EffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "ExpiryDate" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "AuthenticationTypeData" : {
+              "type" : "object",
+              "properties" : {
+                "AuthenticationItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "AuthenticationType" : {
+                        "type" : "string"
+                      },
+                      "UserName" : {
+                        "type" : "string"
+                      },
+                      "OperatorID" : {
+                        "type" : "string"
+                      },
+                      "MSISDN" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "SimpleKYCUpdateData" : {
+              "type" : "object",
+              "properties" : {
+                "AddField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "RemoveField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateIDDetails" : {
+              "type" : "object",
+              "properties" : {
+                "ModifyIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ConditionModify" : {
+                        "type" : "object",
+                        "properties" : {
+                          "IDTypeValue" : {
+                            "type" : "string"
+                          },
+                          "IDNumber" : {
+                            "type" : "string"
+                          },
+                          "IDEffectiveDate" : {
+                            "type" : "string"
+                          },
+                          "IDExpiryDate" : {
+                            "type" : "string"
+                          },
+                          "DocumentReceived" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          },
+                          "IssuedBy" : {
+                            "type" : "string"
+                          },
+                          "IDLocation" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "RecordModify" : {
+                        "type" : "object",
+                        "properties" : {
+                          "IDTypeValue" : {
+                            "type" : "string"
+                          },
+                          "IDNumber" : {
+                            "type" : "string"
+                          },
+                          "IDEffectiveDate" : {
+                            "type" : "string"
+                          },
+                          "IDExpiryDate" : {
+                            "type" : "string"
+                          },
+                          "DocumentReceived" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          },
+                          "IssuedBy" : {
+                            "type" : "string"
+                          },
+                          "IDLocation" : {
+                            "type" : "string"
+                          }
+                        },
+                        "required" : [ "IDEffectiveDate" ]
+                      }
+                    }
+                  }
+                },
+                "RemoveIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "IDNumber" : {
+                        "type" : "string"
+                      },
+                      "IDEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "IDExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "DocumentReceived" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      },
+                      "IssuedBy" : {
+                        "type" : "string"
+                      },
+                      "IDLocation" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "AddIDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "IDNumber" : {
+                        "type" : "string"
+                      },
+                      "IDEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "IDExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "DocumentReceived" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      },
+                      "IssuedBy" : {
+                        "type" : "string"
+                      },
+                      "IDLocation" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "UpdateCerfificateDetails" : {
+              "type" : "object",
+              "properties" : {
+                "AddCertificateRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "CertificateTypeValue" : {
+                        "type" : "string"
+                      },
+                      "CertificateNumber" : {
+                        "type" : "string"
+                      },
+                      "CertificateEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "CertificateExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "ModifyCertificateRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ConditionModification" : {
+                        "type" : "object",
+                        "properties" : {
+                          "CertificateTypeValue" : {
+                            "type" : "string"
+                          },
+                          "CertificateNumber" : {
+                            "type" : "string"
+                          },
+                          "CertificateEffectiveDate" : {
+                            "type" : "string"
+                          },
+                          "CertificateExpiryDate" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "RecordModification" : {
+                        "type" : "object",
+                        "properties" : {
+                          "CertificateTypeValue" : {
+                            "type" : "string"
+                          },
+                          "CertificateNumber" : {
+                            "type" : "string"
+                          },
+                          "CertificateEffectiveDate" : {
+                            "type" : "string"
+                          },
+                          "CertificateExpiryDate" : {
+                            "type" : "string"
+                          },
+                          "Status" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "RemoveCertificateRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "CertificateTypeValue" : {
+                        "type" : "string"
+                      },
+                      "CertificateNumber" : {
+                        "type" : "string"
+                      },
+                      "CertificateEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "CertificateExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "DelinkCardRequest" : {
+          "type" : "object",
+          "properties" : {
+            "CardPackID" : {
+              "type" : "string"
+            },
+            "Integration_Flag" : {
+              "type" : "string"
+            }
+          }
+        },
+        "CreateCustomerBundleRequest" : {
+          "type" : "object",
+          "properties" : {
+            "BundleID" : {
+              "type" : "string"
+            },
+            "EffectiveDate" : {
+              "type" : "string"
+            },
+            "AssignType" : {
+              "type" : "string"
+            }
+          }
+        },
+        "QueryIdentityBundleRequest" : {
+          "type" : "object",
+          "properties" : {
+            "BundleID" : {
+              "type" : "string"
+            },
+            "BundleName" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "required" : [ "Identity", "Transaction", "KeyOwner" ]
+    },
+    "Response" : {
+      "type" : "object",
+      "properties" : {
+        "ResponseCode" : {
+          "type" : "string"
+        },
+        "ResponseDesc" : {
+          "type" : "string"
+        },
+        "ConversationID" : {
+          "type" : "string"
+        },
+        "OriginatorConversationID" : {
+          "type" : "string"
+        },
+        "ServiceStatus" : {
+          "type" : "integer"
+        }
+      },
+      "required" : [ "ResponseCode", "ConversationID", "ServiceStatus" ]
+    },
+    "Result" : {
+      "type" : "object",
+      "properties" : {
+        "ResultType" : {
+          "type" : [ "integer", "null" ]
+        },
+        "ResultCode" : {
+          "type" : "string"
+        },
+        "ResultDesc" : {
+          "type" : "string"
+        },
+        "OriginatorConversationID" : {
+          "type" : "string"
+        },
+        "ConversationID" : {
+          "type" : "string"
+        },
+        "TransactionID" : {
+          "type" : "string"
+        },
+        "ResultParameters" : {
+          "type" : "object",
+          "properties" : {
+            "ResultParameter" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "Key" : {
+                    "type" : "string"
+                  },
+                  "Value" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "Value", "Key" ]
+              }
+            }
+          },
+          "required" : [ "ResultParameter" ]
+        },
+        "ReferenceData" : {
+          "type" : "object",
+          "properties" : {
+            "ReferenceItem" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "Key" : {
+                    "type" : "string"
+                  },
+                  "Value" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "Key", "Value" ]
+              }
+            }
+          },
+          "required" : [ "ReferenceItem" ]
+        },
+        "QueryCustomerKYCResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "SimpleKYCData" : {
+              "type" : "object",
+              "properties" : {
+                "KYCField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "KYCName", "KYCValue" ]
+                  }
+                }
+              },
+              "required" : [ "KYCField" ]
+            },
+            "IDDetailsData" : {
+              "type" : "object",
+              "properties" : {
+                "IDRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "IDNumber" : {
+                        "type" : "string"
+                      },
+                      "IDEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "IDExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "DocumentReceived" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      },
+                      "IssuedBy" : {
+                        "type" : "string"
+                      },
+                      "IDLocation" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "IDTypeValue", "IDNumber" ]
+                  }
+                }
+              }
+            },
+            "ContactDetailsData" : {
+              "type" : "object",
+              "properties" : {
+                "ContactRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ContactTypeValue" : {
+                        "type" : "string"
+                      },
+                      "ContactFirstName" : {
+                        "type" : "string"
+                      },
+                      "ContactSecondName" : {
+                        "type" : "string"
+                      },
+                      "ContactSurname" : {
+                        "type" : "string"
+                      },
+                      "ContactPhoneNumber" : {
+                        "type" : "string"
+                      },
+                      "ContactIDTypeValue" : {
+                        "type" : "string"
+                      },
+                      "ContactIDNumber" : {
+                        "type" : "string"
+                      },
+                      "ContactEmail" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "ContactTypeValue" ]
+                  }
+                }
+              }
+            },
+            "CertificateDetailsData" : {
+              "type" : "object",
+              "properties" : {
+                "CertificateRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "CertificateTypeValue" : {
+                        "type" : "string"
+                      },
+                      "CertificateNumber" : {
+                        "type" : "string"
+                      },
+                      "CertificateEffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "CertificateExpiryDate" : {
+                        "type" : "string"
+                      },
+                      "Status" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "CertificateTypeValue", "CertificateNumber" ]
+                  }
+                }
+              }
+            },
+            "BankAccountDetailsData" : {
+              "type" : "object",
+              "properties" : {
+                "AccountRecord" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "BankShortCode" : {
+                        "type" : "string"
+                      },
+                      "BankAccountName" : {
+                        "type" : "string"
+                      },
+                      "BankAccountNumber" : {
+                        "type" : "string"
+                      },
+                      "Currency" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "Currency" ]
+                  }
+                }
+              }
+            }
+          },
+          "required" : [ "BOCompletedTime" ]
+        },
+        "QueryCustomerInfoResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "CustomerBasicData" : {
+              "type" : "object",
+              "properties" : {
+                "CustomerType" : {
+                  "type" : "string"
+                },
+                "IdentityStatus" : {
+                  "type" : "string"
+                },
+                "RegistrationDate" : {
+                  "type" : "string"
+                },
+                "RegisteredBy" : {
+                  "type" : "string"
+                },
+                "PrimaryMSISDN" : {
+                  "type" : "string"
+                },
+                "LanguageCode" : {
+                  "type" : "string"
+                },
+                "TrustLevel" : {
+                  "type" : "string"
+                },
+                "TrustLevelName" : {
+                  "type" : "string"
+                },
+                "RuleProfileID" : {
+                  "type" : "string"
+                },
+                "RuleProfileName" : {
+                  "type" : "string"
+                },
+                "ChargeProfileID" : {
+                  "type" : "string"
+                },
+                "ChargeProfileName" : {
+                  "type" : "string"
+                },
+                "LastActiveDateTime" : {
+                  "type" : "string"
+                }
+              },
+              "required" : [ "CustomerType", "IdentityStatus", "RegistrationDate", "RegisteredBy", "PrimaryMSISDN", "LanguageCode", "TrustLevel", "TrustLevelName", "RuleProfileID", "RuleProfileName", "ChargeProfileID", "ChargeProfileName", "LastActiveDateTime" ]
+            },
+            "SegmentData" : {
+              "type" : "object",
+              "properties" : {
+                "SegmentItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "SegmentType" : {
+                        "type" : "string"
+                      },
+                      "SegmentName" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "SegmentType", "SegmentName" ]
+                  }
+                }
+              }
+            },
+            "CredentialData" : {
+              "type" : "object",
+              "properties" : {
+                "CredentialItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "CredentialType" : {
+                        "type" : "string"
+                      },
+                      "CredentialStatus" : {
+                        "type" : "string"
+                      },
+                      "ExpirationTime" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "CredentialType", "CredentialStatus" ]
+                  }
+                }
+              },
+              "required" : [ "CredentialItem" ]
+            },
+            "SIMDeviceData" : {
+              "type" : "object",
+              "properties" : {
+                "SIMDeviceItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "MSISDN" : {
+                        "type" : "string"
+                      },
+                      "ICCID" : {
+                        "type" : "string"
+                      },
+                      "SIMSize" : {
+                        "type" : "string"
+                      },
+                      "DeviceStatus" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "MSISDN", "DeviceStatus" ]
+                  }
+                }
+              }
+            },
+            "C2OLinkData" : {
+              "type" : "object",
+              "properties" : {
+                "C2OLinkItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "OrgShortCode" : {
+                        "type" : "string"
+                      },
+                      "OrganizationName" : {
+                        "type" : "string"
+                      },
+                      "C2OLinkNumber" : {
+                        "type" : "string"
+                      },
+                      "MSISDN" : {
+                        "type" : "string"
+                      },
+                      "CreationTime" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "CreationTime", "MSISDN", "C2OLinkNumber", "OrganizationName", "OrgShortCode" ]
+                  }
+                }
+              }
+            }
+          },
+          "required" : [ "BOCompletedTime", "CustomerBasicData", "SIMDeviceData" ]
+        },
+        "QueryCustomerAccountStatementsResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "AccountStatementListData" : {
+              "type" : "object",
+              "properties" : {
+                "AccountStatementItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ReceiptNumber" : {
+                        "type" : "string"
+                      },
+                      "IdentityPublicName" : {
+                        "type" : "string"
+                      },
+                      "FundsType" : {
+                        "type" : "string"
+                      },
+                      "AccountType" : {
+                        "type" : "string"
+                      },
+                      "AccountNo" : {
+                        "type" : "string"
+                      },
+                      "Currency" : {
+                        "type" : "string"
+                      },
+                      "BalanceAmount" : {
+                        "type" : "string"
+                      },
+                      "CurrentBalance" : {
+                        "type" : "string"
+                      },
+                      "Details" : {
+                        "type" : "string"
+                      },
+                      "CompletionTime" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "ReceiptNumber", "IdentityPublicName", "AccountType", "AccountNo", "Currency", "BalanceAmount", "Details" ]
+                  }
+                },
+                "NbrOfReturned" : {
+                  "type" : "integer"
+                },
+                "NbrOfTotal" : {
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "NbrOfTotal", "NbrOfReturned" ]
+            }
+          },
+          "required" : [ "BOCompletedTime", "AccountStatementListData" ]
+        },
+        "QueryCustomerTransactionsResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "TransactionListData" : {
+              "type" : "object",
+              "properties" : {
+                "TransactionItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "ReceiptNumber" : {
+                        "type" : "string"
+                      },
+                      "TransactionStatus" : {
+                        "type" : "string"
+                      },
+                      "Currency" : {
+                        "type" : "string"
+                      },
+                      "Amount" : {
+                        "type" : "string"
+                      },
+                      "Details" : {
+                        "type" : "string"
+                      },
+                      "InitiatedTime" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "ReceiptNumber", "TransactionStatus", "Currency", "Amount", "Details", "InitiatedTime" ]
+                  }
+                },
+                "NbrOfReturned" : {
+                  "type" : "integer"
+                },
+                "NbrOfTotal" : {
+                  "type" : "integer"
+                }
+              },
+              "required" : [ "NbrOfTotal", "NbrOfReturned" ]
+            }
+          },
+          "required" : [ "BOCompletedTime", "TransactionListData" ]
+        },
+        "QueryCustomerStatementResult" : {
+          "type" : "object",
+          "properties" : {
+            "TransactionEntryInfo" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "IdentityId" : {
+                    "type" : "number"
+                  },
+                  "TransIndex" : {
+                    "type" : "string"
+                  },
+                  "AccountNo" : {
+                    "type" : "string"
+                  },
+                  "TransactionEndTime" : {
+                    "type" : "string"
+                  },
+                  "TransactionTime" : {
+                    "type" : "string"
+                  },
+                  "AEAuditIndex" : {
+                    "type" : "number"
+                  },
+                  "Details" : {
+                    "type" : "string"
+                  },
+                  "ReasonTypeId" : {
+                    "type" : "number"
+                  },
+                  "PaidInAmount" : {
+                    "type" : "number"
+                  },
+                  "WithdrawalAmount" : {
+                    "type" : "number"
+                  },
+                  "TransIdentityMnemonic" : {
+                    "type" : "string"
+                  },
+                  "IdentityMnemonic" : {
+                    "type" : "string"
+                  },
+                  "AvailableBalance" : {
+                    "type" : "number"
+                  },
+                  "ReasonTypeAlias" : {
+                    "type" : "string"
+                  }
+                },
+                "required" : [ "IdentityId", "TransIndex", "AccountNo", "TransactionEndTime", "TransactionTime", "AEAuditIndex", "Details", "ReasonTypeId", "PaidInAmount", "WithdrawalAmount", "TransIdentityMnemonic", "IdentityMnemonic", "AvailableBalance", "ReasonTypeAlias" ]
+              }
+            }
+          }
+        },
+        "QueryCustomerQuestionResult" : {
+          "type" : "object",
+          "properties" : {
+            "QuestionList" : {
+              "type" : "object",
+              "properties" : {
+                "QuestionItem" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "QuestionCode" : {
+                        "type" : "string"
+                      }
+                    },
+                    "required" : [ "QuestionCode" ]
+                  }
+                }
+              },
+              "required" : [ "QuestionItem" ]
+            }
+          },
+          "required" : [ "QuestionList" ]
+        },
+        "QueryCustomerBankCardListResult" : {
+          "type" : "object",
+          "properties" : {
+            "BankAccount" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "BankCardId" : {
+                    "type" : "number"
+                  },
+                  "AccountName" : {
+                    "type" : "string"
+                  },
+                  "EffectiveDate" : {
+                    "type" : "string"
+                  },
+                  "CreateOperId" : {
+                    "type" : "string"
+                  },
+                  "CreateTime" : {
+                    "type" : "string"
+                  },
+                  "OrgOrBank" : {
+                    "type" : "string"
+                  },
+                  "BankId" : {
+                    "type" : "string"
+                  },
+                  "BankName" : {
+                    "type" : "string"
+                  },
+                  "BankBranchName" : {
+                    "type" : "string"
+                  },
+                  "BankShortCode" : {
+                    "type" : "string"
+                  },
+                  "BankBranchId" : {
+                    "type" : "string"
+                  },
+                  "CardType" : {
+                    "type" : "string"
+                  },
+                  "AccountNumber" : {
+                    "type" : "string"
+                  },
+                  "CardSequenceNumber" : {
+                    "type" : "string"
+                  },
+                  "ExpiredDate" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ResetOrgOperatorPINResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            }
+          }
+        },
+        "QueryOrgOperatorKYCResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "SimpleKYCData" : {
+              "type" : "object",
+              "properties" : {
+                "KYCField" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "KYCName" : {
+                        "type" : "string"
+                      },
+                      "KYCValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                },
+                "IDDetailsData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "IDRecord" : {
+                      "type" : "object",
+                      "properties" : {
+                        "IDTypeValue" : {
+                          "type" : "string"
+                        },
+                        "IDNumber" : {
+                          "type" : "string"
+                        },
+                        "IDEffectiveDate" : {
+                          "type" : "string"
+                        },
+                        "IDExpiryDate" : {
+                          "type" : "string"
+                        },
+                        "DocumentReceived" : {
+                          "type" : "string"
+                        },
+                        "Status" : {
+                          "type" : "string"
+                        },
+                        "IssuedBy" : {
+                          "type" : "string"
+                        },
+                        "IDLocation" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "CertificateDetailsData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "CertificateRecord" : {
+                      "type" : "object",
+                      "properties" : {
+                        "CertificateTypeValue" : {
+                          "type" : "string"
+                        },
+                        "CertificateNumber" : {
+                          "type" : "string"
+                        },
+                        "CertificateEffectiveDate" : {
+                          "type" : "string"
+                        },
+                        "CertificateExpiryDate" : {
+                          "type" : "string"
+                        },
+                        "Status" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CustomizedResult" : {
+          "type" : "object",
+          "properties" : {
+            "QueryIdentityInformationResult" : {
+              "type" : "object",
+              "properties" : {
+                "BOCompletedTime" : {
+                  "type" : "string"
+                },
+                "CNICInBlackList" : {
+                  "type" : "string"
+                },
+                "IDNumber" : {
+                  "type" : "string"
+                },
+                "IdentityOwnerName" : {
+                  "type" : "string"
+                },
+                "IdentityData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "IdentityInformation" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "IdentityType" : {
+                            "type" : "string"
+                          },
+                          "IdentityStatus" : {
+                            "type" : "string"
+                          },
+                          "MPINStatus" : {
+                            "type" : "string"
+                          },
+                          "MSISDN" : {
+                            "type" : "string"
+                          },
+                          "TrustLevel" : {
+                            "type" : "string"
+                          },
+                          "OrgShortCode" : {
+                            "type" : "string"
+                          },
+                          "OperatorID" : {
+                            "type" : "string"
+                          },
+                          "UserName" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "QueryOrganizationInfoResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "OrganizationBasicData" : {
+              "type" : "object",
+              "properties" : {
+                "ShortCode" : {
+                  "type" : "string"
+                },
+                "OrganizationName" : {
+                  "type" : "string"
+                },
+                "IdentityStatus" : {
+                  "type" : "string"
+                },
+                "CreationDate" : {
+                  "type" : "string"
+                },
+                "ParentShortCode" : {
+                  "type" : "string"
+                },
+                "TrustLevel" : {
+                  "type" : "string"
+                },
+                "TrustLevelName" : {
+                  "type" : "string"
+                },
+                "RuleProfileID" : {
+                  "type" : "string"
+                },
+                "RuleProfileName" : {
+                  "type" : "string"
+                },
+                "ChargeProfileID" : {
+                  "type" : "string"
+                },
+                "ChargeProfileName" : {
+                  "type" : "string"
+                },
+                "CentrallyOwnedAcctModel" : {
+                  "type" : "string"
+                },
+                "AggregatorAcctModel" : {
+                  "type" : "string"
+                },
+                "HierarchyLevel" : {
+                  "type" : "string"
+                },
+                "HierarchyModel" : {
+                  "type" : "string"
+                },
+                "ChargeDistributionModelID" : {
+                  "type" : "string"
+                },
+                "ChargeDistributionModelName" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "SegmentData" : {
+              "type" : "object",
+              "properties" : {
+                "SegmentItem" : {
+                  "type" : "object",
+                  "properties" : {
+                    "SegmentType" : {
+                      "type" : "string"
+                    },
+                    "SegmentName" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "QueryOrgOperatorInfoResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "OrgOperatorBasicData" : {
+              "type" : "object",
+              "properties" : {
+                "OrgShortCode" : {
+                  "type" : "string"
+                },
+                "AuthenticationData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "AuthenticationItem" : {
+                      "type" : "object",
+                      "properties" : {
+                        "AuthenticationType" : {
+                          "type" : "string"
+                        },
+                        "UserName" : {
+                          "type" : "string"
+                        },
+                        "OperatorID" : {
+                          "type" : "string"
+                        },
+                        "MSISDN" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "IdentityStatus" : {
+                  "type" : "string"
+                },
+                "OperatorFirstName" : {
+                  "type" : "string"
+                },
+                "OperatorLastName" : {
+                  "type" : "string"
+                },
+                "CreationDate" : {
+                  "type" : "string"
+                },
+                "RoleData" : {
+                  "type" : "object",
+                  "properties" : {
+                    "RoleItem" : {
+                      "type" : "object",
+                      "properties" : {
+                        "RoleID" : {
+                          "type" : "string"
+                        },
+                        "RoleName" : {
+                          "type" : "string"
+                        },
+                        "EffectiveDate" : {
+                          "type" : "string"
+                        },
+                        "ExpiryDate" : {
+                          "type" : "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "LanguageCode" : {
+                  "type" : "string"
+                },
+                "RuleProfileID" : {
+                  "type" : "string"
+                },
+                "RuleProfileName" : {
+                  "type" : "string"
+                },
+                "LastActiveDateTime" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "CredentialData" : {
+              "type" : "object",
+              "properties" : {
+                "CredentialItem" : {
+                  "type" : "object",
+                  "properties" : {
+                    "CredentialType" : {
+                      "type" : "string"
+                    },
+                    "CredentialStatus" : {
+                      "type" : "string"
+                    },
+                    "ExpirationTime" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "QueryIdentityLimitRemainingResult" : {
+          "type" : "object",
+          "properties" : {
+            "RuleList" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "RuleId" : {
+                    "type" : "string"
+                  },
+                  "RuleName" : {
+                    "type" : "string"
+                  },
+                  "ThresholdType" : {
+                    "type" : "string"
+                  },
+                  "ThresholdTypeName" : {
+                    "type" : "string"
+                  },
+                  "Pattern" : {
+                    "type" : "string"
+                  },
+                  "RoleType" : {
+                    "type" : "string"
+                  },
+                  "ThresholdValue" : {
+                    "type" : "string"
+                  },
+                  "Currency" : {
+                    "type" : "string"
+                  },
+                  "CurrentValue" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            },
+            "BOCompletedTime" : {
+              "type" : "string"
+            }
+          }
+        },
+        "QueryIdentityAccumulatorsResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "AccumulatorListData" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "AccumulatorInfo" : {
+                    "type" : "object",
+                    "properties" : {
+                      "StartDate" : {
+                        "type" : "string"
+                      },
+                      "EndDate" : {
+                        "type" : "string"
+                      },
+                      "Currency" : {
+                        "type" : "string"
+                      },
+                      "TotalAmount" : {
+                        "type" : "string"
+                      },
+                      "TotalCount" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "SearchTransactionResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "TransactionDetailData" : {
+              "type" : "object",
+              "properties" : {
+                "ReceiptNumber" : {
+                  "type" : "string"
+                },
+                "TransactionStatus" : {
+                  "type" : "string"
+                },
+                "DebitPartyId" : {
+                  "type" : "string"
+                },
+                "DebitPartyType" : {
+                  "type" : "string"
+                },
+                "CreditPartyId" : {
+                  "type" : "string"
+                },
+                "CreditPartyType" : {
+                  "type" : "string"
+                },
+                "DebitPartyMnemonic" : {
+                  "type" : "string"
+                },
+                "CreditPartyMnemonic" : {
+                  "type" : "string"
+                },
+                "TransactionType" : {
+                  "type" : "string"
+                },
+                "ReasonType" : {
+                  "type" : "string"
+                },
+                "Service" : {
+                  "type" : "string"
+                },
+                "Channel" : {
+                  "type" : "string"
+                },
+                "InitiatorGroupCode" : {
+                  "type" : "string"
+                },
+                "InitiatorGroupMemberRole" : {
+                  "type" : "string"
+                },
+                "Currency" : {
+                  "type" : "string"
+                },
+                "Amount" : {
+                  "type" : "string"
+                },
+                "Remark" : {
+                  "type" : "string"
+                },
+                "FailureDescription" : {
+                  "type" : "string"
+                },
+                "InitiatedTime" : {
+                  "type" : "string"
+                },
+                "FinalizedTime" : {
+                  "type" : "string"
+                },
+                "BalanceAmount" : {
+                    "type" : "string"
+                },
+                "AccountStatementList" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "AccountStatementItem" : {
+                        "type" : "object",
+                        "properties" : {
+                          "ReceiptNumber" : {
+                            "type" : "string"
+                          },
+                          "IdentityPublicName" : {
+                            "type" : "string"
+                          },
+                          "FundsType" : {
+                            "type" : "string"
+                          },
+                          "AccountType" : {
+                            "type" : "string"
+                          },
+                          "AccountNo" : {
+                            "type" : "string"
+                          },
+                          "Currency" : {
+                            "type" : "string"
+                          },
+                          "BalanceAmount" : {
+                            "type" : "string"
+                          },
+                          "CurrentBalance" : {
+                            "type" : "string"
+                          },
+                          "Details" : {
+                            "type" : "string"
+                          },
+                          "CompletionTime" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "AuditEventList" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "AuditEventItem" : {
+                        "type" : "object",
+                        "properties" : {
+                          "ReceiptNumber" : {
+                            "type" : "string"
+                          },
+                          "IdentityPublicName" : {
+                            "type" : "string"
+                          },
+                          "EventType" : {
+                            "type" : "string"
+                          },
+                          "EventTime" : {
+                            "type" : "string"
+                          },
+                          "Reason" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "TransactionNoteList" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "TransactionNoteItem" : {
+                        "type" : "object",
+                        "properties" : {
+                          "Key" : {
+                            "type" : "string"
+                          },
+                          "Value" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "LinkedTransactionList" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "TransactionItem" : {
+                        "type" : "object",
+                        "properties" : {
+                          "ReceiptNumber" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "IsReverseTransaction" : {
+                  "type" : "string",
+                  "format" : null
+                }
+              }
+            }
+          }
+        },
+        "TransactionResult" : {
+          "type" : "object",
+          "properties" : {
+            "TransactionID" : {
+              "type" : "string"
+            },
+            "TransactionStatus" : {
+              "type" : "string"
+            },
+            "ResultParameters" : {
+              "type" : "object",
+              "properties" : {
+                "ResultParameter" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "Key" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "QueryTransactionStatusResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "ReceiptNumber" : {
+              "type" : "string"
+            },
+            "TransactionStatus" : {
+              "type" : "string"
+            },
+            "IsReversed" : {
+              "type" : "string"
+            }
+          }
+        },
+        "ReverseTransactionResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "DebitPartyPublicName" : {
+              "type" : "string"
+            },
+            "CreditPartyPublicName" : {
+              "type" : "string"
+            },
+            "DebitAccountBalance" : {
+              "type" : "string"
+            },
+            "CreditAccountBalance" : {
+              "type" : "string"
+            },
+            "TransCompletedTime" : {
+              "type" : "string"
+            },
+            "Amount" : {
+              "type" : "string"
+            },
+            "Charge" : {
+              "type" : "string"
+            },
+            "ReceiptNumber" : {
+              "type" : "string"
+            },
+            "TransactionStatus" : {
+              "type" : "string"
+            },
+            "OriginalAmount" : {
+              "type" : "string"
+            },
+            "OriginalReceiptNumber" : {
+              "type" : "string"
+            }
+          }
+        },
+        "GetLinkedCardsResult" : {
+          "type" : "object",
+          "properties" : {
+            "LinkedCards" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "CardPackID" : {
+                    "type" : "string"
+                  },
+                  "CardNature" : {
+                    "type" : "string"
+                  },
+                  "CardCategory" : {
+                    "type" : "string"
+                  },
+                  "CardScheme" : {
+                    "type" : "string"
+                  },
+                  "CardNumber" : {
+                    "type" : "string"
+                  },
+                  "NotificationMSISDN" : {
+                    "type" : "string"
+                  },
+                  "ProgramID" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CreateTopOrgResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "ShortCode" : {
+              "type" : "string"
+            },
+            "IdentityStatus" : {
+              "type" : "string"
+            },
+            "OrganziationName" : {
+              "type" : "string"
+            }
+          }
+        },
+        "CreateOrgOperatorResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            },
+            "IdentityStatus" : {
+              "type" : "string"
+            },
+            "OrganizationName" : {
+              "type" : "string"
+            },
+            "ShortCode" : {
+              "type" : "string"
+            },
+            "MSISDN" : {
+              "type" : "string"
+            }
+          }
+        },
+        "CreateCustomerBundleResult" : {
+          "type" : "object",
+          "properties" : {
+            "BOCompletedTime" : {
+              "type" : "string"
+            }
+          }
+        },
+        "QueryIdentityBundleResult" : {
+          "type" : "object",
+          "properties" : {
+            "BundleList" : {
+              "type" : "object",
+              "properties" : {
+                "Bundle" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IdentityBundleId" : {
+                        "type" : "string"
+                      },
+                      "BundleName" : {
+                        "type" : "string"
+                      },
+                      "BundleType" : {
+                        "type" : "string"
+                      },
+                      "BundleProvider" : {
+                        "type" : "string"
+                      },
+                      "EffectiveDate" : {
+                        "type" : "string"
+                      },
+                      "ExpirationDate" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "BundleElementList" : {
+              "type" : "object",
+              "properties" : {
+                "BundleElement" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "IdentityBundleId" : {
+                        "type" : "string"
+                      },
+                      "ElementType" : {
+                        "type" : "string"
+                      },
+                      "ElementIdentifier" : {
+                        "type" : "string"
+                      },
+                      "UNIT" : {
+                        "type" : "string"
+                      },
+                      "Volume" : {
+                        "type" : "string"
+                      },
+                      "Value" : {
+                        "type" : "string"
+                      },
+                      "MaxValue" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required" : [ "ResultCode", "ResultType", "ConversationID" ]
+    },
+    "SyncResult" : {
+      "type" : "object",
+      "properties" : {
+        "Response" : {
+          "$ref" : "#/definitions/Response"
+        },
+        "Result" : {
+          "$ref" : "#/definitions/Result"
+        }
+      },
+      "required" : [ "Response" ]
+    }
+  }
+}

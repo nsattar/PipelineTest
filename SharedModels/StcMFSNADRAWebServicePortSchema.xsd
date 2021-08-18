@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.10 svn-revision#919b322c92f13ad085a933e8dd6dd35d4947364b. --><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservice.bioserver.securetech.com/" version="1.0" xmlns:tns="http://webservice.bioserver.securetech.com/">
+
+
+	<xs:element name="accountRegister" type="tns:accountRegister"/>
+	<xs:element name="accountRegisterResponse" type="tns:accountRegisterResponse"/>
+	
+	<xs:element name="accountRegisterEn" type="tns:accountRegisterEn"/>
+	<xs:element name="accountRegisterEnResponse" type="tns:accountRegisterEnResponse"/>
+	
+	<xs:element name="cnicVerification" type="tns:cnicVerification"/>
+	<xs:element name="cnicVerificationResponse" type="tns:cnicVerificationResponse"/>
+	
+	<xs:element name="cnicVerificationEn" type="tns:cnicVerificationEn"/>
+	<xs:element name="cnicVerificationEnResponse" type="tns:cnicVerificationEnResponse"/>
+	
+	<xs:element name="sendReceiveMoney" type="tns:sendReceiveMoney"/>
+	<xs:element name="sendReceiveMoneyResponse" type="tns:sendReceiveMoneyResponse"/>
+
+
+	<xs:complexType name="accountRegister">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appUserName" type="xs:string"/>
+			<xs:element minOccurs="0" name="appPassword" type="xs:string"/>
+			<xs:element minOccurs="0" name="userName" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerMsisdn" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerCnic" type="xs:string"/>
+			<xs:element minOccurs="0" name="location" type="xs:string"/>
+			<xs:element minOccurs="0" name="imeiNo" type="xs:string"/>
+			<xs:element minOccurs="0" name="cnicSessionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="base64FingerprintData" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintIndex" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintScore" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintType" type="xs:string"/>
+			<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appVersion" type="xs:string"/>
+			<xs:element minOccurs="0" name="cellSiteId" type="xs:string"/>
+			<xs:element minOccurs="0" name="field1" type="xs:string"/>
+			<xs:element minOccurs="0" name="field2" type="xs:string"/>
+			<xs:element minOccurs="0" name="field3" type="xs:string"/>
+			<xs:element minOccurs="0" name="field4" type="xs:string"/>
+			<xs:element minOccurs="0" name="field5" type="xs:string"/>
+
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+
+	<xs:complexType name="accountRegisterResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="accountRegisterEn">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appUserName" type="xs:string"/>
+			<xs:element minOccurs="0" name="appPassword" type="xs:string"/>
+			<xs:element minOccurs="0" name="userName" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerMsisdn" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerCnic" type="xs:string"/>
+			<xs:element minOccurs="0" name="location" type="xs:string"/>
+			<xs:element minOccurs="0" name="imeiNo" type="xs:string"/>
+			<xs:element minOccurs="0" name="cnicSessionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="base64FingerprintData" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintIndex" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintScore" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintType" type="xs:string"/>
+			<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appVersion" type="xs:string"/>
+			<xs:element minOccurs="0" name="cellSiteId" type="xs:string"/>
+			<xs:element minOccurs="0" name="field1" type="xs:string"/>
+			<xs:element minOccurs="0" name="field2" type="xs:string"/>
+			<xs:element minOccurs="0" name="field3" type="xs:string"/>
+			<xs:element minOccurs="0" name="field4" type="xs:string"/>
+			<xs:element minOccurs="0" name="field5" type="xs:string"/>
+
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="accountRegisterEnResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+	<xs:complexType name="cnicVerification">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appUserName" type="xs:string"/>
+			<xs:element minOccurs="0" name="appPassword" type="xs:string"/>
+			<xs:element minOccurs="0" name="userName" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerMsisdn" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerCnic" type="xs:string"/>
+			<xs:element minOccurs="0" name="location" type="xs:string"/>
+			<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appVersion" type="xs:string"/>
+			<xs:element minOccurs="0" name="field1" type="xs:string"/>
+			<xs:element minOccurs="0" name="field2" type="xs:string"/>
+			<xs:element minOccurs="0" name="field3" type="xs:string"/>
+			<xs:element minOccurs="0" name="field4" type="xs:string"/>
+			<xs:element minOccurs="0" name="field5" type="xs:string"/>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cnicVerificationResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="cnicVerificationEn">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appUserName" type="xs:string"/>
+			<xs:element minOccurs="0" name="appPassword" type="xs:string"/>
+			<xs:element minOccurs="0" name="userName" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerMsisdn" type="xs:string"/>
+			<xs:element minOccurs="0" name="customerCnic" type="xs:string"/>
+			<xs:element minOccurs="0" name="location" type="xs:string"/>
+			<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appVersion" type="xs:string"/>
+			<xs:element minOccurs="0" name="field1" type="xs:string"/>
+			<xs:element minOccurs="0" name="field2" type="xs:string"/>
+			<xs:element minOccurs="0" name="field3" type="xs:string"/>
+			<xs:element minOccurs="0" name="field4" type="xs:string"/>
+			<xs:element minOccurs="0" name="field5" type="xs:string"/>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cnicVerificationEnResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+
+	<xs:complexType name="sendReceiveMoney">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="applicationId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appUserName" type="xs:string"/>
+			<xs:element minOccurs="0" name="appPassword" type="xs:string"/>
+			<xs:element minOccurs="0" name="userName" type="xs:string"/>
+			<xs:element minOccurs="0" name="receiverCnic" type="xs:string"/>
+			<xs:element minOccurs="0" name="receiverMsisdn" type="xs:string"/>
+			<xs:element minOccurs="0" name="receiverBankAccountNo" type="xs:string"/>
+			<xs:element minOccurs="0" name="senderCnic" type="xs:string"/>
+			<xs:element minOccurs="0" name="senderMsisdn" type="xs:string"/>
+			
+			<xs:element minOccurs="0" name="amount" type="xs:string"/>
+			 <!--SEND_MONEY_CNIC_TO_CNIC(2L), RECEIVE_MONEY(3L),OTC_IBFT(8L) -->
+			<xs:element minOccurs="0" name="transactionTypeId" type="xs:string"/>
+			<xs:element minOccurs="0" name="location" type="xs:string"/>
+			<xs:element minOccurs="0" name="imeiNo" type="xs:string"/>
+			<xs:element minOccurs="0" name="cnicSessionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="base64FingerprintData" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintIndex" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintScore" type="xs:string"/>
+			<xs:element minOccurs="0" name="fingerprintType" type="xs:string"/>
+			<xs:element minOccurs="0" name="transactionId" type="xs:string"/>
+			<xs:element minOccurs="0" name="appVersion" type="xs:string"/>
+			<xs:element minOccurs="0" name="cellSiteId" type="xs:string"/>
+			
+
+			<xs:element minOccurs="0" name="field1" type="xs:string"/>
+			<xs:element minOccurs="0" name="field2" type="xs:string"/>
+			<xs:element minOccurs="0" name="field3" type="xs:string"/>
+			<xs:element minOccurs="0" name="field4" type="xs:string"/>
+			<xs:element minOccurs="0" name="field5" type="xs:string"/>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="sendReceiveMoneyResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="return" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="Alt4Mobilink_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="false" name="Alt4MobilinkSoap12" originalBindingStyle="document"/>
+        <binding hasEncoding="false" imported="true" name="Alt4MobilinkSoap" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="Alt4Mobilink_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="TranToEnglishSoapIn">
+    <wsdl:part element="tns:TranToEnglish" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="TranToEnglishSoapOut">
+    <wsdl:part element="tns:TranToEnglishResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Alt4MobilinkSoap">
+    <wsdl:operation name="TranToEnglish">
+      <wsdl:input message="tns:TranToEnglishSoapIn"/>
+      <wsdl:output message="tns:TranToEnglishSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Alt4MobilinkSoap" type="tns:Alt4MobilinkSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="TranToEnglish">
+      <soap:operation soapAction="http://tempuri.org/TranToEnglish" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Alt4MobilinkSoap12" type="tns:Alt4MobilinkSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="TranToEnglish">
+      <soap12:operation soapAction="http://tempuri.org/TranToEnglish" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Alt4Mobilink">
+    <wsdl:port binding="tns:Alt4MobilinkSoap" name="Alt4MobilinkSoap">
+      <soap:address location="http://10.50.18.8/JAZZ/ALT/Alt4Mobilink.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:Alt4MobilinkSoap12" name="Alt4MobilinkSoap12">
+      <soap12:address location="http://10.50.18.8/JAZZ/ALT/Alt4Mobilink.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

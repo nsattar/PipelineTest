@@ -1,0 +1,113 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "TranToEnglish",
+    "version" : "1.0.0",
+    "description" : "TranToEnglish"
+  },
+  "paths" : {
+    "/tranToEnglish" : {
+      "post" : {
+        "operationId" : "postTranToEnglish",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/tranToEnglishResponse"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a tranToEnglish",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/tranToEnglishRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/altIntegrationService/v1",
+  "definitions" : {
+    "tranToEnglishRequest" : {
+      "type" : "object",
+      "properties" : {
+        "channel_IN" : {
+          "type" : "string"
+        },
+        "clientApp_IN" : {
+          "type" : "string"
+        },
+        "login_IN" : {
+          "type" : "string"
+        },
+        "password_IN" : {
+          "type" : "string"
+        },
+        "client_TRAN_ID_IN" : {
+          "type" : "string"
+        },
+        "name_IN" : {
+          "type" : "string"
+        },
+        "fatherName_IN" : {
+          "type" : "string"
+        },
+        "motherName_IN" : {
+          "type" : "string"
+        },
+        "address1_IN" : {
+          "type" : "string"
+        },
+        "address2_IN" : {
+          "type" : "string"
+        },
+        "placeOfBirth_IN" : {
+          "type" : "string"
+        },
+        "CNIC_IN" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "channel_IN", "clientApp_IN", "login_IN", "password_IN", "client_TRAN_ID_IN", "name_IN", "fatherName_IN", "motherName_IN", "address1_IN", "address2_IN", "placeOfBirth_IN", "CNIC_IN" ]
+    },
+    "tranToEnglishResponse" : {
+      "type" : "object",
+      "properties" : {
+        "name_OUT" : {
+          "type" : "string"
+        },
+        "fatherName_OUT" : {
+          "type" : "string"
+        },
+        "motherName_OUT" : {
+          "type" : "string"
+        },
+        "address1_OUT" : {
+          "type" : "string"
+        },
+        "address2_OUT" : {
+          "type" : "string"
+        },
+        "placeOfBirth_OUT" : {
+          "type" : "string"
+        },
+        "CNIC_OUT" : {
+          "type" : "string"
+        },
+        "AKSA_TRAN_ID_OUT" : {
+          "type" : "string"
+        },
+        "message_OUT" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "message_OUT" ]
+    }
+  }
+}

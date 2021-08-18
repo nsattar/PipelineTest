@@ -1,0 +1,83 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "NotificationService",
+    "version" : "1.0.0",
+    "description" : "NotificationService"
+  },
+  "paths" : {
+    "/sendSMS" : {
+      "post" : {
+        "operationId" : "postSendSMS",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful.",
+            "schema" : {
+              "$ref" : "#/definitions/SMSResponse"
+            }
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a sendSMS",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/SMSRequest"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/notificationservice/v1",
+  "definitions" : {
+    "SMSRequest" : {
+      "type" : "object",
+      "properties" : {
+        "msisdn" : {
+          "type" : "string"
+        },
+        "sourceSystem" : {
+          "type" : "string"
+        },
+        "transactionID" : {
+          "type" : "string"
+        },
+        "senderTitle" : {
+          "type" : "string"
+        },
+        "unicodeFlag" : {
+          "type" : "boolean"
+        },
+        "flashMsgFlag" : {
+          "type" : "boolean"
+        },
+        "smsText" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "msisdn", "sourceSystem", "senderTitle", "transactionID", "unicodeFlag", "flashMsgFlag", "smsText" ]
+    },
+    "SMSResponse" : {
+      "type" : "object",
+      "properties" : {
+        "appConnectUUID" : {
+          "type" : "string"
+        },
+        "transactionID" : {
+          "type" : "string"
+        },
+        "returnCode" : {
+          "type" : "string"
+        },
+        "returnDesc" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "appConnectUUID", "transactionID", "returnCode", "returnDesc" ]
+    }
+  }
+}

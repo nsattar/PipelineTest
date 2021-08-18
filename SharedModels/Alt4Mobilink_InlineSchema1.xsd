@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:element ibmSchExtn:docRoot="true" name="TranToEnglish">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="channel_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clientApp_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="login_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="password_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Client_TRAN_ID_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="name_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="fatherName_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="motherName_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="address1_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="address2_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="placeOfBirth_IN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CNIC_IN" type="xsd:string"/>
+<!--        
+			Removed these params from original wsdl files
+		    <xsd:element maxOccurs="1" minOccurs="0" name="name_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="fatherName_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="motherName_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="address1_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="address2_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="placeOfBirth_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CNIC_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="AKSA_TRAN_ID_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="message_OUT" type="xsd:string"/>
+             -->
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="TranToEnglishResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="name_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="fatherName_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="motherName_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="address1_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="address2_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="placeOfBirth_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CNIC_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="AKSA_TRAN_ID_OUT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="message_OUT" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>

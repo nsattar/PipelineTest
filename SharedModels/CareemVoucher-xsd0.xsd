@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://tempuri.org/">
+   <xsd:element ibmSchExtn:docRoot="true" name="GenerateConsumerNumber">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="MSISDN" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="CNIC" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="AMOUNT" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="UserName" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="ChannelId" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="GenerateConsumerNumberResponse">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="GenerateConsumerNumberResult" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="BillInquiry">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="Username" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Consumer_Number" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Bank_Mnemonic" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Reserved" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="BillInquiryResponse">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="BillInquiryResult" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="BillPayment">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="Username" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Consumer_Number" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Tran_Auth_Id" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Transaction_Amount" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Tran_Date" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Tran_Time" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Bank_Mnemonic" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Reserved" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="BillPaymentResponse">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="BillPaymentResult" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="GetOriginalVoucher">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="Username" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="DummyVoucherCode" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element ibmSchExtn:docRoot="true" name="GetOriginalVoucherResponse">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" name="GetOriginalVoucherResult" nillable="true" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>
