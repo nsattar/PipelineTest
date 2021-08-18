@@ -1,3 +1,0 @@
-CREATE FUNCTION getProperty(IN propertyName CHARACTER) RETURNS CHARACTER
-LANGUAGE JAVA
-EXTERNAL NAME "com.jazzcash.utility.Utility.getProperty";

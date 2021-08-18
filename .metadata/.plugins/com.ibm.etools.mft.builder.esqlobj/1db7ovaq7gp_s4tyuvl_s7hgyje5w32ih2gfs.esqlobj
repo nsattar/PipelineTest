@@ -1,3 +1,0 @@
-CREATE FUNCTION getJavaMillis() RETURNS INTEGER
-LANGUAGE JAVA
-EXTERNAL NAME "com.jazzcash.utility.Utility.getJavaMillis";
