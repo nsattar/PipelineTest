@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Login') {
+            steps {
+                sh '''
+                oc login  -u rasha.aly.ibm -p rasha@123 --insecure-skip-tls-verify --server=https://api.tjcocp.jazz.com.pk:6443
+                '''
+            }
+        }
+       /* stage('Build Image') {
+            steps {
+                sh '''
+                oc -n ace apply -f dockerimage.yaml 
+                oc -n ace start-build  dockerimage -F -w
+                '''
+            }
+        }
+        stage('Create  Configurations CRs') {
+            steps {
+                sh '''
+                setdbparms=$(base64 -w 0 ConfigurationInputs/setdbparms.txt) 
+                sed -e "s/replace-with-namespace/ace/" -e "s~replace-with-setdbparms-bas64~${setdbparms}~" ConfigurationResources/setdbparms.yaml > setdbparms-temp.yaml
+                '''
+            }
+        }
+        stage('Apply Configurations ') {
+            steps {
+                sh '''
+                      oc apply -f setdbparms-temp.yaml 
+                '''
+            }
+        }*/
+        stage('Apply app connect Integration server ') {
+            steps {
+						script{
+								def integ_serv = sh(script: "oc -n ace get integrationserver -l servername=testapp-integration-server -o name", returnStdout: true)
+						        if (integ_serv==""){
+									sh '''
+									  oc -n ace apply -f testapp-intserv.yaml 
+									'''
+								}else{
+									sh '''
+									  oc -n ace delete integrationserver testapp-integration-server
+									  oc -n ace apply -f testapp-intserv.yaml 
+									'''
+								}
+								
+						}
+            }
+        }
+    }
+}
+/*openshift.withCluster("test-oc") {
+	openshift.withProject("ace") {
+		  if (openshift.selector("integrationservers", "testapp-integration-server").exists()) {
+			echo "Integration server exists .... deleting"
+			
+		  }else{
+			echo "Integration server does not exist.... creating"
+			sh '''
+			  oc -n ace apply -f testapp-intserv.yaml 
+			'''
+		  }
+	}
+}*/

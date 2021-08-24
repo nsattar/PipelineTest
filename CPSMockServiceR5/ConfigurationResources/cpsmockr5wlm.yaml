@@ -1,0 +1,8 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Configuration
+metadata:
+  name: cpsmockserviceswlm
+  namespace: ace
+spec:
+  contents: replace-with-policyproject-bas64
+  type: policyproject

@@ -1,0 +1,24 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: cpsmockservicer5-integration-server
+  labels:
+    app: cpsmockservicer5-integration-server
+spec:
+  version: 11.0.0.10-r2
+  pod:
+   containers:
+    runtime:
+      image: image-registry.openshift-image-registry.svc:5000/ace/cpsmockservicer5-ace-image:11.0.0.10
+  license:
+    accept: true
+    license: L-APEH-BPUCJK 
+    use: CloudPakForIntegrationNonProduction
+  barURL: ''
+  configurations:
+    - cpsmockservicer5-env
+  designerFlowsOperationMode: disabled
+  service:  
+    endpointType: http
+  useCommonServices: true
+  replicas: 1

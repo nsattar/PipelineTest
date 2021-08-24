@@ -1,0 +1,21 @@
+
+
+timestamps {
+
+node () {
+  wrap([$class: 'Xvfb']) {
+	stage ('PipelineTest - Checkout') {
+ 	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: 'master']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-token', url: 'https://github.com/nsattar/PipelineTest.git']]])
+	}
+	stage ('PipelineTest - Build') {
+	
+withMaven(
+ maven: 'maven',
+ mavenSettingsConfig: 'afb42767-7657-4aee-a3d2-08f83a568a05') {
+      sh "mvn -f CPSMockServiceR5/pom.xml -B release:prepare release:perform"
+ }
+}
+}
+cleanWs()
+}
+}

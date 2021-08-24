@@ -1,0 +1,8 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Configuration
+metadata:
+  name: cpsmockr5-env
+  namespace: ace
+spec:
+  contents: replace-with-generic-bas64
+  type: generic

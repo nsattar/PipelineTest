@@ -1,0 +1,20 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+ name: dockerimage
+spec:
+ source:
+  git:
+   uri: "https://github.com/nsattar/PipelineTest"
+ strategy:
+  type: Docker
+  dockerStrategy:
+   from:
+    kind: "DockerImage"
+    name: "ibmcom/ace-server:11.0.0.10-r2-20201029-040302"
+   pullSecret:
+    name: ibm-entitlement-key    
+ output:
+  to:
+   kind: ImageStreamTag
+   name: 'CPSMockServiceR5-ace-image:11.0.0.10'
